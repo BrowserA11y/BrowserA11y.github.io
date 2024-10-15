@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +50,9 @@
     "@angular-eslint/schematics": "^19",
     "@angular-eslint/template-parser": "^19",
     "jest-axe": "^9.0.0",
+    "@cypress/schematic": "^2.5.1",
+    "cypress-axe": "^1.5.0",
+    "cypress": "latest",
     "typescript": "^5.5.4"
   }
 }
