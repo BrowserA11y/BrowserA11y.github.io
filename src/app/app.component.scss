@@ -21,6 +21,20 @@ header {
   grid-template-columns: 1fr auto;
 }
 
+.skiplink {
+  position: absolute;
+  left: -100000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+  }
+}
+
 .logo {
   display: grid;
   grid-template-columns: 1fr auto;
