@@ -20,6 +20,7 @@ bootstrapApplication(AppComponent, {
     { provide: TitleStrategy, useClass: CustomTitleStrategy },
     importProvidersFrom(BrowserModule, ReactiveFormsModule, A11yModule),
     provideRouter(routes, withComponentInputBinding()),
+    { provide: TitleStrategy, useClass: CustomTitleStrategy },
     provideHttpClient(withInterceptorsFromDi()),
   ],
 }).catch((err) => console.error(err));
