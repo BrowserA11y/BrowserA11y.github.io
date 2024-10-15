@@ -15,7 +15,11 @@
   @if (isMenuOpen) {
   <ul id="menuContent" class="hamburgerContent">
     @for (menuItem of menuItems; track menuItem) {
-    <li class="menu-item" routerLinkActive="active-link">
+    <li
+      class="menu-item"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+    >
       <a [routerLink]="menuItem.url">{{ menuItem.title }}</a>
     </li>
     }
@@ -27,7 +31,11 @@
 <div class="desktop-navigation">
   @for (menuItem of menuItems; track menuItem) {
   <div class="desktop-navigation__links">
-    <div class="navigation-item" routerLinkActive="active-link">
+    <div
+      class="navigation-item"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+    >
       <a [routerLink]="menuItem.url">{{ menuItem.title }}</a>
     </div>
   </div>

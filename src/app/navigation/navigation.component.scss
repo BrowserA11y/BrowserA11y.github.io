@@ -20,7 +20,7 @@
     padding-left: 0;
   }
 
-  .active-link {
+  &[aria-current="page"] {
     text-decoration: underline 3px;
     text-underline-offset: styles.$xxs-spacing;
   }
