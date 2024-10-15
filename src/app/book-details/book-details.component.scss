@@ -1,4 +1,4 @@
-@import "../../styles.scss";
+@use "../../styles.scss";
 
 :host {
   display: block;
@@ -12,7 +12,7 @@
   --star-rating-size: min(4rem, 17vw);
 }
 
-@media (min-width: $tablet) {
+@media (min-width: styles.$tablet) {
   .book-insights {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -26,12 +26,12 @@ fieldset {
   border-width: 0;
   max-width: 24rem;
   display: block;
-  background-color: $primary-color-invert;
+  background-color: styles.$primary-color-invert;
 }
 
 legend {
   margin: 0 auto;
-  margin-bottom: $xs-spacing;
+  margin-bottom: styles.$xs-spacing;
 }
 
 .star-rating {
@@ -88,7 +88,7 @@ legend {
 }
 
 .star-rating:focus-within {
-  outline: 0.25rem solid $backgrond-light-secondary;
+  outline: 0.25rem solid styles.$backgrond-light-secondary;
 }
 
 .star-rating input,

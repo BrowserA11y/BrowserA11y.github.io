@@ -1,4 +1,4 @@
-@import "../../styles.scss";
+@use "../../styles.scss";
 
 .desktop-navigation {
   grid-column: 1;
@@ -14,7 +14,7 @@
 
 .navigation-item {
   display: inline-block;
-  padding: $xxs-spacing $xs-spacing;
+  padding: styles.$xxs-spacing styles.$xs-spacing;
 
   &:first-child {
     padding-left: 0;
@@ -22,16 +22,16 @@
 }
 
 .navigation-item a {
-  font-size: $xs-font;
+  font-size: styles.$xs-font;
   font-weight: bold;
-  color: $primary-color;
+  color: styles.$primary-color;
   text-decoration: none;
 }
 
 // https://angular.io/api/router/RouterLinkActive
 .active-link {
   text-decoration: underline 3px;
-  text-underline-offset: $xxs-spacing;
+  text-underline-offset: styles.$xxs-spacing;
 }
 
 .hamburger {
@@ -45,9 +45,9 @@
   margin: 0;
   list-style: none;
   position: absolute;
-  border: $xxs-spacing $secondary-color solid;
+  border: styles.$xxs-spacing styles.$secondary-color solid;
   border-radius: 5px;
-  background-color: $primary-color-invert;
+  background-color: styles.$primary-color-invert;
   padding-inline-start: 0;
   width: max-content;
 }
@@ -56,26 +56,26 @@
   text-decoration: none;
   padding: 1rem;
   display: block;
-  color: $primary-color;
-  font-size: $xs-font;
+  color: styles.$primary-color;
+  font-size: styles.$xs-font;
   font-weight: bold;
   border-radius: 5px;
   width: max-content;
 
   a {
-    font-size: $xs-font;
+    font-size: styles.$xs-font;
     font-weight: bold;
-    color: $primary-color;
+    color: styles.$primary-color;
     text-decoration: none;
   }
 }
 
 .menu-item:focus,
 .menu-item:hover {
-  background: $backgrond-light-secondary;
+  background: styles.$backgrond-light-secondary;
 }
 
-@media (min-width: $tablet) {
+@media (min-width: styles.$tablet) {
   .hamburgerContent,
   .hamburger {
     display: none;
@@ -83,7 +83,7 @@
 }
 
 /* tablet breakpoint */
-@media screen and (max-width: $tablet) {
+@media screen and (max-width: styles.$tablet) {
   .hamburger {
     display: block;
   }

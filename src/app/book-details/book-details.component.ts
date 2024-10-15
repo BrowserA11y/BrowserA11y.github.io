@@ -4,11 +4,10 @@ import { Observable } from 'rxjs';
 import { Book, BooksService } from '../books.service';
 
 @Component({
-  selector: 'app-book-detail',
-  standalone: true,
-  imports: [AsyncPipe],
-  templateUrl: './book-details.component.html',
-  styleUrl: './book-details.component.scss',
+    selector: 'app-book-detail',
+    imports: [AsyncPipe],
+    templateUrl: './book-details.component.html',
+    styleUrl: './book-details.component.scss'
 })
 export class BookDetailComponent {
   book$!: Observable<Book>;

@@ -1,4 +1,4 @@
-@import "../styles.scss";
+@use "../styles.scss";
 
 :host {
   display: flex;
@@ -9,8 +9,8 @@
 /* Style the header */
 header {
   width: 100%;
-  background-color: $primary-color-invert;
-  padding: $xs-spacing;
+  background-color: styles.$primary-color-invert;
+  padding: styles.$xs-spacing;
   vertical-align: middle;
 
   background-image: url(../assets/background-header.svg); //https://app.heazy.studio
@@ -28,29 +28,29 @@ header {
   align-content: center;
 
   .logo__text {
-    font-size: min($m-font, 6vw);
+    font-size: min(styles.$m-font, 6vw);
     font-weight: bold;
   }
 }
 
 header .logo img {
   grid-column: 1;
-  max-width: $m-spacing;
-  min-width: $s-spacing;
+  max-width: styles.$m-spacing;
+  min-width: styles.$s-spacing;
   align-self: center;
   justify-self: end;
   text-align: right;
-  padding-right: $xs-spacing;
+  padding-right: styles.$xs-spacing;
 }
 
 /* tablet breakpoint */
-@media screen and (max-width: $tablet) {
+@media screen and (max-width: styles.$tablet) {
   main {
-    padding: 10rem $xs-spacing;
+    padding: 10rem styles.$xs-spacing;
   }
 
   footer .footer__links {
-    margin-bottom: $xs-spacing;
+    margin-bottom: styles.$xs-spacing;
   }
 }
 
@@ -62,27 +62,27 @@ header .logo img {
 
 header .logo img {
   grid-column: 1;
-  max-width: $m-spacing;
-  min-width: $s-spacing;
+  max-width: styles.$m-spacing;
+  min-width: styles.$s-spacing;
   align-self: center;
   justify-self: end;
   text-align: right;
-  padding-right: $xs-spacing;
+  padding-right: styles.$xs-spacing;
 }
 
 .secondary-color {
-  color: $secondary-color;
+  color: styles.$secondary-color;
 }
 
 main {
   flex: 1 0 auto;
-  padding: $s-spacing $m-spacing;
+  padding: styles.$s-spacing styles.$m-spacing;
   background-image: url(./../assets/background-main.svg); //https://app.heazy.studio
 }
 
 /* Responsive design */
-@media screen and (max-width: $tablet) {
+@media screen and (max-width: styles.$tablet) {
   main {
-    padding: $xxs-spacing $xs-spacing;
+    padding: styles.$xxs-spacing styles.$xs-spacing;
   }
 }

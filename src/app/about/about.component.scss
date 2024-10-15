@@ -1,29 +1,30 @@
-@import "../../styles.scss";
+@use "sass:color";
+@use "../../styles.scss";
 
 .mission_text {
-  margin-bottom: $s-spacing;
-  font-size: $xs-font;
-  background-color: $secondary-color;
-  color: $primary-color-invert;
-  padding: $xs-spacing;
+  margin-bottom: styles.$s-spacing;
+  font-size: styles.$xs-font;
+  background-color: styles.$secondary-color;
+  color: styles.$primary-color-invert;
+  padding: styles.$xs-spacing;
 }
 
 table {
-  border: $secondary-color solid 0.3rem;
-  background-color: $primary-color-invert;
+  border: styles.$secondary-color solid 0.3rem;
+  background-color: styles.$primary-color-invert;
   border-radius: 4px;
   border-collapse: separate;
   font-weight: bold;
-  color: $secondary-color;
+  color: styles.$secondary-color;
   width: 100%;
-  margin-bottom: $s-spacing;
+  margin-bottom: styles.$s-spacing;
 
   tr:hover {
-    background-color: $background-light !important;
+    background-color: styles.$background-light !important;
   }
 
   tr:nth-child(even) {
-    background-color: transparentize($secondary-color, 0.9);
+    background-color: color.adjust(styles.$secondary-color, $alpha: -0.9);
   }
 
   th {
@@ -32,7 +33,7 @@ table {
   }
 
   td {
-    padding: $xxs-spacing;
+    padding: styles.$xxs-spacing;
   }
 }
 
@@ -40,7 +41,7 @@ table {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
-  margin-bottom: $s-spacing;
+  margin-bottom: styles.$s-spacing;
 }
 .mission_video iframe {
   position: absolute;
@@ -52,7 +53,7 @@ table {
 
 .mission_books {
   padding: 1rem;
-  background-color: $secondary-color;
-  color: $primary-color-invert;
+  background-color: styles.$secondary-color;
+  color: styles.$primary-color-invert;
   display: inline-block;
 }

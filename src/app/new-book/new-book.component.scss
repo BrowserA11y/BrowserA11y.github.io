@@ -1,4 +1,4 @@
-@import "../../styles.scss";
+@use "../../styles.scss";
 
 form {
   margin: 0 auto;
@@ -33,21 +33,21 @@ input {
 }
 
 button[type="submit"] {
-  background-color: $primary-color-invert;
-  color: $primary-color;
-  border: solid 3px $primary-color;
-  padding: $xxs-spacing;
+  background-color: styles.$primary-color-invert;
+  color: styles.$primary-color;
+  border: solid 3px styles.$primary-color;
+  padding: styles.$xxs-spacing;
   width: 100%;
-  height: $m-spacing;
-  font-size: $s-font;
-  margin-top: $xs-spacing;
+  height: styles.$m-spacing;
+  font-size: styles.$s-font;
+  margin-top: styles.$xs-spacing;
 
   &:hover {
-    background-color: $background-light;
+    background-color: styles.$background-light;
   }
 
   &:disabled {
-    background-color: $primary-color-invert;
-    border: solid 3px $background-light;
+    background-color: styles.$primary-color-invert;
+    border: solid 3px styles.$background-light;
   }
 }

@@ -1,28 +1,21 @@
-
-import { Component } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-  NavigationEnd,
-  Router,
-  RouterLink,
-  RouterLinkActive,
-} from '@angular/router';
+import { Component } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { NavigationEnd, Router, RouterLink } from "@angular/router";
 
 /**https://inclusive-components.design/menus-menu-buttons/ */
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss'],
-  standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  selector: "app-navigation",
+  templateUrl: "./navigation.component.html",
+  styleUrls: ["./navigation.component.scss"],
+  imports: [RouterLink],
 })
 export class NavigationComponent {
   isMenuOpen = false;
   menuItems = [
-    { url: 'new-book', title: 'New book' },
-    { url: 'books', title: 'Books' },
-    { url: 'about', title: 'About Accessible Reads' },
+    { url: "new-book", title: "New book" },
+    { url: "books", title: "Books" },
+    { url: "about", title: "About Accessible Reads" },
   ];
 
   constructor(private router: Router) {
@@ -33,7 +26,7 @@ export class NavigationComponent {
   }
 
   onButtonClick() {
-    console.log('onButtonClick');
+    console.log("onButtonClick");
     this.isMenuOpen = !this.isMenuOpen;
   }
 }

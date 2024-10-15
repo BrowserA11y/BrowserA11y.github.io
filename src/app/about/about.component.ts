@@ -13,11 +13,10 @@ interface BookStats {
 }
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
-  standalone: true,
-  imports: [RouterLink, AsyncPipe, DecimalPipe],
+    selector: 'app-about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.scss'],
+    imports: [RouterLink, AsyncPipe, DecimalPipe]
 })
 export class AboutComponent {
   bookStats$: Observable<BookStats>;

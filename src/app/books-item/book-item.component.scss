@@ -1,4 +1,4 @@
-@import "../../styles.scss";
+@use "../../styles.scss";
 
 .cdk-keyboard-focused,
 article:hover,
@@ -6,34 +6,34 @@ article:focus {
   border-width: 0.2rem;
 
   .book__header {
-    border-color: $secondary-color;
+    border-color: styles.$secondary-color;
     border-width: 0.2rem;
-    background-color: $background-light;
+    background-color: styles.$background-light;
   }
 
   .book__title {
-    color: $primary-color;
+    color: styles.$primary-color;
   }
 }
 
 article {
   display: block;
   background-color: white;
-  border-color: $primary-color;
+  border-color: styles.$primary-color;
   border-width: 0.1rem;
   border-style: solid;
 }
 
 .book__header {
-  background-color: $secondary-color;
-  border-color: $primary-color;
+  background-color: styles.$secondary-color;
+  border-color: styles.$primary-color;
   border-width: 0.1rem;
   border-bottom-style: solid;
 }
 
 // Style h2 to look like h3
 h2 {
-  font-size: $xs-font;
+  font-size: styles.$xs-font;
 }
 
 .book__text {
@@ -66,10 +66,10 @@ h2 {
 }
 
 .book__details {
-  color: $secondary-color;
+  color: styles.$secondary-color;
   font-weight: bold;
   display: block;
-  margin: $xs-spacing 0;
+  margin: styles.$xs-spacing 0;
 }
 
 .book__close {
@@ -82,5 +82,5 @@ h2 {
   cursor: pointer;
   background: url(../../assets/close.svg) center no-repeat;
   background-size: contain;
-  background-color: $primary-color-invert;
+  background-color: styles.$primary-color-invert;
 }

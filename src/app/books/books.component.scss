@@ -1,4 +1,4 @@
-@import "../../styles.scss";
+@use "../../styles.scss";
 
 .books {
   display: grid;
@@ -6,7 +6,7 @@
     auto-fit,
     minmax(18rem, 1fr)
   ); //https://caniuse.com/?search=minmax
-  grid-gap: $xs-spacing;
+  grid-gap: styles.$xs-spacing;
 }
 
 .book__close {
@@ -19,13 +19,13 @@
   cursor: pointer;
   background: url(../../assets/close.svg) center no-repeat;
   background-size: contain;
-  background-color: $primary-color-invert;
+  background-color: styles.$primary-color-invert;
 }
 
 .about_us {
   margin-top: 1rem;
   padding: 1rem;
-  background-color: $secondary-color;
-  color: $primary-color-invert;
+  background-color: styles.$secondary-color;
+  color: styles.$primary-color-invert;
   display: inline-block;
 }

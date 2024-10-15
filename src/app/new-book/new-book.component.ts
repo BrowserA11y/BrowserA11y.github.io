@@ -11,11 +11,10 @@ import { Subscription } from "rxjs";
 import { BooksService } from "../books.service";
 
 @Component({
-  selector: "app-new-book",
-  templateUrl: "./new-book.component.html",
-  styleUrls: ["./new-book.component.scss"],
-  standalone: true,
-  imports: [ReactiveFormsModule],
+    selector: "app-new-book",
+    templateUrl: "./new-book.component.html",
+    styleUrls: ["./new-book.component.scss"],
+    imports: [ReactiveFormsModule]
 })
 export class NewBookComponent implements OnDestroy, AfterViewInit {
   newForm = this.buildForm();
