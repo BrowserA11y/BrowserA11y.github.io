@@ -61,6 +61,23 @@ body {
   color: $secondary-color;
 }
 
+.visually-hidden {
+  position: absolute;
+  left: -100000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cdk-visually-hidden {
+  position: absolute;
+  left: -100000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* Style the footer */
 footer {
   color: $primary-color-invert;
