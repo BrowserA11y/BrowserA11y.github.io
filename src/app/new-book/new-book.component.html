@@ -1,21 +1,52 @@
 <h1>New book</h1>
 
 <!-- Angular focus 8: ngSubmit submits on enter -->
-<form [formGroup]="newForm">
+<form [formGroup]="newForm" (ngSubmit)="create()">
   <!-- Yes, you can do it (larger clickable area, but just one control allowed): https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label -->
   <label class="form-field" id="isbn-label">
     <!-- Angular focus 9: validation -->
     <!-- DISCUSSION: Star or required?-->
-    <span>ISBN *</span>
+    <span>ISBN (required)</span>
+    <input
+      [attr.aria-invalid]="
+        newForm.get('isbn')?.touched && newForm.get('isbn')?.invalid
+      "
+      formControlName="isbn"
+    />
 
-    <input formControlName="isbn" />
+    @if (newForm.get('isbn')?.touched &&
+    newForm.get('isbn')?.hasError('required')) {
+    <small role="alert" tabindex="0" class="form-field-hint">
+      Please insert an ISBN.
+    </small>
+    }
   </label>
 
-  <label class="form-field" id="title-label">
-    Title *
-    <input formControlName="title" />
+  <label for="title" class="form-field" id="title-label">
+    Title (required)
   </label>
 
+  <input
+    id="title"
+    formControlName="title"
+    [attr.aria-invalid]="
+      newForm.get('title')?.touched && newForm.get('title')?.invalid
+    "
+  />
+  <!-- Angular focus 10: *ngIf + dirty
+  Resource: https://coryrylan.com/blog/build-accessible-forms-with-angular
+  DISCUSSION: Single or all at once?-->
+  @if ( newForm.get('title')?.touched &&
+  newForm.get('title')?.hasError('required') ) {
+  <small
+    role="alert"
+    aria-describedby="title-label"
+    tabindex="0"
+    class="form-field-hint"
+  >
+    Please insert a title.
+  </small>
+  }
   <label class="form-field">
     <span>Author</span>
 
@@ -31,8 +62,19 @@
   </label>
   <!--DICUSSION: To disable or not to disable?
   Alternative: https://medium.com/@svinkle/creating-accessible-forms-with-angular-simply-accessible-c1bc362cf89e
-https://www.thisdot.co/blog/make-it-accessible-dealing-with-form-errors-in-angular-->
+  https://www.thisdot.co/blog/make-it-accessible-dealing-with-form-errors-in-angular-->
   <div class="form-actions">
-    <button type="submit" (click)="create()">Add a new book</button>
+    <button type="submit" [disabled]="newForm.invalid">Add a new book</button>
   </div>
+  <!--   <div
+    [class.button--disabled]="isDisabled"
+    #divButton
+    (click)="doSomething()"
+    (keydown)="doSomething()"
+  >
+    Div button
+  </div>
+  <button [attr.aria-disabled]="isDisabled" (click)="doSomething()">
+    Semantic button
+  </button> -->
 </form>
