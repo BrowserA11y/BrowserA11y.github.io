@@ -7,11 +7,13 @@
   <div class="book__header">
     <h2 class="book__title">{{ book?.title }}</h2>
     <!-- Using a visible text label with the icon (or even just visible text, with no icon) would improve accessibility for voice dictation software users. -->
-    <button (click)="removeBook()" class="book__text book__close"></button>
+    <button (click)="removeBook()" class="book__text book__close">
+      <p>Remove {{ book?.title }}</p>
+    </button>
   </div>
   <p class="book__text book__author">Author: {{ book?.author }}</p>
   <p class="book__text book__abstract">{{ book?.abstract }}</p>
   <a class="book__text book__details" [routerLink]="'/details/' + book?.isbn"
-    >Read more</a
+    >Read more<span>about {{ book?.title }}</span></a
   >
 </article>
