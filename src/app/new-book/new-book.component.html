@@ -8,15 +8,20 @@
     <!-- DISCUSSION: Star or required?-->
     <span>ISBN (required)</span>
     <input
+      formControlName="isbn"
       [attr.aria-invalid]="
         newForm.get('isbn')?.touched && newForm.get('isbn')?.invalid
       "
-      formControlName="isbn"
+      [attr.aria-describedby]="
+        newForm.get('isbn')?.touched && newForm.get('isbn')?.hasError('required')
+          ? 'isbn-error'
+          : null
+      "
     />
 
     @if (newForm.get('isbn')?.touched &&
     newForm.get('isbn')?.hasError('required')) {
-    <small role="alert" tabindex="0" class="form-field-hint">
+    <small id="isbn-error" class="form-field-hint">
       Please insert an ISBN.
     </small>
     }
@@ -32,18 +37,18 @@
     [attr.aria-invalid]="
       newForm.get('title')?.touched && newForm.get('title')?.invalid
     "
+    [attr.aria-describedby]="
+      newForm.get('title')?.touched && newForm.get('title')?.hasError('required')
+        ? 'title-error'
+        : null
+    "
   />
   <!-- Angular focus 10: *ngIf + dirty
   Resource: https://coryrylan.com/blog/build-accessible-forms-with-angular
   DISCUSSION: Single or all at once?-->
   @if ( newForm.get('title')?.touched &&
   newForm.get('title')?.hasError('required') ) {
-  <small
-    role="alert"
-    aria-describedby="title-label"
-    tabindex="0"
-    class="form-field-hint"
-  >
+  <small id="title-error"  class="form-field-hint">
     Please insert a title.
   </small>
   }
