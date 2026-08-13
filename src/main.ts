@@ -2,8 +2,9 @@ import { A11yModule } from "@angular/cdk/a11y";
 import {
   provideHttpClient,
   withInterceptorsFromDi,
+  withXhr
 } from "@angular/common/http";
-import { importProvidersFrom } from "@angular/core";
+import { importProvidersFrom, provideZoneChangeDetection } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { bootstrapApplication, BrowserModule } from "@angular/platform-browser";
 import {
@@ -17,6 +18,7 @@ import { routes } from "./routes";
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideZoneChangeDetection(),
     { provide: TitleStrategy, useClass: CustomTitleStrategy },
     importProvidersFrom(BrowserModule, ReactiveFormsModule, A11yModule),
     provideRouter(routes, withComponentInputBinding()),

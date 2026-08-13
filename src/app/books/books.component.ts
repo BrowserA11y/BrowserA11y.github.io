@@ -1,20 +1,21 @@
 import { FocusMonitor } from "@angular/cdk/a11y";
-
+import { AsyncPipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { RouterLink } from "@angular/router";
-import { take } from "rxjs";
+import { BehaviorSubject, Observable, take } from "rxjs";
 import { BookItemComponent } from "../books-item/book-item.component";
 import { Book, BooksService } from "../books.service";
 
 @Component({
-    selector: "app-books",
-    templateUrl: "./books.component.html",
-    styleUrls: ["./books.component.scss"],
-    imports: [BookItemComponent, RouterLink],
-    providers: []
+  selector: "app-books",
+  templateUrl: "./books.component.html",
+  styleUrls: ["./books.component.scss"],
+  imports: [BookItemComponent, RouterLink, AsyncPipe],
+  providers: [],
 })
 export class BooksComponent implements OnInit {
-  public books!: Book[];
+  private readonly booksSubject = new BehaviorSubject<Book[]>([]);
+  readonly books$: Observable<Book[]> = this.booksSubject.asObservable();
 
   constructor(
     private bookService: BooksService,
@@ -24,7 +25,8 @@ export class BooksComponent implements OnInit {
   ngOnInit(): void {
     this.bookService
       .getAll()
-      .subscribe((books: Book[]) => (this.books = books));
+      .pipe(take(1))
+      .subscribe((books) => this.booksSubject.next(books));
   }
 
   removeBook(bookToRemove: Book, i: number) {
@@ -32,7 +34,9 @@ export class BooksComponent implements OnInit {
       .removeBook(bookToRemove)
       .pipe(take(1))
       .subscribe(() => {
-        this.books.splice(i, 1);
+        const books = [...this.booksSubject.value];
+        books.splice(i, 1);
+        this.booksSubject.next(books);
         this.focusOnNextBook(i);
       });
   }

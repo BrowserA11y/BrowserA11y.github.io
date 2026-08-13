@@ -17,7 +17,7 @@ export interface Book {
   providedIn: 'root',
 })
 export class BooksService {
-  private endpoint = 'http://localhost:4730';
+  private endpoint = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 

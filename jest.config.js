@@ -1,3 +1,2 @@
-module.exports = {
-  preset: "jest-preset-angular",
-};
+/** Delta only — @angular-builders/jest merges this on top of its defaults. */
+module.exports = {};

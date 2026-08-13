@@ -1,6 +1,6 @@
 <h1 tabindex="-1">Our books</h1>
 <div class="books">
-  @for (book of books; track book; let i = $index) {
+  @for (book of books$ | async; track book.isbn; let i = $index) {
   <app-book-item [id]="i" [book]="book" (bookRemoved)="removeBook(book, i)">
   </app-book-item>
   }
