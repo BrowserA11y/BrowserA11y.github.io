@@ -29,7 +29,7 @@ export class BooksComponent implements OnInit {
   private readonly formBuilder = inject(FormBuilder);
 
   private readonly booksSubject = new BehaviorSubject<Book[]>([]);
-  private readonly starredIsbnsSubject = new BehaviorSubject<ReadonlySet<string>>(
+  private readonly wishlistIsbnsSubject = new BehaviorSubject<ReadonlySet<string>>(
     new Set()
   );
 
@@ -38,7 +38,7 @@ export class BooksComponent implements OnInit {
   readonly filterForm = this.formBuilder.nonNullable.group({
     search: [""],
     availableOnly: [false],
-    starredOnly: [false],
+    wishlistOnly: [false],
     Technical: [true],
     Reference: [true],
     Fiction: [true],
@@ -47,10 +47,10 @@ export class BooksComponent implements OnInit {
   readonly books$: Observable<Book[]> = combineLatest([
     this.allBooks$,
     this.filterForm.valueChanges.pipe(startWith(this.filterForm.getRawValue())),
-    this.starredIsbnsSubject,
+    this.wishlistIsbnsSubject,
   ]).pipe(
-    map(([books, filters, starredIsbns]) =>
-      this.applyFilters(books, filters, starredIsbns)
+    map(([books, filters, wishlistIsbns]) =>
+      this.applyFilters(books, filters, wishlistIsbns)
     )
   );
 
@@ -75,18 +75,18 @@ export class BooksComponent implements OnInit {
       .subscribe((books) => this.booksSubject.next(books));
   }
 
-  isStarred(isbn: string): boolean {
-    return this.starredIsbnsSubject.value.has(isbn);
+  isOnWishlist(isbn: string): boolean {
+    return this.wishlistIsbnsSubject.value.has(isbn);
   }
 
-  onWishlistChange(isbn: string, starred: boolean) {
-    const next = new Set(this.starredIsbnsSubject.value);
-    if (starred) {
+  onWishlistChange(isbn: string, onWishlist: boolean) {
+    const next = new Set(this.wishlistIsbnsSubject.value);
+    if (onWishlist) {
       next.add(isbn);
     } else {
       next.delete(isbn);
     }
-    this.starredIsbnsSubject.next(next);
+    this.wishlistIsbnsSubject.next(next);
   }
 
   onAllGenresChange(event: Event) {
@@ -117,12 +117,12 @@ export class BooksComponent implements OnInit {
     filters: Partial<{
       search: string;
       availableOnly: boolean;
-      starredOnly: boolean;
+      wishlistOnly: boolean;
       Technical: boolean;
       Reference: boolean;
       Fiction: boolean;
     }>,
-    starredIsbns: ReadonlySet<string>
+    wishlistIsbns: ReadonlySet<string>
   ): Book[] {
     const query = (filters.search ?? "").trim().toLowerCase();
     const selectedGenres = this.genres.filter((genre) => filters[genre]);
@@ -134,8 +134,8 @@ export class BooksComponent implements OnInit {
         book.author.toLowerCase().includes(query);
       const matchesAvailability =
         !filters.availableOnly || book.available !== false;
-      const matchesStarred =
-        !filters.starredOnly || starredIsbns.has(book.isbn);
+      const matchesWishlist =
+        !filters.wishlistOnly || wishlistIsbns.has(book.isbn);
       const bookGenres = book.genres ?? [];
       const matchesGenre =
         selectedGenres.length === 0 ||
@@ -143,7 +143,7 @@ export class BooksComponent implements OnInit {
           selectedGenres.includes(genre as (typeof CATALOG_GENRES)[number])
         );
       return (
-        matchesQuery && matchesAvailability && matchesStarred && matchesGenre
+        matchesQuery && matchesAvailability && matchesWishlist && matchesGenre
       );
     });
   }

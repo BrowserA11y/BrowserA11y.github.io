@@ -26,11 +26,11 @@
 
   <label class="books-filters__checkbox">
     <input
-      name="starredOnly"
+      name="wishlistOnly"
       type="checkbox"
-      formControlName="starredOnly"
+      formControlName="wishlistOnly"
     />
-    Starred only
+    On my wishlist
   </label>
 
   <fieldset class="books-filters__genres">
@@ -59,7 +59,7 @@
   <app-book-item
     [id]="i"
     [book]="book"
-    [onWishlist]="isStarred(book.isbn)"
+    [onWishlist]="isOnWishlist(book.isbn)"
     (wishlistChange)="onWishlistChange(book.isbn, $event)"
     (bookRemoved)="removeBook(book, i)"
   >

@@ -14,16 +14,25 @@
         [attr.aria-label]="wishlistLabel"
         (click)="toggleWishlist()"
       >
-        {{ onWishlist() ? "★" : "☆" }}
+        <svg
+          class="book__wishlist-icon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+          />
+        </svg>
       </button>
-      <!-- Using a visible text label with the icon (or even just visible text, with no icon) would improve accessibility for voice dictation software users. -->
       <button
         #removeButton
         type="button"
+        class="book__remove"
+        [attr.aria-label]="removeLabel"
         (click)="openRemoveDialog()"
-        class="book__text icon-button-close"
       >
-        <span class="visually-hidden">Remove {{ book()?.title }}</span>
+        ×
       </button>
     </div>
   </div>
@@ -48,7 +57,15 @@
   <h3 id="confirm-remove-title">Remove book?</h3>
   <p>Remove “{{ book()?.title }}” from the catalog?</p>
   <div class="book__confirm-actions">
-    <button type="button" (click)="cancelRemove()">Cancel</button>
-    <button type="button" (click)="confirmRemove()">Confirm remove</button>
+    <button type="button" class="book__confirm-action" (click)="cancelRemove()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="book__confirm-action"
+      (click)="confirmRemove()"
+    >
+      Confirm remove
+    </button>
   </div>
 </dialog>

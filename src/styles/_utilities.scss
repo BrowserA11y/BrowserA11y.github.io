@@ -27,16 +27,3 @@
   color: $color-primary-invert;
   display: inline-block;
 }
-
-.icon-button-close {
-  justify-self: end;
-  grid-column: 2;
-  width: 40px;
-  height: 40px;
-  text-indent: 40px;
-  overflow: hidden;
-  cursor: pointer;
-  background: url(../assets/close.svg) center no-repeat;
-  background-size: contain;
-  background-color: $color-primary-invert;
-}

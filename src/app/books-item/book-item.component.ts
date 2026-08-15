@@ -39,6 +39,10 @@ export class BookItemComponent {
       : `Add ${title} to wishlist`;
   }
 
+  get removeLabel(): string {
+    return `Remove ${this.book()?.title ?? "book"}`;
+  }
+
   formatOrigin(origin: FocusOrigin): string {
     return origin ? origin + " focused" : "blurred";
   }

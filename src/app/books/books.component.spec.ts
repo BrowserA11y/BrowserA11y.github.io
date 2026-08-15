@@ -123,12 +123,12 @@ describe("BooksComponent", () => {
     expect(allGenres).toBeChecked();
   });
 
-  it("filters to starred books only", () => {
+  it("filters to wishlist books only", () => {
     component.onWishlistChange("1", true);
-    component.filterForm.controls.starredOnly.setValue(true);
+    component.filterForm.controls.wishlistOnly.setValue(true);
     fixture.detectChanges();
 
-    expect(view.getByRole("checkbox", { name: /starred only/i })).toBeChecked();
+    expect(view.getByRole("checkbox", { name: /on my wishlist/i })).toBeChecked();
     expect(
       view.getByRole("heading", { name: /the great gatsby/i })
     ).toBeInTheDocument();

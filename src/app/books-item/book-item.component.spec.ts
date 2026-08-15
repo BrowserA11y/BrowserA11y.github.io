@@ -61,14 +61,14 @@ describe("BookItemComponent", () => {
     const wishlist = view.getByRole("button", {
       name: /add the great gatsby to wishlist/i,
     });
-    const starred = vi.fn();
-    outputToObservable(component.wishlistChange).subscribe(starred);
+    const onWishlist = vi.fn();
+    outputToObservable(component.wishlistChange).subscribe(onWishlist);
 
     wishlist.click();
     fixture.componentRef.setInput("onWishlist", true);
     fixture.detectChanges();
 
-    expect(starred).toHaveBeenCalledWith(true);
+    expect(onWishlist).toHaveBeenCalledWith(true);
     expect(
       view.getByRole("button", {
         name: /remove the great gatsby from wishlist/i,
