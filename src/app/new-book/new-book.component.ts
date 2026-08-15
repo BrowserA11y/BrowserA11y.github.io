@@ -40,7 +40,12 @@ export class NewBookComponent {
     {
       submission: {
         action: async () => {
-          await firstValueFrom(this.bookService.create(this.bookModel()));
+          await firstValueFrom(
+            this.bookService.create({
+              ...this.bookModel(),
+              price: "$0.00",
+            })
+          );
         },
       },
     }
