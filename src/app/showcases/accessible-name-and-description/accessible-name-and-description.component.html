@@ -1,16 +1,433 @@
-<p>
-  <a class="back-link" routerLink="/showcases">
-    <span class="back-link__arrow" aria-hidden="true">←</span>
-    Back to Showcases
-  </a>
-</p>
+<section class="intro">
+  <p>
+    <a class="back-link" routerLink="/showcases">
+      <span class="back-link__arrow" aria-hidden="true">←</span>
+      Back to Showcases
+    </a>
+  </p>
 
-<h1 tabindex="-1">Accessible name and description</h1>
+  <h1 tabindex="-1">Accessible name and description</h1>
 
-<p>
-  Assistive technologies rely on an element's accessible name and description.
-  This showcase will grow with interactive examples; for now, start from the
-  specification that defines how those strings are computed.
-</p>
+  <p>
+    Assistive technologies expose an accessible name (and optionally a
+    description) computed from the DOM — not from what merely looks like a
+    label. Prefer visible text and native associations; use ARIA when you
+    cannot.
+  </p>
+</section>
+
+<section class="demo" aria-labelledby="demo-name-sources">
+  <h2 id="demo-name-sources">Naming interactive content</h2>
+  <p>
+    For many controls, the accessible name comes from the text content inside
+    the element — including nested elements. That name stays visible to
+    everyone. <code>aria-label</code> can override it for assistive
+    technologies only.
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>Inner text</h3>
+      <button type="button">Save draft</button>
+    </div>
+
+    <div class="demo__example">
+      <h3>Nested text</h3>
+      <a href="/showcases" class="demo-link">
+        <svg
+          class="demo-icon"
+          role="img"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          focusable="false"
+        >
+          <title>Search in the catalog</title>
+          <path
+            d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"
+          />
+        </svg>
+        Feel free to look around the catalog
+      </a>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>aria-label</code> overrides content</h3>
+      <button type="button" aria-label="Delete">Remove from cart</button>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-icon-buttons">
+  <h2 id="demo-icon-buttons">Icon buttons — ways to name</h2>
+  <p>
+    Icon-only controls need an accessible name. You can supply it with
+    visually hidden text, ARIA, an image <code>alt</code>, or an SVG
+    <code>&lt;title&gt;</code>. Prefer a visible text label when space allows.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Unnamed icon button</h3>
+      <button type="button" class="icon-button">
+        <svg
+          class="demo-icon"
+          aria-hidden="true"
+          focusable="false"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>Visually hidden inner text</h3>
+      <button type="button" class="icon-button">
+        <svg
+          class="demo-icon"
+          aria-hidden="true"
+          focusable="false"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"
+          />
+        </svg>
+        <span class="visually-hidden">Search</span>
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>img</code> with <code>alt</code></h3>
+      <button type="button" class="icon-button">
+        <img
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z'/%3E%3C/svg%3E"
+          alt="Search"
+          width="20"
+          height="20"
+        />
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3>SVG with <code>&lt;title&gt;</code></h3>
+      <button type="button" class="icon-button">
+        <svg
+          class="demo-icon"
+          role="img"
+          focusable="false"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Search</title>
+          <path
+            d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3><code>aria-labelledby</code> (visible text)</h3>
+      <div class="demo-icon-with-label">
+        <button
+          type="button"
+          class="icon-button"
+          aria-labelledby="search-visible"
+        >
+          <svg
+            class="demo-icon"
+            aria-hidden="true"
+            focusable="false"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"
+            />
+          </svg>
+        </button>
+        <span id="search-visible">Search</span>
+      </div>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>aria-label</code></h3>
+      <button type="button" class="icon-button" aria-label="Search">
+        <svg
+          class="demo-icon"
+          aria-hidden="true"
+          focusable="false"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>aria-labelledby</code> (<code>display: none</code>)</h3>
+      <span id="search-display-none" class="demo-display-none">Search</span>
+      <button
+        type="button"
+        class="icon-button"
+        aria-labelledby="search-display-none"
+      >
+        <svg
+          class="demo-icon"
+          aria-hidden="true"
+          focusable="false"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-labelledby-advanced">
+  <h2 id="demo-labelledby-advanced">
+    <code>aria-labelledby</code>: multiple IDs and self-reference
+  </h2>
+  <p>
+    <code>aria-labelledby</code> can list several IDs (concatenated in order)
+    and may include the control’s own <code>id</code> so its content joins
+    external labels.
+  </p>
+
+  <div class="demo__example">
+    <h3>Self-reference</h3>
+    <ul class="demo-contacts">
+      <li class="demo-contacts__item">
+        <svg
+          class="demo-contacts__avatar"
+          aria-hidden="true"
+          focusable="false"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Z"
+          />
+        </svg>
+        <div class="demo-contacts__body">
+          <p>
+            Marketing:
+            <span id="contact-person-marketing">John Do</span>
+          </p>
+          <a
+            id="contact-link-marketing"
+            class="demo-link"
+            href="mailto:john.do@example.com"
+            aria-labelledby="contact-link-marketing contact-person-marketing"
+          >
+            Email
+          </a>
+        </div>
+      </li>
+      <li class="demo-contacts__item">
+        <svg
+          class="demo-contacts__avatar"
+          aria-hidden="true"
+          focusable="false"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Z"
+          />
+        </svg>
+        <div class="demo-contacts__body">
+          <p>
+            HR:
+            <span id="contact-person-hr">Jane Do</span>
+          </p>
+          <a
+            id="contact-link-hr"
+            class="demo-link"
+            href="mailto:jane.do@example.com"
+            aria-labelledby="contact-link-hr contact-person-hr"
+          >
+            Email
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-inputs">
+  <h2 id="demo-inputs">Naming form inputs</h2>
+  <p>
+    Prefer a visible <code>&lt;label&gt;</code> (wrapping or
+    <code>for</code>/<code>id</code>). <code>aria-label</code> and
+    <code>aria-labelledby</code> work, but leave sighted users without a
+    visible label unless you add one separately.
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3><code>input</code> + <code>label</code></h3>
+      <div class="demo-field">
+        <label for="email-label">Email</label>
+        <input id="email-label" type="email" autocomplete="email" />
+      </div>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>input</code> + <code>aria-label</code></h3>
+      <div class="demo-field">
+        <input type="email" aria-label="Email" autocomplete="email" />
+      </div>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>input</code> + <code>aria-labelledby</code></h3>
+      <div class="demo-field">
+        <p id="email-heading">Email</p>
+        <input
+          type="email"
+          aria-labelledby="email-heading"
+          autocomplete="email"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Placeholder is not a name</h3>
+      <input type="search" placeholder="Search the catalog" />
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-images">
+  <h2 id="demo-images">Images: <code>alt</code> vs ARIA</h2>
+  <p>
+    When an image fails to load, browsers show <code>alt</code> as visible
+    fallback text. <code>aria-label</code> / <code>aria-labelledby</code> still
+    name the image for assistive technologies, but nothing appears on screen —
+    so sighted users see a broken image with no explanation.
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>Broken image + <code>alt</code></h3>
+      <img
+        class="demo-img"
+        src="/assets/does-not-exist-catalog.png"
+        alt="Braille edition of The Accessible Web"
+        width="160"
+        height="100"
+      />
+    </div>
+
+    <div class="demo__example">
+      <h3>Broken image + <code>aria-label</code></h3>
+      <img
+        class="demo-img"
+        src="/assets/does-not-exist-aria-label.png"
+        aria-label="Braille edition of The Accessible Web"
+        width="160"
+        height="100"
+      />
+    </div>
+
+    <div class="demo__example">
+      <h3>Broken image + <code>aria-labelledby</code></h3>
+      <p id="cover-title" class="demo-display-none">
+      Braille edition of The Accessible Web
+      </p>
+      <img
+        class="demo-img"
+        src="/assets/does-not-exist-aria-labelledby.png"
+        aria-labelledby="cover-title"
+        width="160"
+        height="100"
+      />
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-description">
+  <h2 id="demo-description">Accessible description with <code>aria-describedby</code></h2>
+  <p>
+    The name answers “what is this?”; the description adds extra context
+    (hints, errors, help). Link them with <code>aria-describedby</code>.
+  </p>
+
+  <div class="demo__example">
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      autocomplete="new-password"
+      aria-describedby="password-hint"
+    />
+    <p id="password-hint" class="demo__hint">
+      Use at least 12 characters, including a number.
+    </p>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-everything">
+  <h2 id="demo-everything">Everything at once</h2>
+  <p>
+    One control with <code>label</code>, <code>aria-labelledby</code>,
+    <code>aria-label</code>, <code>title</code>, <code>placeholder</code>, and
+    <code>aria-describedby</code> – inspect which strings become the name and
+    the description.
+  </p>
+
+  <div class="demo__example">
+    <p id="crowded-labelledby">Labelledby text</p>
+    <label for="crowded-input">Label text</label>
+    <input
+      id="crowded-input"
+      type="text"
+      autocomplete="off"
+      aria-labelledby="crowded-labelledby"
+      aria-label="Aria-label text"
+      aria-describedby="crowded-describedby"
+      title="Title text"
+      placeholder="Placeholder text"
+    />
+    <p id="crowded-describedby" class="demo__hint">Describedby text</p>
+  </div>
+</section>
 
 <app-info-box group="accessibleNameAndDescription" />

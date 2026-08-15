@@ -9,6 +9,26 @@ export const RESOURCE_LINKS = {
       label: "Accessible Name and Description Computation",
       href: "https://www.w3.org/TR/accname-1.2/",
     },
+    {
+      label: "ARIA Authoring Practices: Naming",
+      href: "https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/",
+    },
+    {
+      label: "Using aria-labelledby (WAI-ARIA practices)",
+      href: "https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/#naming_with_aria-labelledby",
+    },
+    {
+      label: "Accessible name (MDN Glossary)",
+      href: "https://developer.mozilla.org/en-US/docs/Glossary/Accessible_name",
+    },
+    {
+      label: "accname unclarified (HTML Accessibility)",
+      href: "https://html5accessibility.com/stuff/2025/06/12/accname-unclarified/",
+    },
+    {
+      label: "Don’t use aria-label on static text elements (Ben Myers)",
+      href: "https://benmyers.dev/blog/dont-use-aria-label-on-static-text-elements/",
+    },
   ],
   semanticHtml: [
     {
