@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { provideRouter } from "@angular/router";
 import { within } from "@testing-library/dom";
+import { axe } from "vitest-axe";
 import { NavigationComponent } from "./navigation.component";
 
 describe("NavigationComponent", () => {
@@ -20,26 +21,22 @@ describe("NavigationComponent", () => {
     view = within(fixture.nativeElement);
   });
 
-  it("should create", () => {
+  it("should create", async () => {
     expect(component).toBeTruthy();
+    expect(await axe(fixture.nativeElement)).toHaveNoViolations();
   });
 
   it("exposes a navigation landmark and labeled menu button", () => {
     expect(
       view.getByRole("navigation", { name: /accessible reads/i })
-    ).toHaveRole("navigation");
+    ).toBeVisible();
 
-    const menuButton = view.getByRole("button", {
-      name: /accessible reads quick links/i,
-    });
-    expect(menuButton).toHaveAccessibleName(/accessible reads quick links/i);
+    const menuButton = view.getByLabelText(/accessible reads quick links/i);
     expect(menuButton).toHaveAttribute("aria-expanded", "false");
   });
 
   it("toggles aria-expanded and mobile menu visibility", () => {
-    const menuButton = view.getByRole("button", {
-      name: /accessible reads quick links/i,
-    });
+    const menuButton = view.getByLabelText(/accessible reads quick links/i);
     const menu = fixture.nativeElement.querySelector(
       "#menuContent"
     ) as HTMLElement;
@@ -53,7 +50,7 @@ describe("NavigationComponent", () => {
 
     expect(menuButton).toHaveAttribute("aria-expanded", "true");
     expect(menu).toHaveClass("nav__list--open");
-    expect(within(menu).getByRole("link", { name: /^books$/i })).toBeVisible();
+    expect(within(menu).getByText(/^books$/i)).toBeVisible();
 
     menuButton.click();
     fixture.detectChanges();

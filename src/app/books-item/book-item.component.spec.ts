@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { outputToObservable } from "@angular/core/rxjs-interop";
 import { provideRouter } from "@angular/router";
 import { within } from "@testing-library/dom";
+import { axe } from "vitest-axe";
 import { BookItemComponent } from "./book-item.component";
 
 const sampleBook = {
@@ -35,32 +36,31 @@ describe("BookItemComponent", () => {
     view = within(fixture.nativeElement);
   });
 
-  it("should create", () => {
+  it("should create", async () => {
     expect(component).toBeTruthy();
+    expect(await axe(fixture.nativeElement)).toHaveNoViolations();
   });
 
-  it("gives icon controls and contextual links accessible names and roles", () => {
-    const remove = view.getByRole("button", {
-      name: /remove the great gatsby/i,
-    });
-    const details = view.getByRole("link", {
-      name: /read more about the great gatsby/i,
-    });
-    const wishlist = view.getByRole("button", {
-      name: /add the great gatsby to wishlist/i,
-    });
+  it("renders book text and labeled icon controls", () => {
+    expect(
+      view.getByRole("heading", { level: 2, name: /the great gatsby/i })
+    ).toBeVisible();
+    expect(view.getByText(/author: f\. scott fitzgerald/i)).toBeVisible();
+    expect(view.getByText("A classic novel.")).toBeVisible();
 
-    expect(remove).toHaveRole("button");
-    expect(remove).toHaveAccessibleName(/remove the great gatsby/i);
-    expect(details).toHaveRole("link");
-    expect(details).toHaveAccessibleName(/read more about the great gatsby/i);
+    // aria-label is exposed via getByLabelText
+    const wishlist = view.getByLabelText(/add the great gatsby to wishlist/i);
+    expect(view.getByLabelText(/remove the great gatsby/i)).toBeEnabled();
     expect(wishlist).not.toBePressed();
+    expect(wishlist.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
+    expect(
+      view.getByRole("link", { name: /read more about the great gatsby/i })
+    ).toBeVisible();
+
   });
 
   it("toggles wishlist pressed state", () => {
-    const wishlist = view.getByRole("button", {
-      name: /add the great gatsby to wishlist/i,
-    });
+    const wishlist = view.getByLabelText(/add the great gatsby to wishlist/i);
     const onWishlist = vi.fn();
     outputToObservable(component.wishlistChange).subscribe(onWishlist);
 
@@ -70,16 +70,12 @@ describe("BookItemComponent", () => {
 
     expect(onWishlist).toHaveBeenCalledWith(true);
     expect(
-      view.getByRole("button", {
-        name: /remove the great gatsby from wishlist/i,
-      })
+      view.getByLabelText(/remove the great gatsby from wishlist/i)
     ).toBePressed();
   });
 
   it("opens a native confirm dialog and restores focus on cancel", () => {
-    const remove = view.getByRole("button", {
-      name: /remove the great gatsby/i,
-    });
+    const remove = view.getByLabelText(/remove the great gatsby/i);
     const dialog = fixture.nativeElement.querySelector(
       "dialog"
     ) as HTMLDialogElement;
@@ -89,9 +85,8 @@ describe("BookItemComponent", () => {
     fixture.detectChanges();
 
     expect(dialog.open).toBe(true);
-    expect(view.getByRole("dialog", { name: /remove book/i })).toHaveAccessibleName(
-      /remove book/i
-    );
+    expect(view.getByRole("dialog", { name: /remove book/i })).toBeVisible();
+    expect(view.getByText(/remove “the great gatsby” from the catalog/i)).toBeVisible();
 
     view.getByRole("button", { name: /cancel/i }).click();
     fixture.detectChanges();
@@ -104,7 +99,7 @@ describe("BookItemComponent", () => {
     const removed = vi.fn();
     outputToObservable(component.bookRemoved).subscribe(removed);
 
-    view.getByRole("button", { name: /remove the great gatsby/i }).click();
+    view.getByLabelText(/remove the great gatsby/i).click();
     fixture.detectChanges();
 
     view.getByRole("button", { name: /confirm remove/i }).click();

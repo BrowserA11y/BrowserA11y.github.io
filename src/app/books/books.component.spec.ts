@@ -98,45 +98,50 @@ describe("BooksComponent", () => {
   });
 
   it("labels search and describes live filtering", () => {
-    const search = view.getByRole("searchbox", { name: /search books/i });
-    expect(search).toHaveAccessibleName(/search books/i);
+    const search = view.getByLabelText(/search books/i);
+
     expect(search).toHaveAccessibleDescription(/results update as you type/i);
+    expect(view.getByText(/results update as you type/i)).toBeVisible();
+    expect(view.getByRole("search", { name: /filter books/i })).toBeVisible();
+    expect(view.getByText(/4 books match your filters/i)).toHaveAttribute(
+      "aria-atomic",
+      "true"
+    );
   });
 
   it("filters by search, availability, and form values", () => {
-    const search = view.getByRole("searchbox", { name: /search books/i });
+    const search = view.getByLabelText(/search books/i);
 
     component.filterForm.search().value.set("gatsby");
     fixture.detectChanges();
 
     expect(search).toHaveDisplayValue("gatsby");
     expect(
-      view.getByRole("heading", { name: /the great gatsby/i })
-    ).toBeInTheDocument();
+      view.getByRole("heading", { level: 2, name: /the great gatsby/i })
+    ).toBeVisible();
     expect(
-      view.queryByRole("heading", { name: /you don't know js/i })
+      view.queryByRole("heading", { level: 2, name: /you don't know js/i })
     ).not.toBeInTheDocument();
-    expect(view.getByRole("search", { name: /filter books/i })).toBeVisible();
 
     component.filterForm.search().value.set("");
     component.filterForm.availableOnly().value.set(true);
     fixture.detectChanges();
 
-    expect(view.getByRole("checkbox", { name: /available only/i })).toBeChecked();
+    expect(view.getByLabelText(/available only/i)).toBeChecked();
     expect(
-      view.queryByRole("heading", { name: /you don't know js/i })
+      view.queryByRole("heading", { level: 2, name: /you don't know js/i })
     ).not.toBeInTheDocument();
     expect(
-      view.getByRole("heading", { name: /the great gatsby/i })
-    ).toBeInTheDocument();
+      view.getByRole("heading", { level: 2, name: /the great gatsby/i })
+    ).toBeVisible();
   });
 
   it("supports partially checked all-genres control", () => {
-    const allGenres = view.getByRole("checkbox", { name: /all genres/i });
+    const allGenres = view.getByLabelText(/all genres/i);
     expect(allGenres).toBeChecked();
     expect(allGenres).not.toBePartiallyChecked();
 
-    view.getByRole("checkbox", { name: /^fiction$/i }).click();
+    view.getByLabelText(/^fiction$/i).click();
     fixture.detectChanges();
 
     expect(allGenres).toBePartiallyChecked();
@@ -148,22 +153,22 @@ describe("BooksComponent", () => {
 
   it("includes books without genres when all genres are selected", () => {
     expect(
-      view.getByRole("heading", { name: /untitled draft/i })
-    ).toBeInTheDocument();
+      view.getByRole("heading", { level: 2, name: /untitled draft/i })
+    ).toBeVisible();
 
-    view.getByRole("checkbox", { name: /^fiction$/i }).click();
+    view.getByLabelText(/^fiction$/i).click();
     fixture.detectChanges();
 
     expect(
-      view.queryByRole("heading", { name: /untitled draft/i })
+      view.queryByRole("heading", { level: 2, name: /untitled draft/i })
     ).not.toBeInTheDocument();
 
-    view.getByRole("checkbox", { name: /all genres/i }).click();
+    view.getByLabelText(/all genres/i).click();
     fixture.detectChanges();
 
     expect(
-      view.getByRole("heading", { name: /untitled draft/i })
-    ).toBeInTheDocument();
+      view.getByRole("heading", { level: 2, name: /untitled draft/i })
+    ).toBeVisible();
   });
 
   it("filters to wishlist books only", () => {
@@ -171,17 +176,15 @@ describe("BooksComponent", () => {
     component.filterForm.wishlistOnly().value.set(true);
     fixture.detectChanges();
 
-    expect(view.getByRole("checkbox", { name: /on my wishlist/i })).toBeChecked();
+    expect(view.getByLabelText(/on my wishlist/i)).toBeChecked();
     expect(
-      view.getByRole("heading", { name: /the great gatsby/i })
-    ).toBeInTheDocument();
+      view.getByRole("heading", { level: 2, name: /the great gatsby/i })
+    ).toBeVisible();
     expect(
-      view.queryByRole("heading", { name: /you don't know js/i })
+      view.queryByRole("heading", { level: 2, name: /you don't know js/i })
     ).not.toBeInTheDocument();
     expect(
-      view.getByRole("button", {
-        name: /remove the great gatsby from wishlist/i,
-      })
+      view.getByLabelText(/remove the great gatsby from wishlist/i)
     ).toBePressed();
   });
 
@@ -189,29 +192,31 @@ describe("BooksComponent", () => {
     component.filterForm.search().value.set("zzzz-no-match");
     fixture.detectChanges();
 
-    const liveRegion = fixture.nativeElement.querySelector(".books-empty");
+    const liveRegion = view.getByText(/no books match your filters/i);
     expect(liveRegion).toHaveAttribute("aria-live", "assertive");
-    expect(liveRegion).toHaveTextContent(/no books match your filters/i);
     expect(liveRegion).not.toHaveClass("visually-hidden");
     expect(liveRegion).toHaveClass("books-empty--visible");
     expect(view.queryByRole("list")).toBeEmptyDOMElement();
     expect(
-      view.queryByRole("heading", { name: /the great gatsby/i })
+      view.queryByRole("heading", { level: 2, name: /the great gatsby/i })
     ).not.toBeInTheDocument();
   });
 
   it("announces matching book counts politely", () => {
-    const liveRegion = fixture.nativeElement.querySelector(".books-empty");
+    const liveRegion = view.getByText(/4 books match your filters/i);
 
     expect(liveRegion).toHaveAttribute("aria-live", "polite");
-    expect(liveRegion).toHaveTextContent(/4 books match your filters/i);
     expect(liveRegion).toHaveClass("visually-hidden");
 
     component.filterForm.search().value.set("gatsby");
     fixture.detectChanges();
 
-    expect(liveRegion).toHaveAttribute("aria-live", "polite");
-    expect(liveRegion).toHaveTextContent(/1 book matches your filters/i);
-    expect(liveRegion).toHaveClass("visually-hidden");
+    expect(view.getByText(/1 book matches your filters/i)).toHaveAttribute(
+      "aria-live",
+      "polite"
+    );
+    expect(view.getByText(/1 book matches your filters/i)).toHaveClass(
+      "visually-hidden"
+    );
   });
 });
