@@ -15,7 +15,6 @@ type CatalogGenre = (typeof CATALOG_GENRES)[number];
   templateUrl: "./books.component.html",
   styleUrls: ["./books.component.scss"],
   imports: [BookItemComponent, RouterLink, FormField],
-  providers: [],
 })
 export class BooksComponent implements OnInit {
   private readonly bookService = inject(BooksService);

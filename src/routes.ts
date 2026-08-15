@@ -1,17 +1,31 @@
 import { Routes } from "@angular/router";
-import { AboutComponent } from "./app/about/about.component";
-import { BookDetailComponent } from "./app/book-details/book-details.component";
-import { BooksComponent } from "./app/books/books.component";
-import { NewBookComponent } from "./app/new-book/new-book.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "books", pathMatch: "full" },
-  { path: "books", component: BooksComponent, title: "Books" }, //Angular focus 1 1: router titles
-  { path: "new-book", component: NewBookComponent, title: "New Book" },
+  {
+    path: "books",
+    loadComponent: () =>
+      import("./app/books/books.component").then((m) => m.BooksComponent),
+    title: "Books", //Angular focus 1 1: router titles
+  },
+  {
+    path: "new-book",
+    loadComponent: () =>
+      import("./app/new-book/new-book.component").then((m) => m.NewBookComponent),
+    title: "New Book",
+  },
   {
     path: "details/:isbn",
-    component: BookDetailComponent,
+    loadComponent: () =>
+      import("./app/book-details/book-details.component").then(
+        (m) => m.BookDetailComponent
+      ),
     title: "Book Details",
   },
-  { path: "about", component: AboutComponent, title: "About" },
+  {
+    path: "about",
+    loadComponent: () =>
+      import("./app/about/about.component").then((m) => m.AboutComponent),
+    title: "About",
+  },
 ];

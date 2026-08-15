@@ -3,13 +3,6 @@ import { inject, Injectable } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { RouterStateSnapshot, TitleStrategy } from "@angular/router";
 
-@Injectable({ providedIn: "root" })
-export class DashboardTitleResolver {
-  resolve() {
-    return Promise.resolve("My dashboard");
-  }
-}
-
 @Injectable()
 export class CustomTitleStrategy extends TitleStrategy {
   private readonly title = inject(Title);

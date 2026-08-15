@@ -5,7 +5,7 @@
   [class]="elementOrigin"
 >
   <div class="book__header">
-    <h2 class="book__title">{{ book()?.title }}</h2>
+    <h2 class="book__title">{{ book().title }}</h2>
     <div class="book__header-actions">
       <button
         type="button"
@@ -36,16 +36,16 @@
       </button>
     </div>
   </div>
-  <p class="book__text book__author">Author: {{ book()?.author }}</p>
-  <p class="book__text book__abstract">{{ book()?.abstract }}</p>
+  <p class="book__text book__author">Author: {{ book().author }}</p>
+  <p class="book__text book__abstract">{{ book().abstract }}</p>
   <!-- Always rendered so cards keep equal height whether available or not -->
   <p class="book__text book__availability">
-    @if (book()?.available === false) {
+    @if (book().available === false) {
     Currently unavailable
     }
   </p>
-  <a class="book__text book__details" [routerLink]="'/details/' + book()?.isbn"
-    >Read more <span class="visually-hidden">about {{ book()?.title }}</span></a
+  <a class="book__text book__details" [routerLink]="'/details/' + book().isbn"
+    >Read more <span class="visually-hidden">about {{ book().title }}</span></a
   >
 </article>
 
@@ -55,7 +55,7 @@
   aria-labelledby="confirm-remove-title"
 >
   <h3 id="confirm-remove-title">Remove book?</h3>
-  <p>Remove “{{ book()?.title }}” from the catalog?</p>
+  <p>Remove “{{ book().title }}” from the catalog?</p>
   <div class="book__confirm-actions">
     <button type="button" class="book__confirm-action" (click)="cancelRemove()">
       Cancel

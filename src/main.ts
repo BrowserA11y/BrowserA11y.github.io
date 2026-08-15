@@ -1,11 +1,6 @@
-import { A11yModule } from "@angular/cdk/a11y";
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-  withXhr
-} from "@angular/common/http";
-import { importProvidersFrom, provideZoneChangeDetection } from "@angular/core";
-import { bootstrapApplication, BrowserModule } from "@angular/platform-browser";
+import { provideHttpClient } from "@angular/common/http";
+import { provideZoneChangeDetection } from "@angular/core";
+import { bootstrapApplication } from "@angular/platform-browser";
 import {
   provideRouter,
   TitleStrategy,
@@ -19,9 +14,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideZoneChangeDetection(),
     { provide: TitleStrategy, useClass: CustomTitleStrategy },
-    importProvidersFrom(BrowserModule, A11yModule),
     provideRouter(routes, withComponentInputBinding()),
-    { provide: TitleStrategy, useClass: CustomTitleStrategy },
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(),
   ],
 }).catch((err) => console.error(err));

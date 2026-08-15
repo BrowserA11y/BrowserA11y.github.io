@@ -19,7 +19,7 @@ import { Book } from "../books.service";
   imports: [CdkMonitorFocus, RouterLink],
 })
 export class BookItemComponent {
-  readonly book = input<Book>();
+  readonly book = input.required<Book>();
   readonly onWishlist = input(false);
   readonly bookRemoved = output<void>();
   readonly wishlistChange = output<boolean>();
@@ -33,14 +33,14 @@ export class BookItemComponent {
   elementOrigin = this.formatOrigin(null);
 
   get wishlistLabel(): string {
-    const title = this.book()?.title ?? "book";
+    const title = this.book().title;
     return this.onWishlist()
       ? `Remove ${title} from wishlist`
       : `Add ${title} to wishlist`;
   }
 
   get removeLabel(): string {
-    return `Remove ${this.book()?.title ?? "book"}`;
+    return `Remove ${this.book().title}`;
   }
 
   formatOrigin(origin: FocusOrigin): string {

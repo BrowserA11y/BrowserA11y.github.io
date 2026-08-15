@@ -35,7 +35,6 @@ export class BooksService {
   }
 
   getByIsbn(isbn: string): Observable<Book> {
-    console.log("getByIsbn");
     return this.http.get<Book>(`${this.endpoint}/books/${isbn}`);
   }
 }

@@ -1,13 +1,4 @@
-import { InteractivityChecker } from "@angular/cdk/a11y";
-import {
-  AfterViewInit,
-  Component,
-  computed,
-  ElementRef,
-  inject,
-  signal,
-  viewChild,
-} from "@angular/core";
+import { Component, computed, inject, signal } from "@angular/core";
 import {
   form,
   FormField,
@@ -25,9 +16,8 @@ import { BooksService } from "../books.service";
   styleUrls: ["./new-book.component.scss"],
   imports: [FormField, FormRoot],
 })
-export class NewBookComponent implements AfterViewInit {
+export class NewBookComponent {
   private readonly bookService = inject(BooksService);
-  private readonly interactivityChecker = inject(InteractivityChecker);
 
   readonly bookModel = signal({
     isbn: "",
@@ -56,9 +46,6 @@ export class NewBookComponent implements AfterViewInit {
     }
   );
 
-  readonly inputElementRef = viewChild<ElementRef>("divButton");
-  isDisabled = true;
-
   readonly isbnInvalid = computed(() => {
     const isbn = this.newForm.isbn();
     return isbn.touched() && isbn.invalid();
@@ -83,14 +70,4 @@ export class NewBookComponent implements AfterViewInit {
     const title = this.newForm.title();
     return title.touched() && !!title.getError("required");
   });
-
-  ngAfterViewInit(): void {
-    /*     console.log(
-      this.interactivityChecker.isFocusable(this.inputElementRef()?.nativeElement)
-    ); */
-  }
-
-  public doSomething() {
-    console.log("click");
-  }
 }
