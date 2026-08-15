@@ -52,6 +52,11 @@ h2 {
   height: 5rem;
   padding: 0.8rem;
   color: white;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 .book__title h2 {
   margin: 0;

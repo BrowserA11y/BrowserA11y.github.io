@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { NavigationEnd, Router, RouterLink } from "@angular/router";
 
@@ -11,6 +11,8 @@ import { NavigationEnd, Router, RouterLink } from "@angular/router";
   imports: [RouterLink],
 })
 export class NavigationComponent {
+  private readonly router = inject(Router);
+
   isMenuOpen = false;
   menuItems = [
     { url: "new-book", title: "New book" },
@@ -18,7 +20,7 @@ export class NavigationComponent {
     { url: "about", title: "About Accessible Reads" },
   ];
 
-  constructor(private router: Router) {
+  constructor() {
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
       // Close the menu upon navigation
       if (event instanceof NavigationEnd) this.isMenuOpen = false;

@@ -1,21 +1,20 @@
 import { LiveAnnouncer } from "@angular/cdk/a11y";
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { RouterStateSnapshot, TitleStrategy } from "@angular/router";
+
 @Injectable({ providedIn: "root" })
 export class DashboardTitleResolver {
   resolve() {
     return Promise.resolve("My dashboard");
   }
 }
+
 @Injectable()
 export class CustomTitleStrategy extends TitleStrategy {
-  constructor(
-    private readonly title: Title,
-    private liveAnnouncer: LiveAnnouncer
-  ) {
-    super();
-  }
+  private readonly title = inject(Title);
+  private readonly liveAnnouncer = inject(LiveAnnouncer);
+
   override updateTitle(routerState: RouterStateSnapshot): void {
     const title = this.buildTitle(routerState);
     this.liveAnnouncer.announce(title || "");

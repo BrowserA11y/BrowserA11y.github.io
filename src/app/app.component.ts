@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
 import { filter } from "rxjs";
 import { NavigationComponent } from "./navigation/navigation.component";
@@ -10,10 +10,12 @@ import { NavigationComponent } from "./navigation/navigation.component";
   imports: [RouterOutlet, NavigationComponent],
 })
 export class AppComponent {
+  private readonly router = inject(Router);
+
   skipLinkPath = "";
 
   //Angular focus 4: Fix navigation - focus on the first header on the page + Alternative way to handle navigation
-  constructor(private router: Router) {
+  constructor() {
     console.log(this.router.url);
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))

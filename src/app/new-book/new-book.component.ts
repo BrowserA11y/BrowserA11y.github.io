@@ -3,8 +3,9 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   OnDestroy,
-  ViewChild,
+  viewChild,
 } from "@angular/core";
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Subscription } from "rxjs";
@@ -17,16 +18,14 @@ import { BooksService } from "../books.service";
   imports: [ReactiveFormsModule],
 })
 export class NewBookComponent implements OnDestroy, AfterViewInit {
+  private readonly form = inject(FormBuilder);
+  private readonly bookService = inject(BooksService);
+  private readonly interactivityChecker = inject(InteractivityChecker);
+
   newForm = this.buildForm();
   bookApiSubscription = new Subscription();
-  @ViewChild("divButton") inputElementRef!: ElementRef;
+  readonly inputElementRef = viewChild<ElementRef>("divButton");
   isDisabled = true;
-
-  constructor(
-    private form: FormBuilder,
-    private bookService: BooksService,
-    private interactivityChecker: InteractivityChecker
-  ) {}
 
   get isbnInvalid(): boolean {
     const control = this.newForm.get("isbn");
@@ -50,7 +49,7 @@ export class NewBookComponent implements OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     /*     console.log(
-      this.interactivityChecker.isFocusable(this.inputElementRef.nativeElement)
+      this.interactivityChecker.isFocusable(this.inputElementRef()?.nativeElement)
     ); */
   }
 

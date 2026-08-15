@@ -5,16 +5,16 @@
   [class]="elementOrigin"
 >
   <div class="book__header">
-    <h2 class="book__title">{{ book?.title }}</h2>
+    <h2 class="book__title">{{ book()?.title }}</h2>
     <div class="book__header-actions">
       <button
         type="button"
         class="book__wishlist"
-        [attr.aria-pressed]="onWishlist"
+        [attr.aria-pressed]="onWishlist()"
         [attr.aria-label]="wishlistLabel"
         (click)="toggleWishlist()"
       >
-        {{ onWishlist ? "★" : "☆" }}
+        {{ onWishlist() ? "★" : "☆" }}
       </button>
       <!-- Using a visible text label with the icon (or even just visible text, with no icon) would improve accessibility for voice dictation software users. -->
       <button
@@ -23,20 +23,20 @@
         (click)="openRemoveDialog()"
         class="book__text book__close"
       >
-        <span class="visually-hidden">Remove {{ book?.title }}</span>
+        <span class="visually-hidden">Remove {{ book()?.title }}</span>
       </button>
     </div>
   </div>
-  <p class="book__text book__author">Author: {{ book?.author }}</p>
-  <p class="book__text book__abstract">{{ book?.abstract }}</p>
+  <p class="book__text book__author">Author: {{ book()?.author }}</p>
+  <p class="book__text book__abstract">{{ book()?.abstract }}</p>
   <!-- Always rendered so cards keep equal height whether available or not -->
   <p class="book__text book__availability">
-    @if (book?.available === false) {
+    @if (book()?.available === false) {
     Currently unavailable
     }
   </p>
-  <a class="book__text book__details" [routerLink]="'/details/' + book?.isbn"
-    >Read more <span class="visually-hidden">about {{ book?.title }}</span></a
+  <a class="book__text book__details" [routerLink]="'/details/' + book()?.isbn"
+    >Read more <span class="visually-hidden">about {{ book()?.title }}</span></a
   >
 </article>
 
@@ -46,7 +46,7 @@
   aria-labelledby="confirm-remove-title"
 >
   <h3 id="confirm-remove-title">Remove book?</h3>
-  <p>Remove “{{ book?.title }}” from the catalog?</p>
+  <p>Remove “{{ book()?.title }}” from the catalog?</p>
   <div class="book__confirm-actions">
     <button type="button" (click)="cancelRemove()">Cancel</button>
     <button type="button" (click)="confirmRemove()">Confirm remove</button>

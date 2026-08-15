@@ -1,6 +1,6 @@
 import { FocusMonitor } from "@angular/cdk/a11y";
 import { AsyncPipe } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
 import {
@@ -24,6 +24,10 @@ export const CATALOG_GENRES = ["Technical", "Reference", "Fiction"] as const;
   providers: [],
 })
 export class BooksComponent implements OnInit {
+  private readonly bookService = inject(BooksService);
+  private readonly focusMonitor = inject(FocusMonitor);
+  private readonly formBuilder = inject(FormBuilder);
+
   private readonly booksSubject = new BehaviorSubject<Book[]>([]);
   private readonly starredIsbnsSubject = new BehaviorSubject<ReadonlySet<string>>(
     new Set()
@@ -51,12 +55,6 @@ export class BooksComponent implements OnInit {
   );
 
   readonly genres = CATALOG_GENRES;
-
-  constructor(
-    private bookService: BooksService,
-    private focusMonitor: FocusMonitor,
-    private formBuilder: FormBuilder
-  ) {}
 
   get allGenresChecked(): boolean {
     return this.genres.every((genre) => this.filterForm.controls[genre].value);

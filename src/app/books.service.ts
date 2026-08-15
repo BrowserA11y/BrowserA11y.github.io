@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient } from "@angular/common/http";
+import { inject, Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 export interface Book {
   isbn: string;
@@ -16,12 +16,11 @@ export interface Book {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class BooksService {
-  private endpoint = 'http://localhost:3000';
-
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
+  private readonly endpoint = "http://localhost:3000";
 
   create(book: Partial<Book>): Observable<Book> {
     return this.http.post<Book>(`${this.endpoint}/books/`, book);
@@ -36,7 +35,7 @@ export class BooksService {
   }
 
   getByIsbn(isbn: string): Observable<Book> {
-    console.log('getByIsbn');
+    console.log("getByIsbn");
     return this.http.get<Book>(`${this.endpoint}/books/${isbn}`);
   }
 }

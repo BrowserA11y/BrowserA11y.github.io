@@ -3,11 +3,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  EventEmitter,
-  Input,
+  inject,
+  input,
   NgZone,
-  Output,
-  ViewChild,
+  output,
+  viewChild,
 } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { Book } from "../books.service";
@@ -19,21 +19,22 @@ import { Book } from "../books.service";
   imports: [CdkMonitorFocus, RouterLink],
 })
 export class BookItemComponent {
-  @Input() public book?: Book;
-  @Input() onWishlist = false;
-  @Output() bookRemoved = new EventEmitter<void>();
-  @Output() readonly wishlistChange = new EventEmitter<boolean>();
+  readonly book = input<Book>();
+  readonly onWishlist = input(false);
+  readonly bookRemoved = output<void>();
+  readonly wishlistChange = output<boolean>();
 
-  @ViewChild("confirmDialog")
-  private confirmDialog?: ElementRef<HTMLDialogElement>;
+  private readonly confirmDialog =
+    viewChild<ElementRef<HTMLDialogElement>>("confirmDialog");
+
+  private readonly ngZone = inject(NgZone);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   elementOrigin = this.formatOrigin(null);
 
-  constructor(private _ngZone: NgZone, private _cdr: ChangeDetectorRef) {}
-
   get wishlistLabel(): string {
-    const title = this.book?.title ?? "book";
-    return this.onWishlist
+    const title = this.book()?.title ?? "book";
+    return this.onWishlist()
       ? `Remove ${title} from wishlist`
       : `Add ${title} to wishlist`;
   }
@@ -44,24 +45,24 @@ export class BookItemComponent {
 
   // Workaround for the fact that (cdkFocusChange) emits outside NgZone.
   markForCheck() {
-    this._ngZone.run(() => this._cdr.markForCheck());
+    this.ngZone.run(() => this.cdr.markForCheck());
   }
 
   toggleWishlist() {
-    this.wishlistChange.emit(!this.onWishlist);
+    this.wishlistChange.emit(!this.onWishlist());
   }
 
   /** Uses the native dialog API so the browser restores focus to the trigger. */
   openRemoveDialog() {
-    this.confirmDialog?.nativeElement.showModal();
+    this.confirmDialog()?.nativeElement.showModal();
   }
 
   cancelRemove() {
-    this.confirmDialog?.nativeElement.close();
+    this.confirmDialog()?.nativeElement.close();
   }
 
   confirmRemove() {
-    this.confirmDialog?.nativeElement.close();
+    this.confirmDialog()?.nativeElement.close();
     this.bookRemoved.emit();
   }
 }

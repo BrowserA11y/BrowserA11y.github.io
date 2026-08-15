@@ -1,8 +1,8 @@
-import { AsyncPipe, DecimalPipe } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { Observable, map } from 'rxjs';
-import { Book, BooksService } from '../books.service';
+import { AsyncPipe, DecimalPipe } from "@angular/common";
+import { Component, inject } from "@angular/core";
+import { RouterLink } from "@angular/router";
+import { Observable, map } from "rxjs";
+import { Book, BooksService } from "../books.service";
 
 interface BookStats {
   numberOfBooks: number;
@@ -13,16 +13,14 @@ interface BookStats {
 }
 
 @Component({
-    selector: 'app-about',
-    templateUrl: './about.component.html',
-    styleUrls: ['./about.component.scss'],
-    imports: [RouterLink, AsyncPipe, DecimalPipe]
+  selector: "app-about",
+  templateUrl: "./about.component.html",
+  styleUrls: ["./about.component.scss"],
+  imports: [RouterLink, AsyncPipe, DecimalPipe],
 })
 export class AboutComponent {
-  bookStats$: Observable<BookStats>;
-  constructor(private bookService: BooksService) {
-    this.bookStats$ = this.getBookStats();
-  }
+  private readonly bookService = inject(BooksService);
+  readonly bookStats$: Observable<BookStats> = this.getBookStats();
 
   private getBookStats(): Observable<BookStats> {
     return this.bookService

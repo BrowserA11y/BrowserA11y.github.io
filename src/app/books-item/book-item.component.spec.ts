@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { outputToObservable } from "@angular/core/rxjs-interop";
 import { provideRouter } from "@angular/router";
 import { within } from "@testing-library/dom";
 import { BookItemComponent } from "./book-item.component";
@@ -61,7 +62,7 @@ describe("BookItemComponent", () => {
       name: /add the great gatsby to wishlist/i,
     });
     const starred = vi.fn();
-    component.wishlistChange.subscribe(starred);
+    outputToObservable(component.wishlistChange).subscribe(starred);
 
     wishlist.click();
     fixture.componentRef.setInput("onWishlist", true);
@@ -101,7 +102,7 @@ describe("BookItemComponent", () => {
 
   it("emits bookRemoved when confirm is chosen", () => {
     const removed = vi.fn();
-    component.bookRemoved.subscribe(removed);
+    outputToObservable(component.bookRemoved).subscribe(removed);
 
     view.getByRole("button", { name: /remove the great gatsby/i }).click();
     fixture.detectChanges();

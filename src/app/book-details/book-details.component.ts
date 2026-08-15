@@ -1,26 +1,25 @@
-import { AsyncPipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Book, BooksService } from '../books.service';
+import { AsyncPipe } from "@angular/common";
+import { Component, inject, input } from "@angular/core";
+import { toObservable } from "@angular/core/rxjs-interop";
+import { switchMap } from "rxjs";
+import { BooksService } from "../books.service";
 
 @Component({
-    selector: 'app-book-detail',
-    imports: [AsyncPipe],
-    templateUrl: './book-details.component.html',
-    styleUrl: './book-details.component.scss'
+  selector: "app-book-detail",
+  imports: [AsyncPipe],
+  templateUrl: "./book-details.component.html",
+  styleUrl: "./book-details.component.scss",
 })
 export class BookDetailComponent {
-  book$!: Observable<Book>;
-  ratings = ['rating1', 'rating2', 'rating3', 'rating4', 'rating5'];
+  private readonly bookApi = inject(BooksService);
+
+  readonly isbn = input.required<string>();
+  readonly book$ = toObservable(this.isbn).pipe(
+    switchMap((isbn) => this.bookApi.getByIsbn(isbn))
+  );
+
+  ratings = ["rating1", "rating2", "rating3", "rating4", "rating5"];
   selectedRating = 0;
-
-  constructor(private readonly bookApi: BooksService) {}
-
-  @Input({ required: true })
-  set isbn(isbn: string) {
-    console.log(isbn);
-    this.book$ = this.bookApi.getByIsbn(isbn);
-  }
 
   handleRating(rating: number) {
     this.selectedRating = rating;
