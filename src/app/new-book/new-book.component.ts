@@ -32,9 +32,14 @@ export class NewBookComponent implements OnDestroy, AfterViewInit {
     return !!(control?.touched && control.invalid);
   }
 
-  get isbnShowsError(): boolean {
+  get isbnRequiredError(): boolean {
     const control = this.newForm.get("isbn");
     return !!(control?.touched && control.hasError("required"));
+  }
+
+  get isbnPatternError(): boolean {
+    const control = this.newForm.get("isbn");
+    return !!(control?.touched && control.hasError("pattern"));
   }
 
   get titleInvalid(): boolean {
@@ -67,7 +72,7 @@ export class NewBookComponent implements OnDestroy, AfterViewInit {
 
   private buildForm() {
     return this.form.nonNullable.group({
-      isbn: ["", [Validators.required]],
+      isbn: ["", [Validators.required, Validators.maxLength(13), Validators.pattern(/^\d+$/)]],
       title: ["", [Validators.required]],
       cover: [""],
       author: [""],

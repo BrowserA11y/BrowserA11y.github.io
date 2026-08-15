@@ -93,4 +93,25 @@ describe("NewBookComponent", () => {
     expect(isbn).not.toHaveAccessibleErrorMessage();
     expect(title).not.toHaveAccessibleDescription();
   });
+
+  it("shows an ISBN format error for non-digits", () => {
+    const isbn = view.getByRole("textbox", { name: /isbn/i });
+    const submit = view.getByRole("button", { name: /add a new book/i });
+
+    component.newForm.controls.isbn.setValue("978-abc");
+    component.newForm.controls.isbn.markAsTouched();
+    component.newForm.controls.title.setValue("Accessible Angular");
+    fixture.detectChanges();
+
+    expect(isbn).toBeInvalid();
+    expect(isbn).toHaveAccessibleErrorMessage(/digits only/i);
+    expect(submit).toBeDisabled();
+
+    component.newForm.controls.isbn.setValue("9780000000000");
+    fixture.detectChanges();
+
+    expect(isbn).toBeValid();
+    expect(isbn).not.toHaveAccessibleErrorMessage();
+    expect(submit).toBeEnabled();
+  });
 });

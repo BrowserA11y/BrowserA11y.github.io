@@ -12,17 +12,26 @@
       name="isbn"
       formControlName="isbn"
       required
+      inputmode="numeric"
+      maxlength="13"
       [attr.aria-invalid]="isbnInvalid || null"
       aria-describedby="isbn-hint"
-      [attr.aria-errormessage]="isbnShowsError ? 'isbn-error' : null"
+      [attr.aria-errormessage]="
+        isbnRequiredError || isbnPatternError ? 'isbn-error' : null
+      "
     />
     <small id="isbn-hint" class="form-field__hint">
       Maximum length 13 characters, digits only.
     </small>
 
-    @if (isbnShowsError) {
+    @if (isbnRequiredError) {
     <small id="isbn-error" class="form-field__error" role="alert">
       Please insert an ISBN.
+    </small>
+    }
+    @if (isbnPatternError && !isbnRequiredError) {
+    <small id="isbn-error" class="form-field__error" role="alert">
+      ISBN must contain digits only.
     </small>
     }
   </label>
