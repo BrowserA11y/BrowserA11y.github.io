@@ -39,7 +39,7 @@ The exercises are designed to be completed in order, as they build upon each oth
 
 ## Running unit tests
 
-To start unit tests, run the following command: `npm run test`. Vitest will execute all unit tests in the project. Accessibility checks use [vitest-axe](https://github.com/chaance/vitest-axe).
+To start unit tests, run the following command: `npm run test`. Vitest will execute all unit tests in the project. Accessibility checks use [vitest-axe](https://github.com/chaance/vitest-axe) and [Testing Library jest-dom](https://github.com/testing-library/jest-dom) matchers (for example `toHaveAccessibleName`, `toHaveAccessibleErrorMessage`, `toBePressed`).
 
 ## Running end-to-end tests
 

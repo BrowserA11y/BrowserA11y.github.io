@@ -1,5 +1,44 @@
 @use "../../styles.scss";
 
+.books-filters {
+  display: grid;
+  gap: styles.$xxs-spacing;
+  margin-bottom: styles.$xs-spacing;
+  padding: styles.$xs-spacing;
+  background: styles.$backgrond-light-secondary;
+  max-width: 40rem;
+}
+
+.books-filters__search {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: bold;
+}
+
+.books-filters__search input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.books-filters__hint {
+  margin: 0;
+  color: #3c3c3c;
+  font-size: styles.$xs-font;
+}
+
+.books-filters__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.books-filters__genres {
+  border: 1px solid styles.$secondary-color;
+  padding: styles.$xxs-spacing;
+  margin: 0;
+}
+
 .books {
   display: grid;
   grid-template-columns: repeat(

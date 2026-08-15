@@ -1,7 +1,68 @@
 <h1 tabindex="-1">Our books</h1>
+
+<form class="books-filters" [formGroup]="filterForm" aria-label="Filter books">
+  <label class="books-filters__search" for="book-search">
+    Search books
+    <input
+      id="book-search"
+      name="search"
+      type="search"
+      formControlName="search"
+      aria-describedby="book-search-hint"
+    />
+  </label>
+  <p id="book-search-hint" class="books-filters__hint">
+    Results update as you type.
+  </p>
+
+  <label class="books-filters__checkbox">
+    <input
+      name="availableOnly"
+      type="checkbox"
+      formControlName="availableOnly"
+    />
+    Available only
+  </label>
+
+  <label class="books-filters__checkbox">
+    <input
+      name="starredOnly"
+      type="checkbox"
+      formControlName="starredOnly"
+    />
+    Starred only
+  </label>
+
+  <fieldset class="books-filters__genres">
+    <legend>Genres</legend>
+    <label class="books-filters__checkbox">
+      <input
+        name="allGenres"
+        type="checkbox"
+        [checked]="allGenresChecked"
+        [indeterminate]="allGenresPartial"
+        (change)="onAllGenresChange($event)"
+      />
+      All genres
+    </label>
+    @for (genre of genres; track genre) {
+    <label class="books-filters__checkbox">
+      <input [name]="genre" type="checkbox" [formControlName]="genre" />
+      {{ genre }}
+    </label>
+    }
+  </fieldset>
+</form>
+
 <div class="books">
   @for (book of books$ | async; track book.isbn; let i = $index) {
-  <app-book-item [id]="i" [book]="book" (bookRemoved)="removeBook(book, i)">
+  <app-book-item
+    [id]="i"
+    [book]="book"
+    [onWishlist]="isStarred(book.isbn)"
+    (wishlistChange)="onWishlistChange(book.isbn, $event)"
+    (bookRemoved)="removeBook(book, i)"
+  >
   </app-book-item>
   }
 </div>

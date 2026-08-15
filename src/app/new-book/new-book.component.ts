@@ -11,10 +11,10 @@ import { Subscription } from "rxjs";
 import { BooksService } from "../books.service";
 
 @Component({
-    selector: "app-new-book",
-    templateUrl: "./new-book.component.html",
-    styleUrls: ["./new-book.component.scss"],
-    imports: [ReactiveFormsModule]
+  selector: "app-new-book",
+  templateUrl: "./new-book.component.html",
+  styleUrls: ["./new-book.component.scss"],
+  imports: [ReactiveFormsModule],
 })
 export class NewBookComponent implements OnDestroy, AfterViewInit {
   newForm = this.buildForm();
@@ -28,6 +28,26 @@ export class NewBookComponent implements OnDestroy, AfterViewInit {
     private interactivityChecker: InteractivityChecker
   ) {}
 
+  get isbnInvalid(): boolean {
+    const control = this.newForm.get("isbn");
+    return !!(control?.touched && control.invalid);
+  }
+
+  get isbnShowsError(): boolean {
+    const control = this.newForm.get("isbn");
+    return !!(control?.touched && control.hasError("required"));
+  }
+
+  get titleInvalid(): boolean {
+    const control = this.newForm.get("title");
+    return !!(control?.touched && control.invalid);
+  }
+
+  get titleShowsError(): boolean {
+    const control = this.newForm.get("title");
+    return !!(control?.touched && control.hasError("required"));
+  }
+
   ngAfterViewInit(): void {
     /*     console.log(
       this.interactivityChecker.isFocusable(this.inputElementRef.nativeElement)
@@ -36,7 +56,6 @@ export class NewBookComponent implements OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.bookApiSubscription.unsubscribe();
-    this.newForm.controls;
   }
 
   create(): void {

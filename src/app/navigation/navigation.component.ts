@@ -26,7 +26,6 @@ export class NavigationComponent {
   }
 
   onButtonClick() {
-    console.log("onButtonClick");
     this.isMenuOpen = !this.isMenuOpen;
   }
 }

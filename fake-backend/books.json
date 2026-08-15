@@ -11,7 +11,13 @@
       "price": "$9.50",
       "numPages": 482,
       "cover": "http://localhost:3000/covers/9780071740647.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference",
+        "Fiction"
+      ]
     },
     {
       "id": "9780134655536",
@@ -24,7 +30,12 @@
       "price": "$33.16",
       "numPages": 640,
       "cover": "http://localhost:3000/covers/9780134655536.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596522308",
@@ -37,7 +48,11 @@
       "price": "$4.65",
       "numPages": 256,
       "cover": "http://localhost:3000/covers/9780596522308.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596527525",
@@ -50,7 +65,12 @@
       "price": "$4.13",
       "numPages": 480,
       "cover": "http://localhost:3000/covers/9780596527525.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596529260",
@@ -63,7 +83,11 @@
       "price": "$2.60",
       "numPages": 448,
       "cover": "http://localhost:3000/covers/9780596529260.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596529963",
@@ -76,7 +100,12 @@
       "price": "$3.49",
       "numPages": 128,
       "cover": "http://localhost:3000/covers/9780596529963.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780735649705",
@@ -89,7 +118,12 @@
       "price": "$34.21",
       "numPages": 352,
       "cover": "http://localhost:3000/covers/9780735649705.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780735660120",
@@ -102,7 +136,11 @@
       "price": "$19.95",
       "numPages": 294,
       "cover": "http://localhost:3000/covers/9780735660120.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780974514093",
@@ -115,7 +153,11 @@
       "price": "$6.96",
       "numPages": 275,
       "cover": "http://localhost:3000/covers/9780974514093.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780980576832",
@@ -128,7 +170,12 @@
       "price": "$5.50",
       "numPages": 300,
       "cover": "http://localhost:3000/covers/9780980576832.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781430239697",
@@ -141,7 +188,11 @@
       "price": "$29.99",
       "numPages": 124,
       "cover": "http://localhost:3000/covers/9781430239697.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781430246206",
@@ -154,7 +205,12 @@
       "price": "$34.47",
       "numPages": 312,
       "cover": "http://localhost:3000/covers/9781430246206.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781430257820",
@@ -167,7 +223,12 @@
       "price": "$33.55",
       "numPages": 416,
       "cover": "http://localhost:3000/covers/9781430257820.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781430258667",
@@ -180,7 +241,12 @@
       "price": "$36.11",
       "numPages": 368,
       "cover": "http://localhost:3000/covers/9781430258667.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781430259831",
@@ -193,7 +259,11 @@
       "price": "$41.39",
       "numPages": 472,
       "cover": "http://localhost:3000/covers/9781430259831.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781449309961",
@@ -206,7 +276,12 @@
       "price": "$15.99",
       "numPages": 156,
       "cover": "http://localhost:3000/covers/9781449309961.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781449316976",
@@ -219,7 +294,12 @@
       "price": "$15.00",
       "numPages": 298,
       "cover": "http://localhost:3000/covers/9781449316976.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781449319274",
@@ -232,7 +312,12 @@
       "price": "$9.00",
       "numPages": 624,
       "cover": "http://localhost:3000/covers/9781449319274.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781449320515",
@@ -245,7 +330,12 @@
       "price": "$3.88",
       "numPages": 172,
       "cover": "http://localhost:3000/covers/9781449320515.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781449323578",
@@ -258,7 +348,12 @@
       "price": "$26.21",
       "numPages": 230,
       "cover": "http://localhost:3000/covers/9781449323578.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781449332914",
@@ -271,7 +366,12 @@
       "price": "$8.92",
       "numPages": 226,
       "cover": "http://localhost:3000/covers/9781449332914.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781449337711",
@@ -284,7 +384,12 @@
       "price": "$31.99",
       "numPages": 538,
       "cover": "http://localhost:3000/covers/9781449337711.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781449356569",
@@ -297,7 +402,11 @@
       "price": "$50.99",
       "numPages": 118,
       "cover": "http://localhost:3000/covers/9781449356569.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781449362966",
@@ -310,7 +419,12 @@
       "price": "$29.90",
       "numPages": 404,
       "cover": "http://localhost:3000/covers/9781449362966.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Fiction"
+      ]
     },
     {
       "id": "9781449372620",
@@ -323,7 +437,12 @@
       "price": "$14.00",
       "numPages": 258,
       "cover": "http://localhost:3000/covers/9781449372620.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781484201497",
@@ -336,7 +455,12 @@
       "price": "$57.12",
       "numPages": 232,
       "cover": "http://localhost:3000/covers/9781484201497.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781484209530",
@@ -349,7 +473,11 @@
       "price": "$42.39",
       "numPages": 496,
       "cover": "http://localhost:3000/covers/9781484209530.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781484210536",
@@ -362,7 +490,12 @@
       "price": "$29.18",
       "numPages": 312,
       "cover": "http://localhost:3000/covers/9781484210536.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781484226094",
@@ -375,7 +508,11 @@
       "price": "$24.99",
       "numPages": 208,
       "cover": "http://localhost:3000/covers/9781484226094.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781484233832",
@@ -388,7 +525,11 @@
       "price": "$44.99",
       "numPages": 407,
       "cover": "http://localhost:3000/covers/9781484233832.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781484237380",
@@ -401,7 +542,12 @@
       "price": "$27.57",
       "numPages": 278,
       "cover": "http://localhost:3000/covers/9781484237380.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781484238424",
@@ -414,7 +560,11 @@
       "price": "$36.97",
       "numPages": 546,
       "cover": "http://localhost:3000/covers/9781484238424.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781484252772",
@@ -427,7 +577,11 @@
       "price": "$34.99",
       "numPages": 328,
       "cover": "http://localhost:3000/covers/9781484252772.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781484265888",
@@ -440,7 +594,12 @@
       "price": "$28.75",
       "numPages": 256,
       "cover": "http://localhost:3000/covers/9781484265888.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781491902592",
@@ -453,7 +612,12 @@
       "price": "$25.80",
       "numPages": 214,
       "cover": "http://localhost:3000/covers/9781491902592.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781491910290",
@@ -466,7 +630,12 @@
       "price": "$14.00",
       "numPages": 256,
       "cover": "http://localhost:3000/covers/9781491910290.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781491912553",
@@ -479,7 +648,12 @@
       "price": "$7.00",
       "numPages": 326,
       "cover": "http://localhost:3000/covers/9781491912553.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781491915592",
@@ -492,7 +666,12 @@
       "price": "$29.99",
       "numPages": 396,
       "cover": "http://localhost:3000/covers/9781491915592.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781491933091",
@@ -505,7 +684,12 @@
       "price": "$18.59",
       "numPages": 180,
       "cover": "http://localhost:3000/covers/9781491933091.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781491944806",
@@ -518,7 +702,12 @@
       "price": "$11.00",
       "numPages": 184,
       "cover": "http://localhost:3000/covers/9781491944806.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781491945902",
@@ -531,7 +720,11 @@
       "price": "$21.97",
       "numPages": 258,
       "cover": "http://localhost:3000/covers/9781491945902.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781491960202",
@@ -544,7 +737,12 @@
       "price": "$45.00",
       "numPages": 700,
       "cover": "http://localhost:3000/covers/9781491960202.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781491985571",
@@ -557,7 +755,12 @@
       "price": "$35.87",
       "numPages": 308,
       "cover": "http://localhost:3000/covers/9781491985571.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781491991732",
@@ -570,7 +773,11 @@
       "price": "$28.99",
       "numPages": 316,
       "cover": "http://localhost:3000/covers/9781491991732.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781492053118",
@@ -583,7 +790,12 @@
       "price": "$24.99",
       "numPages": 330,
       "cover": "http://localhost:3000/covers/9781492053118.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781492058564",
@@ -596,7 +808,12 @@
       "price": "$0.00",
       "numPages": 127,
       "cover": "http://localhost:3000/covers/9781492058564.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781593274870",
@@ -609,7 +826,13 @@
       "price": "$20.99",
       "numPages": 264,
       "cover": "http://localhost:3000/covers/9781593274870.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference",
+        "Fiction"
+      ]
     },
     {
       "id": "9781617293771",
@@ -622,7 +845,12 @@
       "price": "$15.29",
       "numPages": 376,
       "cover": "http://localhost:3000/covers/9781617293771.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781680500820",
@@ -635,7 +863,12 @@
       "price": "$28.02",
       "numPages": 306,
       "cover": "http://localhost:3000/covers/9781680500820.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781680502435",
@@ -648,7 +881,11 @@
       "price": "$18.99",
       "numPages": 218,
       "cover": "http://localhost:3000/covers/9781680502435.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781680506365",
@@ -661,7 +898,11 @@
       "price": "$30.27",
       "numPages": 238,
       "cover": "http://localhost:3000/covers/9781680506365.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781680506822",
@@ -674,7 +915,12 @@
       "price": "$47.95",
       "numPages": 350,
       "cover": "http://localhost:3000/covers/9781680506822.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781680507263",
@@ -687,7 +933,11 @@
       "price": "$26.95",
       "numPages": 154,
       "cover": "http://localhost:3000/covers/9781680507263.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781782160786",
@@ -700,7 +950,11 @@
       "price": "$14.99",
       "numPages": 140,
       "cover": "http://localhost:3000/covers/9781782160786.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781782160922",
@@ -713,7 +967,12 @@
       "price": "$29.99",
       "numPages": 256,
       "cover": "http://localhost:3000/covers/9781782160922.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781782163169",
@@ -726,7 +985,12 @@
       "price": "$29.99",
       "numPages": 342,
       "cover": "http://localhost:3000/covers/9781782163169.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781782164364",
@@ -739,7 +1003,11 @@
       "price": "$22.99",
       "numPages": 174,
       "cover": "http://localhost:3000/covers/9781782164364.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781782164760",
@@ -752,7 +1020,12 @@
       "price": "$12.99",
       "numPages": 60,
       "cover": "http://localhost:3000/covers/9781782164760.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781782167891",
@@ -765,7 +1038,12 @@
       "price": "$26.99",
       "numPages": 242,
       "cover": "http://localhost:3000/covers/9781782167891.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781782168799",
@@ -778,7 +1056,12 @@
       "price": "$12.99",
       "numPages": 76,
       "cover": "http://localhost:3000/covers/9781782168799.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781782170686",
@@ -791,7 +1074,12 @@
       "price": "$29.99",
       "numPages": 270,
       "cover": "http://localhost:3000/covers/9781782170686.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781782178125",
@@ -804,7 +1092,12 @@
       "price": "$23.99",
       "numPages": 128,
       "cover": "http://localhost:3000/covers/9781782178125.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783280919",
@@ -817,7 +1110,11 @@
       "price": "$29.99",
       "numPages": 306,
       "cover": "http://localhost:3000/covers/9781783280919.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781783282234",
@@ -830,7 +1127,12 @@
       "price": "$17.99",
       "numPages": 104,
       "cover": "http://localhost:3000/covers/9781783282234.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783286355",
@@ -843,7 +1145,11 @@
       "price": "$14.99",
       "numPages": 80,
       "cover": "http://localhost:3000/covers/9781783286355.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781783287093",
@@ -856,7 +1162,11 @@
       "price": "$26.99",
       "numPages": 330,
       "cover": "http://localhost:3000/covers/9781783287093.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781783287192",
@@ -869,7 +1179,12 @@
       "price": "$20.99",
       "numPages": 140,
       "cover": "http://localhost:3000/covers/9781783287192.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783552092",
@@ -882,7 +1197,12 @@
       "price": "$26.99",
       "numPages": 214,
       "cover": "http://localhost:3000/covers/9781783552092.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783552115",
@@ -895,7 +1215,12 @@
       "price": "$29.99",
       "numPages": 290,
       "cover": "http://localhost:3000/covers/9781783552115.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783552955",
@@ -908,7 +1233,13 @@
       "price": "$14.99",
       "numPages": 138,
       "cover": "http://localhost:3000/covers/9781783552955.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference",
+        "Fiction"
+      ]
     },
     {
       "id": "9781783559961",
@@ -921,7 +1252,12 @@
       "price": "$39.99",
       "numPages": 392,
       "cover": "http://localhost:3000/covers/9781783559961.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783980048",
@@ -934,7 +1270,11 @@
       "price": "$13.99",
       "numPages": 112,
       "cover": "http://localhost:3000/covers/9781783980048.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781783981083",
@@ -947,7 +1287,12 @@
       "price": "$29.99",
       "numPages": 358,
       "cover": "http://localhost:3000/covers/9781783981083.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783981267",
@@ -960,7 +1305,12 @@
       "price": "$38.17",
       "numPages": 382,
       "cover": "http://localhost:3000/covers/9781783981267.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783981465",
@@ -973,7 +1323,11 @@
       "price": "$17.99",
       "numPages": 202,
       "cover": "http://localhost:3000/covers/9781783981465.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781783981885",
@@ -986,7 +1340,12 @@
       "price": "$29.46",
       "numPages": 406,
       "cover": "http://localhost:3000/covers/9781783981885.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783982844",
@@ -999,7 +1358,11 @@
       "price": "$17.99",
       "numPages": 154,
       "cover": "http://localhost:3000/covers/9781783982844.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781783983100",
@@ -1012,7 +1375,11 @@
       "price": "$25.99",
       "numPages": 176,
       "cover": "http://localhost:3000/covers/9781783983100.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781783983285",
@@ -1025,7 +1392,12 @@
       "price": "$19.95",
       "numPages": 354,
       "cover": "http://localhost:3000/covers/9781783983285.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783983667",
@@ -1038,7 +1410,12 @@
       "price": "$23.99",
       "numPages": 186,
       "cover": "http://localhost:3000/covers/9781783983667.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783983988",
@@ -1051,7 +1428,11 @@
       "price": "$27.99",
       "numPages": 184,
       "cover": "http://localhost:3000/covers/9781783983988.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781783984404",
@@ -1064,7 +1445,12 @@
       "price": "$35.99",
       "numPages": 336,
       "cover": "http://localhost:3000/covers/9781783984404.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781783988525",
@@ -1077,7 +1463,11 @@
       "price": "$47.52",
       "numPages": 312,
       "cover": "http://localhost:3000/covers/9781783988525.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781784392222",
@@ -1090,7 +1480,11 @@
       "price": "$26.99",
       "numPages": 232,
       "cover": "http://localhost:3000/covers/9781784392222.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781784392932",
@@ -1103,7 +1497,12 @@
       "price": "$35.99",
       "numPages": 224,
       "cover": "http://localhost:3000/covers/9781784392932.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781784395841",
@@ -1116,7 +1515,11 @@
       "price": "$20.99",
       "numPages": 174,
       "cover": "http://localhost:3000/covers/9781784395841.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781784396152",
@@ -1129,7 +1532,11 @@
       "price": "$27.99",
       "numPages": 160,
       "cover": "http://localhost:3000/covers/9781784396152.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781785287527",
@@ -1142,7 +1549,12 @@
       "price": "$38.01",
       "numPages": 300,
       "cover": "http://localhost:3000/covers/9781785287527.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781785289972",
@@ -1155,7 +1567,11 @@
       "price": "$23.95",
       "numPages": 150,
       "cover": "http://localhost:3000/covers/9781785289972.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781785885891",
@@ -1168,7 +1584,12 @@
       "price": "$34.99",
       "numPages": 414,
       "cover": "http://localhost:3000/covers/9781785885891.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781785886775",
@@ -1181,7 +1602,12 @@
       "price": "$39.99",
       "numPages": 384,
       "cover": "http://localhost:3000/covers/9781785886775.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781786462909",
@@ -1194,7 +1620,11 @@
       "price": "$39.99",
       "numPages": 512,
       "cover": "http://localhost:3000/covers/9781786462909.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781787125421",
@@ -1207,7 +1637,12 @@
       "price": "$31.02",
       "numPages": 354,
       "cover": "http://localhost:3000/covers/9781787125421.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Fiction"
+      ]
     },
     {
       "id": "9781787284197",
@@ -1220,7 +1655,12 @@
       "price": "$39.99",
       "numPages": 406,
       "cover": "http://localhost:3000/covers/9781787284197.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781787286214",
@@ -1233,7 +1673,12 @@
       "price": "$44.99",
       "numPages": 406,
       "cover": "http://localhost:3000/covers/9781787286214.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781788299053",
@@ -1246,7 +1691,12 @@
       "price": "$31.99",
       "numPages": 288,
       "cover": "http://localhost:3000/covers/9781788299053.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781788392211",
@@ -1259,7 +1709,12 @@
       "price": "$31.99",
       "numPages": 278,
       "cover": "http://localhost:3000/covers/9781788392211.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781788395038",
@@ -1272,7 +1727,11 @@
       "price": "$39.99",
       "numPages": 368,
       "cover": "http://localhost:3000/covers/9781788395038.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781788622882",
@@ -1285,7 +1744,11 @@
       "price": "$44.99",
       "numPages": 478,
       "cover": "http://localhost:3000/covers/9781788622882.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781788623322",
@@ -1298,7 +1761,12 @@
       "price": "$29.99",
       "numPages": 178,
       "cover": "http://localhost:3000/covers/9781788623322.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781788629690",
@@ -1311,7 +1779,12 @@
       "price": "$44.99",
       "numPages": 500,
       "cover": "http://localhost:3000/covers/9781788629690.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781788831147",
@@ -1324,7 +1797,11 @@
       "price": "$35.99",
       "numPages": 366,
       "cover": "http://localhost:3000/covers/9781788831147.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781788833912",
@@ -1337,7 +1814,12 @@
       "price": "$37.37",
       "numPages": 420,
       "cover": "http://localhost:3000/covers/9781788833912.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781788837682",
@@ -1350,7 +1832,12 @@
       "price": "$35.99",
       "numPages": 544,
       "cover": "http://localhost:3000/covers/9781788837682.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781788991513",
@@ -1363,7 +1850,12 @@
       "price": "$49.99",
       "numPages": 404,
       "cover": "http://localhost:3000/covers/9781788991513.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781788995405",
@@ -1376,7 +1868,12 @@
       "price": "$39.99",
       "numPages": 332,
       "cover": "http://localhost:3000/covers/9781788995405.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781789133363",
@@ -1389,7 +1886,11 @@
       "price": "$29.99",
       "numPages": 210,
       "cover": "http://localhost:3000/covers/9781789133363.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781789138733",
@@ -1402,7 +1903,12 @@
       "price": "$29.99",
       "numPages": 114,
       "cover": "http://localhost:3000/covers/9781789138733.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781789341171",
@@ -1415,7 +1921,12 @@
       "price": "$44.99",
       "numPages": 404,
       "cover": "http://localhost:3000/covers/9781789341171.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781789532227",
@@ -1428,7 +1939,11 @@
       "price": "$35.99",
       "numPages": 500,
       "cover": "http://localhost:3000/covers/9781789532227.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781789532883",
@@ -1441,7 +1956,11 @@
       "price": "$29.99",
       "numPages": 116,
       "cover": "http://localhost:3000/covers/9781789532883.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781789612486",
@@ -1454,7 +1973,12 @@
       "price": "$29.99",
       "numPages": 192,
       "cover": "http://localhost:3000/covers/9781789612486.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781789953299",
@@ -1467,7 +1991,12 @@
       "price": "$49.99",
       "numPages": 796,
       "cover": "http://localhost:3000/covers/9781789953299.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781789959567",
@@ -1480,7 +2009,12 @@
       "price": "$39.99",
       "numPages": 698,
       "cover": "http://localhost:3000/covers/9781789959567.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781789959901",
@@ -1493,7 +2027,12 @@
       "price": "$49.99",
       "numPages": 704,
       "cover": "http://localhost:3000/covers/9781789959901.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781838648800",
@@ -1506,7 +2045,12 @@
       "price": "$38.18",
       "numPages": 824,
       "cover": "http://localhost:3000/covers/9781838648800.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Fiction"
+      ]
     },
     {
       "id": "9781839211560",
@@ -1519,7 +2063,11 @@
       "price": "$38.18",
       "numPages": 408,
       "cover": "http://localhost:3000/covers/9781839211560.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781847193254",
@@ -1532,7 +2080,12 @@
       "price": "$26.99",
       "numPages": 408,
       "cover": "http://localhost:3000/covers/9781847193254.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781847193414",
@@ -1545,7 +2098,11 @@
       "price": "$20.99",
       "numPages": 232,
       "cover": "http://localhost:3000/covers/9781847193414.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781847195401",
@@ -1558,7 +2115,11 @@
       "price": "$24.29",
       "numPages": 336,
       "cover": "http://localhost:3000/covers/9781847195401.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781847198006",
@@ -1571,7 +2132,12 @@
       "price": "$35.99",
       "numPages": 440,
       "cover": "http://localhost:3000/covers/9781847198006.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781849511520",
@@ -1584,7 +2150,11 @@
       "price": "$35.99",
       "numPages": 436,
       "cover": "http://localhost:3000/covers/9781849511520.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781849511568",
@@ -1597,7 +2167,11 @@
       "price": "$23.99",
       "numPages": 308,
       "cover": "http://localhost:3000/covers/9781849511568.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781849515849",
@@ -1610,7 +2184,12 @@
       "price": "$26.99",
       "numPages": 376,
       "cover": "http://localhost:3000/covers/9781849515849.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781849517706",
@@ -1623,7 +2202,11 @@
       "price": "$26.99",
       "numPages": 194,
       "cover": "http://localhost:3000/covers/9781849517706.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781849518505",
@@ -1636,7 +2219,11 @@
       "price": "$14.99",
       "numPages": 174,
       "cover": "http://localhost:3000/covers/9781849518505.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781849518826",
@@ -1649,7 +2236,12 @@
       "price": "$12.99",
       "numPages": 60,
       "cover": "http://localhost:3000/covers/9781849518826.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781849519786",
@@ -1662,7 +2254,12 @@
       "price": "$12.99",
       "numPages": 85,
       "cover": "http://localhost:3000/covers/9781849519786.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781849686846",
@@ -1675,7 +2272,12 @@
       "price": "$10.00",
       "numPages": 284,
       "cover": "http://localhost:3000/covers/9781849686846.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781849691024",
@@ -1688,7 +2290,12 @@
       "price": "$29.99",
       "numPages": 338,
       "cover": "http://localhost:3000/covers/9781849691024.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781849694346",
@@ -1701,7 +2308,12 @@
       "price": "$26.99",
       "numPages": 288,
       "cover": "http://localhost:3000/covers/9781849694346.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781849694742",
@@ -1714,7 +2326,11 @@
       "price": "$26.99",
       "numPages": 268,
       "cover": "http://localhost:3000/covers/9781849694742.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781849695428",
@@ -1727,7 +2343,12 @@
       "price": "$26.99",
       "numPages": 338,
       "cover": "http://localhost:3000/covers/9781849695428.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781849695442",
@@ -1740,7 +2361,12 @@
       "price": "$26.99",
       "numPages": 204,
       "cover": "http://localhost:3000/covers/9781849695442.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781849695947",
@@ -1753,7 +2379,11 @@
       "price": "$26.99",
       "numPages": 276,
       "cover": "http://localhost:3000/covers/9781849695947.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781849696548",
@@ -1766,7 +2396,12 @@
       "price": "$6.49",
       "numPages": 236,
       "cover": "http://localhost:3000/covers/9781849696548.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781849696883",
@@ -1779,7 +2414,11 @@
       "price": "$14.99",
       "numPages": 72,
       "cover": "http://localhost:3000/covers/9781849696883.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781849699792",
@@ -1792,7 +2431,11 @@
       "price": "$26.99",
       "numPages": 418,
       "cover": "http://localhost:3000/covers/9781849699792.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781932394061",
@@ -1805,7 +2448,13 @@
       "price": "$18.08",
       "numPages": 624,
       "cover": "http://localhost:3000/covers/9781932394061.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference",
+        "Fiction"
+      ]
     },
     {
       "id": "9781934356838",
@@ -1818,7 +2467,11 @@
       "price": "$2.10",
       "numPages": 334,
       "cover": "http://localhost:3000/covers/9781934356838.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781937785635",
@@ -1831,7 +2484,11 @@
       "price": "$27.40",
       "numPages": 302,
       "cover": "http://localhost:3000/covers/9781937785635.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781937785642",
@@ -1844,7 +2501,12 @@
       "price": "$4.77",
       "numPages": 232,
       "cover": "http://localhost:3000/covers/9781937785642.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "1001592208463",
@@ -1857,7 +2519,11 @@
       "price": "$0.00",
       "numPages": 185,
       "cover": "http://localhost:3000/covers/1001592208463.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "1001621860488",
@@ -1870,7 +2536,11 @@
       "price": "$0.00",
       "numPages": 89,
       "cover": "http://localhost:3000/covers/1001621860488.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780132356138",
@@ -1883,7 +2553,12 @@
       "price": "$20.00",
       "numPages": 408,
       "cover": "http://localhost:3000/covers/9780132356138.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780134843551",
@@ -1896,7 +2571,12 @@
       "price": "$21.63",
       "numPages": 304,
       "cover": "http://localhost:3000/covers/9780134843551.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780321591319",
@@ -1909,7 +2589,12 @@
       "price": "$8.58",
       "numPages": 384,
       "cover": "http://localhost:3000/covers/9780321591319.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780321705143",
@@ -1922,7 +2607,12 @@
       "price": "$4.27",
       "numPages": 352,
       "cover": "http://localhost:3000/covers/9780321705143.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780321753885",
@@ -1935,7 +2625,12 @@
       "price": "$8.82",
       "numPages": 272,
       "cover": "http://localhost:3000/covers/9780321753885.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780321767363",
@@ -1948,7 +2643,12 @@
       "price": "$13.69",
       "numPages": 256,
       "cover": "http://localhost:3000/covers/9780321767363.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780321772749",
@@ -1961,7 +2661,12 @@
       "price": "$12.86",
       "numPages": 320,
       "cover": "http://localhost:3000/covers/9780321772749.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780321832054",
@@ -1974,7 +2679,12 @@
       "price": "$21.41",
       "numPages": 600,
       "cover": "http://localhost:3000/covers/9780321832054.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780321910578",
@@ -1987,7 +2697,12 @@
       "price": "$5.43",
       "numPages": 304,
       "cover": "http://localhost:3000/covers/9780321910578.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780470080306",
@@ -2000,7 +2715,12 @@
       "price": "$5.99",
       "numPages": 412,
       "cover": "http://localhost:3000/covers/9780470080306.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780470098240",
@@ -2013,7 +2733,11 @@
       "price": "$5.99",
       "numPages": 384,
       "cover": "http://localhost:3000/covers/9780470098240.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780470167779",
@@ -2026,7 +2750,12 @@
       "price": "$12.99",
       "numPages": 672,
       "cover": "http://localhost:3000/covers/9780470167779.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780470385357",
@@ -2039,7 +2768,12 @@
       "price": "$6.98",
       "numPages": 336,
       "cover": "http://localhost:3000/covers/9780470385357.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780470398364",
@@ -2052,7 +2786,11 @@
       "price": "$35.41",
       "numPages": 352,
       "cover": "http://localhost:3000/covers/9780470398364.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780470414644",
@@ -2065,7 +2803,11 @@
       "price": "$18.83",
       "numPages": 888,
       "cover": "http://localhost:3000/covers/9780470414644.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780470560938",
@@ -2078,7 +2820,12 @@
       "price": "$15.50",
       "numPages": 360,
       "cover": "http://localhost:3000/covers/9780470560938.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780470560969",
@@ -2091,7 +2838,12 @@
       "price": "$3.74",
       "numPages": 384,
       "cover": "http://localhost:3000/covers/9780470560969.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780470640326",
@@ -2104,7 +2856,13 @@
       "price": "$8.99",
       "numPages": 648,
       "cover": "http://localhost:3000/covers/9780470640326.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference",
+        "Fiction"
+      ]
     },
     {
       "id": "9780470682272",
@@ -2117,7 +2875,12 @@
       "price": "$62.99",
       "numPages": 666,
       "cover": "http://localhost:3000/covers/9780470682272.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780470849064",
@@ -2130,7 +2893,11 @@
       "price": "$6.98",
       "numPages": 306,
       "cover": "http://localhost:3000/covers/9780470849064.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780471463627",
@@ -2143,7 +2910,11 @@
       "price": "$6.70",
       "numPages": 480,
       "cover": "http://localhost:3000/covers/9780471463627.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596000950",
@@ -2156,7 +2927,12 @@
       "price": "$17.45",
       "numPages": 264,
       "cover": "http://localhost:3000/covers/9780596000950.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596002244",
@@ -2169,7 +2945,12 @@
       "price": "$10.07",
       "numPages": 308,
       "cover": "http://localhost:3000/covers/9780596002244.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596002695",
@@ -2182,7 +2963,11 @@
       "price": "$17.27",
       "numPages": 280,
       "cover": "http://localhost:3000/covers/9780596002695.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596005603",
@@ -2195,7 +2980,12 @@
       "price": "$3.49",
       "numPages": 368,
       "cover": "http://localhost:3000/covers/9780596005603.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596008659",
@@ -2208,7 +2998,11 @@
       "price": "$3.99",
       "numPages": 370,
       "cover": "http://localhost:3000/covers/9780596008659.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596009878",
@@ -2221,7 +3015,12 @@
       "price": "$8.98",
       "numPages": 830,
       "cover": "http://localhost:3000/covers/9780596009878.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596155131",
@@ -2234,7 +3033,12 @@
       "price": "$32.21",
       "numPages": 672,
       "cover": "http://localhost:3000/covers/9780596155131.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596155254",
@@ -2247,7 +3051,12 @@
       "price": "$27.99",
       "numPages": 464,
       "cover": "http://localhost:3000/covers/9780596155254.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596156817",
@@ -2260,7 +3069,11 @@
       "price": "$3.72",
       "numPages": 368,
       "cover": "http://localhost:3000/covers/9780596156817.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596157074",
@@ -2273,7 +3086,12 @@
       "price": "$3.50",
       "numPages": 496,
       "cover": "http://localhost:3000/covers/9780596157074.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596157135",
@@ -2286,7 +3104,12 @@
       "price": "$15.00",
       "numPages": 528,
       "cover": "http://localhost:3000/covers/9780596157135.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596159832",
@@ -2299,7 +3122,12 @@
       "price": "$3.65",
       "numPages": 858,
       "cover": "http://localhost:3000/covers/9780596159832.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596510503",
@@ -2312,7 +3140,12 @@
       "price": "$4.45",
       "numPages": 320,
       "cover": "http://localhost:3000/covers/9780596510503.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596514013",
@@ -2325,7 +3158,12 @@
       "price": "$3.74",
       "numPages": 432,
       "cover": "http://localhost:3000/covers/9780596514013.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596514242",
@@ -2338,7 +3176,11 @@
       "price": "$31.54",
       "numPages": 480,
       "cover": "http://localhost:3000/covers/9780596514242.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596514433",
@@ -2351,7 +3193,12 @@
       "price": "$26.15",
       "numPages": 274,
       "cover": "http://localhost:3000/covers/9780596514433.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596514839",
@@ -2364,7 +3211,12 @@
       "price": "$21.87",
       "numPages": 314,
       "cover": "http://localhost:3000/covers/9780596514839.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596515089",
@@ -2377,7 +3229,11 @@
       "price": "$25.03",
       "numPages": 400,
       "cover": "http://localhost:3000/covers/9780596515089.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596515805",
@@ -2390,7 +3246,12 @@
       "price": "$3.73",
       "numPages": 496,
       "cover": "http://localhost:3000/covers/9780596515805.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596516253",
@@ -2403,7 +3264,13 @@
       "price": "$3.49",
       "numPages": 336,
       "cover": "http://localhost:3000/covers/9780596516253.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference",
+        "Fiction"
+      ]
     },
     {
       "id": "9780596516680",
@@ -2416,7 +3283,11 @@
       "price": "$24.49",
       "numPages": 912,
       "cover": "http://localhost:3000/covers/9780596516680.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596518455",
@@ -2429,7 +3300,12 @@
       "price": "$14.40",
       "numPages": 608,
       "cover": "http://localhost:3000/covers/9780596518455.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596518578",
@@ -2442,7 +3318,12 @@
       "price": "$6.43",
       "numPages": 160,
       "cover": "http://localhost:3000/covers/9780596518578.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596519209",
@@ -2455,7 +3336,12 @@
       "price": "$10.19",
       "numPages": 320,
       "cover": "http://localhost:3000/covers/9780596519209.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596520304",
@@ -2468,7 +3354,12 @@
       "price": "$19.11",
       "numPages": 498,
       "cover": "http://localhost:3000/covers/9780596520304.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596521127",
@@ -2481,7 +3372,11 @@
       "price": "$3.81",
       "numPages": 320,
       "cover": "http://localhost:3000/covers/9780596521127.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596527433",
@@ -2494,7 +3389,12 @@
       "price": "$8.54",
       "numPages": 608,
       "cover": "http://localhost:3000/covers/9780596527433.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596528386",
@@ -2507,7 +3407,12 @@
       "price": "$4.38",
       "numPages": 982,
       "cover": "http://localhost:3000/covers/9780596528386.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596529307",
@@ -2520,7 +3425,11 @@
       "price": "$4.30",
       "numPages": 176,
       "cover": "http://localhost:3000/covers/9780596529307.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596529314",
@@ -2533,7 +3442,11 @@
       "price": "$3.83",
       "numPages": 256,
       "cover": "http://localhost:3000/covers/9780596529314.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596529321",
@@ -2546,7 +3459,12 @@
       "price": "$11.00",
       "numPages": 368,
       "cover": "http://localhost:3000/covers/9780596529321.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596800697",
@@ -2559,7 +3477,11 @@
       "price": "$17.23",
       "numPages": 272,
       "cover": "http://localhost:3000/covers/9780596800697.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596801687",
@@ -2572,7 +3494,12 @@
       "price": "$18.00",
       "numPages": 314,
       "cover": "http://localhost:3000/covers/9780596801687.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596802790",
@@ -2585,7 +3512,12 @@
       "price": "$19.59",
       "numPages": 240,
       "cover": "http://localhost:3000/covers/9780596802790.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596803025",
@@ -2598,7 +3530,11 @@
       "price": "$26.15",
       "numPages": 304,
       "cover": "http://localhost:3000/covers/9780596803025.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596804947",
@@ -2611,7 +3547,11 @@
       "price": "$3.74",
       "numPages": 416,
       "cover": "http://localhost:3000/covers/9780596804947.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596805524",
@@ -2624,7 +3564,12 @@
       "price": "$14.95",
       "numPages": 1098,
       "cover": "http://localhost:3000/covers/9780596805524.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596805821",
@@ -2637,7 +3582,11 @@
       "price": "$31.99",
       "numPages": 448,
       "cover": "http://localhost:3000/covers/9780596805821.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596806026",
@@ -2650,7 +3599,11 @@
       "price": "$19.39",
       "numPages": 224,
       "cover": "http://localhost:3000/covers/9780596806026.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596806132",
@@ -2663,7 +3616,12 @@
       "price": "$7.98",
       "numPages": 560,
       "cover": "http://localhost:3000/covers/9780596806132.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780596806156",
@@ -2676,7 +3634,11 @@
       "price": "$3.37",
       "numPages": 320,
       "cover": "http://localhost:3000/covers/9780596806156.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780596807788",
@@ -2689,7 +3651,11 @@
       "price": "$2.20",
       "numPages": 512,
       "cover": "http://localhost:3000/covers/9780596807788.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780672329166",
@@ -2702,7 +3668,13 @@
       "price": "$5.96",
       "numPages": 1008,
       "cover": "http://localhost:3000/covers/9780672329166.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference",
+        "Fiction"
+      ]
     },
     {
       "id": "9780672335907",
@@ -2715,7 +3687,11 @@
       "price": "$23.35",
       "numPages": 464,
       "cover": "http://localhost:3000/covers/9780672335907.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780735626218",
@@ -2728,7 +3704,11 @@
       "price": "$17.37",
       "numPages": 352,
       "cover": "http://localhost:3000/covers/9780735626218.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780735639027",
@@ -2741,7 +3721,12 @@
       "price": "$7.99",
       "numPages": 544,
       "cover": "http://localhost:3000/covers/9780735639027.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780764524721",
@@ -2754,7 +3739,11 @@
       "price": "$23.08",
       "numPages": 378,
       "cover": "http://localhost:3000/covers/9780764524721.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780764574986",
@@ -2767,7 +3756,11 @@
       "price": "$3.74",
       "numPages": 960,
       "cover": "http://localhost:3000/covers/9780764574986.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780975841945",
@@ -2780,7 +3773,12 @@
       "price": "$9.14",
       "numPages": 297,
       "cover": "http://localhost:3000/covers/9780975841945.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780975841969",
@@ -2793,7 +3791,11 @@
       "price": "$3.49",
       "numPages": 182,
       "cover": "http://localhost:3000/covers/9780975841969.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780980455236",
@@ -2806,7 +3808,12 @@
       "price": "$24.62",
       "numPages": 152,
       "cover": "http://localhost:3000/covers/9780980455236.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780980455274",
@@ -2819,7 +3826,12 @@
       "price": "$2.95",
       "numPages": 438,
       "cover": "http://localhost:3000/covers/9780980455274.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780980576818",
@@ -2832,7 +3844,12 @@
       "price": "$10.95",
       "numPages": 479,
       "cover": "http://localhost:3000/covers/9780980576818.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780980576894",
@@ -2845,7 +3862,12 @@
       "price": "$3.99",
       "numPages": 170,
       "cover": "http://localhost:3000/covers/9780980576894.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780987090843",
@@ -2858,7 +3880,12 @@
       "price": "$9.80",
       "numPages": 300,
       "cover": "http://localhost:3000/covers/9780987090843.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780987090850",
@@ -2871,7 +3898,11 @@
       "price": "$20.32",
       "numPages": 502,
       "cover": "http://localhost:3000/covers/9780987090850.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780987090867",
@@ -2884,7 +3915,11 @@
       "price": "$29.00",
       "numPages": 776,
       "cover": "http://localhost:3000/covers/9780987090867.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780987090898",
@@ -2897,7 +3932,12 @@
       "price": "$0.00",
       "numPages": 210,
       "cover": "http://localhost:3000/covers/9780987090898.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780987153081",
@@ -2910,7 +3950,12 @@
       "price": "$5.53",
       "numPages": 481,
       "cover": "http://localhost:3000/covers/9780987153081.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780987247858",
@@ -2923,7 +3968,11 @@
       "price": "$27.82",
       "numPages": 200,
       "cover": "http://localhost:3000/covers/9780987247858.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780987332165",
@@ -2936,7 +3985,12 @@
       "price": "$12.02",
       "numPages": 150,
       "cover": "http://localhost:3000/covers/9780987332165.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9780992279448",
@@ -2949,7 +4003,11 @@
       "price": "$24.03",
       "numPages": 220,
       "cover": "http://localhost:3000/covers/9780992279448.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9780992279462",
@@ -2962,7 +4020,11 @@
       "price": "$29.00",
       "numPages": 250,
       "cover": "http://localhost:3000/covers/9780992279462.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781118004173",
@@ -2975,7 +4037,12 @@
       "price": "$7.63",
       "numPages": 264,
       "cover": "http://localhost:3000/covers/9781118004173.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781118026694",
@@ -2988,7 +4055,11 @@
       "price": "$4.62",
       "numPages": 960,
       "cover": "http://localhost:3000/covers/9781118026694.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781118050484",
@@ -3001,7 +4072,13 @@
       "price": "$12.99",
       "numPages": 408,
       "cover": "http://localhost:3000/covers/9781118050484.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference",
+        "Fiction"
+      ]
     },
     {
       "id": "9781118124055",
@@ -3014,7 +4091,12 @@
       "price": "$3.65",
       "numPages": 896,
       "cover": "http://localhost:3000/covers/9781118124055.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781118487525",
@@ -3027,7 +4109,11 @@
       "price": "$17.36",
       "numPages": 480,
       "cover": "http://localhost:3000/covers/9781118487525.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781118540572",
@@ -3040,7 +4126,12 @@
       "price": "$7.92",
       "numPages": 360,
       "cover": "http://localhost:3000/covers/9781118540572.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781118656464",
@@ -3053,7 +4144,12 @@
       "price": "$35.59",
       "numPages": 936,
       "cover": "http://localhost:3000/covers/9781118656464.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781118678640",
@@ -3066,7 +4162,12 @@
       "price": "$0.00",
       "numPages": 120,
       "cover": "http://localhost:3000/covers/9781118678640.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781118855386",
@@ -3079,7 +4180,12 @@
       "price": "$19.83",
       "numPages": 456,
       "cover": "http://localhost:3000/covers/9781118855386.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781118866078",
@@ -3092,7 +4198,12 @@
       "price": "$17.55",
       "numPages": 672,
       "cover": "http://localhost:3000/covers/9781118866078.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781118885727",
@@ -3105,7 +4216,11 @@
       "price": "$5.28",
       "numPages": 288,
       "cover": "http://localhost:3000/covers/9781118885727.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781119473923",
@@ -3118,7 +4233,11 @@
       "price": "$26.33",
       "numPages": 840,
       "cover": "http://localhost:3000/covers/9781119473923.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781430219859",
@@ -3131,7 +4250,12 @@
       "price": "$7.99",
       "numPages": 440,
       "cover": "http://localhost:3000/covers/9781430219859.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781430225515",
@@ -3144,7 +4268,11 @@
       "price": "$6.03",
       "numPages": 350,
       "cover": "http://localhost:3000/covers/9781430225515.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781430226208",
@@ -3157,7 +4285,11 @@
       "price": "$8.05",
       "numPages": 368,
       "cover": "http://localhost:3000/covers/9781430226208.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781430228745",
@@ -3170,7 +4302,12 @@
       "price": "$38.12",
       "numPages": 624,
       "cover": "http://localhost:3000/covers/9781430228745.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781430228981",
@@ -3183,7 +4320,11 @@
       "price": "$32.94",
       "numPages": 264,
       "cover": "http://localhost:3000/covers/9781430228981.png",
-      "userId": 1
+      "userId": 1,
+      "available": false,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781430230458",
@@ -3196,7 +4337,11 @@
       "price": "$25.94",
       "numPages": 512,
       "cover": "http://localhost:3000/covers/9781430230458.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     },
     {
       "id": "9781430232469",
@@ -3209,7 +4354,12 @@
       "price": "$32.91",
       "numPages": 484,
       "cover": "http://localhost:3000/covers/9781430232469.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical",
+        "Reference"
+      ]
     },
     {
       "id": "9781430232766",
@@ -3222,7 +4372,11 @@
       "price": "$34.99",
       "numPages": 392,
       "cover": "http://localhost:3000/covers/9781430232766.png",
-      "userId": 1
+      "userId": 1,
+      "available": true,
+      "genres": [
+        "Technical"
+      ]
     }
   ]
 }

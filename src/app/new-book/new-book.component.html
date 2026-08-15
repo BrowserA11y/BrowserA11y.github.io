@@ -6,22 +6,22 @@
   <label class="form-field" id="isbn-label">
     <!-- Angular focus 9: validation -->
     <!-- DISCUSSION: Star or required?-->
+    <!-- Error association via aria-errormessage (+ persistent hint via aria-describedby) -->
     <span>ISBN (required)</span>
     <input
+      name="isbn"
       formControlName="isbn"
-      [attr.aria-invalid]="
-        newForm.get('isbn')?.touched && newForm.get('isbn')?.invalid
-      "
-      [attr.aria-describedby]="
-        newForm.get('isbn')?.touched && newForm.get('isbn')?.hasError('required')
-          ? 'isbn-error'
-          : null
-      "
+      required
+      [attr.aria-invalid]="isbnInvalid || null"
+      aria-describedby="isbn-hint"
+      [attr.aria-errormessage]="isbnShowsError ? 'isbn-error' : null"
     />
+    <small id="isbn-hint" class="form-field-hint">
+      Maximum length 13 characters, digits only.
+    </small>
 
-    @if (newForm.get('isbn')?.touched &&
-    newForm.get('isbn')?.hasError('required')) {
-    <small id="isbn-error" class="form-field-hint">
+    @if (isbnShowsError) {
+    <small id="isbn-error" class="form-field-error" role="alert">
       Please insert an ISBN.
     </small>
     }
@@ -31,39 +31,34 @@
     Title (required)
   </label>
 
+  <!-- Error association via aria-describedby (alternative to aria-errormessage) -->
   <input
     id="title"
+    name="title"
     formControlName="title"
-    [attr.aria-invalid]="
-      newForm.get('title')?.touched && newForm.get('title')?.invalid
-    "
-    [attr.aria-describedby]="
-      newForm.get('title')?.touched && newForm.get('title')?.hasError('required')
-        ? 'title-error'
-        : null
-    "
+    required
+    [attr.aria-invalid]="titleInvalid || null"
+    [attr.aria-describedby]="titleShowsError ? 'title-error' : null"
   />
   <!-- Angular focus 10: *ngIf + dirty
   Resource: https://coryrylan.com/blog/build-accessible-forms-with-angular
   DISCUSSION: Single or all at once?-->
-  @if ( newForm.get('title')?.touched &&
-  newForm.get('title')?.hasError('required') ) {
-  <small id="title-error"  class="form-field-hint">
+  @if (titleShowsError) {
+  <small id="title-error" class="form-field-error" role="alert">
     Please insert a title.
   </small>
   }
   <label class="form-field">
     <span>Author</span>
-
-    <input formControlName="author" />
+    <input name="author" formControlName="author" />
   </label>
   <label class="form-field">
     <span>Cover-URL</span>
-    <input formControlName="cover" />
+    <input name="cover" formControlName="cover" />
   </label>
   <label class="form-field">
     <span>Abstract</span>
-    <input formControlName="abstract" />
+    <input name="abstract" formControlName="abstract" />
   </label>
   <!--DICUSSION: To disable or not to disable?
   Alternative: https://medium.com/@svinkle/creating-accessible-forms-with-angular-simply-accessible-c1bc362cf89e
@@ -71,15 +66,4 @@
   <div class="form-actions">
     <button type="submit" [disabled]="newForm.invalid">Add a new book</button>
   </div>
-  <!--   <div
-    [class.button--disabled]="isDisabled"
-    #divButton
-    (click)="doSomething()"
-    (keydown)="doSomething()"
-  >
-    Div button
-  </div>
-  <button [attr.aria-disabled]="isDisabled" (click)="doSomething()">
-    Semantic button
-  </button> -->
 </form>

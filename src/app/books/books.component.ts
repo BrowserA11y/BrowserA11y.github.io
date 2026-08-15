@@ -1,26 +1,74 @@
 import { FocusMonitor } from "@angular/cdk/a11y";
 import { AsyncPipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
-import { BehaviorSubject, Observable, take } from "rxjs";
+import {
+  BehaviorSubject,
+  Observable,
+  combineLatest,
+  map,
+  startWith,
+  take,
+} from "rxjs";
 import { BookItemComponent } from "../books-item/book-item.component";
 import { Book, BooksService } from "../books.service";
+
+export const CATALOG_GENRES = ["Technical", "Reference", "Fiction"] as const;
 
 @Component({
   selector: "app-books",
   templateUrl: "./books.component.html",
   styleUrls: ["./books.component.scss"],
-  imports: [BookItemComponent, RouterLink, AsyncPipe],
+  imports: [BookItemComponent, RouterLink, AsyncPipe, ReactiveFormsModule],
   providers: [],
 })
 export class BooksComponent implements OnInit {
   private readonly booksSubject = new BehaviorSubject<Book[]>([]);
-  readonly books$: Observable<Book[]> = this.booksSubject.asObservable();
+  private readonly starredIsbnsSubject = new BehaviorSubject<ReadonlySet<string>>(
+    new Set()
+  );
+
+  readonly allBooks$: Observable<Book[]> = this.booksSubject.asObservable();
+
+  readonly filterForm = this.formBuilder.nonNullable.group({
+    search: [""],
+    availableOnly: [false],
+    starredOnly: [false],
+    Technical: [true],
+    Reference: [true],
+    Fiction: [true],
+  });
+
+  readonly books$: Observable<Book[]> = combineLatest([
+    this.allBooks$,
+    this.filterForm.valueChanges.pipe(startWith(this.filterForm.getRawValue())),
+    this.starredIsbnsSubject,
+  ]).pipe(
+    map(([books, filters, starredIsbns]) =>
+      this.applyFilters(books, filters, starredIsbns)
+    )
+  );
+
+  readonly genres = CATALOG_GENRES;
 
   constructor(
     private bookService: BooksService,
-    private focusMonitor: FocusMonitor
+    private focusMonitor: FocusMonitor,
+    private formBuilder: FormBuilder
   ) {}
+
+  get allGenresChecked(): boolean {
+    return this.genres.every((genre) => this.filterForm.controls[genre].value);
+  }
+
+  get allGenresUnchecked(): boolean {
+    return this.genres.every((genre) => !this.filterForm.controls[genre].value);
+  }
+
+  get allGenresPartial(): boolean {
+    return !this.allGenresChecked && !this.allGenresUnchecked;
+  }
 
   ngOnInit(): void {
     this.bookService
@@ -29,16 +77,77 @@ export class BooksComponent implements OnInit {
       .subscribe((books) => this.booksSubject.next(books));
   }
 
+  isStarred(isbn: string): boolean {
+    return this.starredIsbnsSubject.value.has(isbn);
+  }
+
+  onWishlistChange(isbn: string, starred: boolean) {
+    const next = new Set(this.starredIsbnsSubject.value);
+    if (starred) {
+      next.add(isbn);
+    } else {
+      next.delete(isbn);
+    }
+    this.starredIsbnsSubject.next(next);
+  }
+
+  onAllGenresChange(event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
+    for (const genre of this.genres) {
+      this.filterForm.controls[genre].setValue(checked);
+    }
+  }
+
   removeBook(bookToRemove: Book, i: number) {
     this.bookService
       .removeBook(bookToRemove)
       .pipe(take(1))
       .subscribe(() => {
         const books = [...this.booksSubject.value];
-        books.splice(i, 1);
-        this.booksSubject.next(books);
+        const index = books.findIndex((book) => book.isbn === bookToRemove.isbn);
+        if (index >= 0) {
+          books.splice(index, 1);
+          this.booksSubject.next(books);
+        }
+        this.onWishlistChange(bookToRemove.isbn, false);
         this.focusOnNextBook(i);
       });
+  }
+
+  private applyFilters(
+    books: Book[],
+    filters: Partial<{
+      search: string;
+      availableOnly: boolean;
+      starredOnly: boolean;
+      Technical: boolean;
+      Reference: boolean;
+      Fiction: boolean;
+    }>,
+    starredIsbns: ReadonlySet<string>
+  ): Book[] {
+    const query = (filters.search ?? "").trim().toLowerCase();
+    const selectedGenres = this.genres.filter((genre) => filters[genre]);
+
+    return books.filter((book) => {
+      const matchesQuery =
+        !query ||
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query);
+      const matchesAvailability =
+        !filters.availableOnly || book.available !== false;
+      const matchesStarred =
+        !filters.starredOnly || starredIsbns.has(book.isbn);
+      const bookGenres = book.genres ?? [];
+      const matchesGenre =
+        selectedGenres.length === 0 ||
+        bookGenres.some((genre) =>
+          selectedGenres.includes(genre as (typeof CATALOG_GENRES)[number])
+        );
+      return (
+        matchesQuery && matchesAvailability && matchesStarred && matchesGenre
+      );
+    });
   }
 
   private focusOnNextBook(i: number) {

@@ -11,7 +11,10 @@
       </p>
     </div>
     <div>
-      <img [src]="book.cover" alt="" />
+      <img
+        [src]="book.cover"
+        [alt]="book.cover ? 'Cover of ' + book.title : ''"
+      />
     </div>
   </div>
   <!--https://dev.to/grahamthedev/5-star-rating-system-actually-accessible-no-js-no-wai-aria-3idl-->
@@ -27,9 +30,10 @@
           name="rating"
           [value]="i"
           [id]="rating"
+          [checked]="selectedRating === i + 1"
           />
         <label [for]="rating">
-          <span>{{ i + 1 }} star</span>
+          <span>{{ i + 1 }} star{{ i === 0 ? '' : 's' }}</span>
         </label>
       }
     </div>

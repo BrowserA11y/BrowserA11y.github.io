@@ -11,6 +11,8 @@ export interface Book {
   publisher: string;
   numPages: number;
   price: string;
+  available?: boolean;
+  genres?: string[];
 }
 
 @Injectable({

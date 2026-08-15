@@ -30,6 +30,13 @@ input {
 .form-field-hint {
   display: block;
   color: #3c3c3c;
+  margin-top: 0.25rem;
+}
+
+.form-field-error {
+  display: block;
+  color: #b00020;
+  margin-top: 0.25rem;
 }
 
 .form-actions {

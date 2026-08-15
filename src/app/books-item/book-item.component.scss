@@ -42,7 +42,8 @@ h2 {
 
 .book__header {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr auto;
+  align-items: start;
 }
 
 .book__title {
@@ -54,6 +55,49 @@ h2 {
 }
 .book__title h2 {
   margin: 0;
+}
+
+.book__header-actions {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.4rem;
+}
+
+.book__wishlist {
+  width: 40px;
+  height: 40px;
+  border: 1px solid styles.$primary-color-invert;
+  background: styles.$primary-color-invert;
+  color: styles.$secondary-color;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.book__wishlist[aria-pressed="true"] {
+  background: styles.$background-light;
+}
+
+.book__availability {
+  font-weight: bold;
+  color: #8a1f11;
+  /* Reserve one line so available/unavailable cards share the same height */
+  min-height: 1.5rem;
+  margin: 0;
+}
+
+.book__confirm-dialog {
+  border: 2px solid styles.$secondary-color;
+  border-radius: 4px;
+  padding: 1rem;
+  max-width: 22rem;
+}
+
+.book__confirm-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
 }
 
 .book__author {
