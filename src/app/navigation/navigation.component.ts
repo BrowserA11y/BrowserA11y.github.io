@@ -23,6 +23,7 @@ export class NavigationComponent {
     { url: "new-book", title: "New book" },
     { url: "books", title: "Books" },
     { url: "about", title: "About Accessible Reads" },
+    { url: "showcases", title: "Showcases" },
   ];
 
   constructor() {

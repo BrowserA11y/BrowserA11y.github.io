@@ -28,4 +28,25 @@ export const routes: Routes = [
       import("./app/about/about.component").then((m) => m.AboutComponent),
     title: "About",
   },
+  {
+    path: "showcases",
+    children: [
+      {
+        path: "",
+        loadComponent: () =>
+          import("./app/showcases/showcases.component").then(
+            (m) => m.ShowcasesComponent
+          ),
+        title: "Showcases",
+      },
+      {
+        path: "accessible-name-and-description",
+        loadComponent: () =>
+          import(
+            "./app/showcases/accessible-name-and-description/accessible-name-and-description.component"
+          ).then((m) => m.AccessibleNameAndDescriptionComponent),
+        title: "Accessible name and description",
+      },
+    ],
+  },
 ];

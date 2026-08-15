@@ -1,0 +1,29 @@
+<aside class="info-box" aria-label="Related resources">
+  <ul class="info-box__list">
+    @for (link of links(); track link.href) {
+    <li>
+      <a
+        class="info-box__link"
+        [href]="link.href"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ link.label }}
+        <svg
+          class="info-box__external-icon"
+          role="img"
+          aria-label="(opens in a new tab)"
+          focusable="false"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>(opens in a new tab)</title>
+          <path
+            d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"
+          />
+        </svg>
+      </a>
+    </li>
+    }
+  </ul>
+</aside>

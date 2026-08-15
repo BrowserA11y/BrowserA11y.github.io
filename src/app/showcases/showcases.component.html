@@ -1,0 +1,30 @@
+<h1 tabindex="-1">Showcases</h1>
+<p class="showcases__intro">
+  Interactive examples of accessible UI patterns. Each tile links to a focused
+  demo — the title is the only link; a stretched hit area makes the whole tile
+  activatable without nesting the description inside the anchor.
+</p>
+
+<ul class="showcases__grid">
+  @for (showcase of showcases; track showcase.link) {
+  <li class="showcases__item">
+    <app-showcase
+      [title]="showcase.title"
+      [description]="showcase.description"
+      [link]="showcase.link"
+    >
+      <svg
+        showcaseIcon
+        class="showcases__tile-icon"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        focusable="false"
+      >
+        <path
+          d="M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 2v12h14V6H5zm2 2h10v2H7V8zm0 4h7v2H7v-2z"
+        />
+      </svg>
+    </app-showcase>
+  </li>
+  }
+</ul>

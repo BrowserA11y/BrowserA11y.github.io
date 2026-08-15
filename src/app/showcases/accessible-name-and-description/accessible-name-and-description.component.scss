@@ -1,0 +1,15 @@
+@use "tokens" as *;
+
+p {
+  max-width: 40rem;
+  margin-bottom: $spacing-s;
+}
+
+.back-link {
+  color: $color-secondary;
+  text-underline-offset: 0.6em;
+}
+
+.back-link__arrow {
+  font-size: 1.1em;
+}

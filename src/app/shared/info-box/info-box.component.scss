@@ -1,0 +1,29 @@
+@use "tokens" as *;
+
+.info-box {
+  background-color: $color-background-muted;
+  color: $color-primary;
+  padding: $spacing-xs;
+  border: 2px solid $color-secondary;
+  border-radius: 4px;
+  margin-bottom: $spacing-s;
+}
+
+.info-box__list {
+  margin: 0;
+  padding-left: $spacing-xs;
+}
+
+.info-box__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  color: $color-secondary;
+}
+
+.info-box__external-icon {
+  flex-shrink: 0;
+  width: 1.5em;
+  height: 1.5em;
+  fill: currentColor;
+}

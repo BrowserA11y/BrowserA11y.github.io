@@ -1,0 +1,47 @@
+@use "tokens" as *;
+
+.showcase {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+  padding: $spacing-xs;
+  background-color: $color-primary-invert;
+  border: 2px solid $color-secondary;
+  border-radius: 4px;
+  height: 100%;
+}
+
+.showcase__icon {
+  display: flex;
+  align-items: center;
+  color: $color-secondary;
+}
+
+.showcase__title {
+  margin: 0;
+  font-size: $font-size-s;
+}
+
+.showcase__link {
+  color: $color-secondary;
+  text-decoration: underline;
+
+  /* Stretch the link across the tile without nesting the description in <a>. */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.showcase:hover,
+.showcase:focus-within {
+  background-color: $color-background-muted;
+}
+
+.showcase__description {
+  margin: 0;
+  color: $color-text-muted;
+  font-size: $font-size-xs;
+}
