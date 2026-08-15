@@ -47,6 +47,14 @@ export const routes: Routes = [
           ).then((m) => m.AccessibleNameAndDescriptionComponent),
         title: "Accessible name and description",
       },
+      {
+        path: "semantic-html",
+        loadComponent: () =>
+          import("./app/showcases/semantic-html/semantic-html.component").then(
+            (m) => m.SemanticHtmlComponent
+          ),
+        title: "Semantic HTML",
+      },
     ],
   },
 ];

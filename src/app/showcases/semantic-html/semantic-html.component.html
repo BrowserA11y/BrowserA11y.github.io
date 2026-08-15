@@ -1,0 +1,347 @@
+<section class="intro">
+  <p>
+    <a class="back-link" routerLink="/showcases">
+      <span class="back-link__arrow" aria-hidden="true">←</span>
+      Back to Showcases
+    </a>
+  </p>
+
+  <h1 tabindex="-1">Semantic HTML</h1>
+
+  <p>
+    Assistive technologies expose the accessibility tree, not your CSS. Choosing
+    the right elements — and putting required children in the right place —
+    determines what screen readers announce and how people navigate.
+  </p>
+</section>
+
+<section class="demo" aria-labelledby="demo-del-ins">
+  <h2 id="demo-del-ins">Price changes with <code>del</code> and <code>ins</code></h2>
+  <p>
+    Use <code>del</code> and <code>ins</code> for removed and inserted content
+    (for example a sale price). Styling a generic element to look struck-through
+    does not convey deletion. Prefer real semantics over
+    <code>&lt;s&gt;</code> or visual-only spans — see
+    <a
+      href="https://stackoverflow.com/questions/52113995/s-vs-del-in-html"
+      target="_blank"
+      rel="noopener noreferrer"
+      >s vs del in HTML</a
+    >.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Looks like a sale, weak semantics</h3>
+      <p class="price">
+        Was <span class="price__strike">€29.99</span>
+        <span class="price__new">€19.99</span>
+      </p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Semantic sale markup</h3>
+      <p class="price">
+        Was <del>€29.99</del> <ins>€19.99</ins>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-lists">
+  <h2 id="demo-lists">Lists wrap items — not <code>&#64;empty</code> with invalid children</h2>
+  <p>
+    Put the loop <em>inside</em> <code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code>
+    and keep a real <code>&lt;li&gt;</code> as each direct child. A component host
+    between the list and the item breaks list semantics. Prefer wrapping the
+    host in <code>&lt;li&gt;</code>, or use an <code>li</code> + attribute
+    selector so the host <em>is</em> the list item.
+  </p>
+
+  <div class="demo__actions">
+    <button type="button" (click)="clearItems()">Clear list</button>
+    <button type="button" (click)="restoreItems()">Restore list</button>
+  </div>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>
+        <code>ul</code> + <code>li</code> wrapping
+        <code>app-semantic-html-item</code>
+      </h3>
+      <ul class="demo-list">
+        @for (item of items(); track item.id) {
+          <li>
+            <app-semantic-html-item [label]="item.label" />
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="demo__example">
+      <h3>
+        <code>li</code> nested in the view of
+        <code>app-semantic-html-item</code>
+      </h3>
+      <ul class="demo-list">
+        @for (item of items(); track item.id) {
+          <app-semantic-html-item nestLi [label]="item.label" />
+        }
+      </ul>
+    </div>
+
+    <div class="demo__example">
+      <h3>
+        <code>app-semantic-html-item</code> as
+        <code>li</code> + attribute selector
+      </h3>
+      <ul class="demo-list">
+        @for (item of items(); track item.id) {
+          <li app-semantic-html-item [label]="item.label"></li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>
+        <code>&#64;empty</code> with a <code>div</code> (not rendered as intended)
+      </h3>
+      <ul class="demo-list">
+        @for (item of items(); track item.id) {
+          <li>
+            <app-semantic-html-item [label]="item.label" />
+          </li>
+        } @empty {
+          <div>No formats in this catalog yet.</div>
+        }
+      </ul>
+    </div>
+
+    <div class="demo__example">
+      <h3>
+        List when not empty (<code>&#64;for</code>); <code>p</code> when empty
+      </h3>
+      @if (items().length) {
+        <ul class="demo-list">
+          @for (item of items(); track item.id) {
+            <li>
+              <app-semantic-html-item [label]="item.label" />
+            </li>
+          }
+        </ul>
+      } @else {
+        <p>No formats in this catalog yet.</p>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-fieldset">
+  <h2 id="demo-fieldset">
+    <code>fieldset</code> needs <code>legend</code> first
+  </h2>
+  <p>
+    The rule for you: The <code>legend</code> element must be the first child.
+    If it isn't, the code is technically non-conforming and will fail an
+    official HTML validator (see
+    <a
+      href="https://html.spec.whatwg.org/multipage/form-elements.html#the-legend-element"
+      target="_blank"
+      rel="noopener noreferrer"
+      >the legend element</a
+    >). The rule for the browser: The standard tells browser engines to look
+    inside the <code>fieldset</code> and use the first <code>legend</code>
+    element they encounter, regardless of what elements sit in front of it
+    (see
+    <a
+      href="https://github.com/whatwg/html/issues/6645"
+      target="_blank"
+      rel="noopener noreferrer"
+      >WHATWG HTML #6645</a
+    >).
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>Legend first</h3>
+      <fieldset class="demo-fieldset">
+        <legend>Shipping method</legend>
+        <label>
+          <input type="radio" name="ship-good" value="standard" />
+          Standard shipping
+        </label>
+        <label>
+          <input type="radio" name="ship-good" value="express" />
+          Express shipping
+        </label>
+      </fieldset>
+    </div>
+
+    <div class="demo__example">
+      <h3>Misplaced legend</h3>
+      <fieldset class="demo-fieldset">
+        <label>
+          <input type="radio" name="ship-bad" value="standard" />
+          Standard shipping
+        </label>
+        <label>
+          <input type="radio" name="ship-bad" value="express" />
+          Express shipping
+        </label>
+        <legend>Shipping method</legend>
+      </fieldset>
+    </div>
+
+    <div class="demo__example">
+      <h3>Legend nested in a <code>div</code></h3>
+      <fieldset class="demo-fieldset">
+        <div>
+          <legend>Shipping method</legend>
+          <label>
+            <input type="radio" name="ship-nested" value="standard" />
+            Standard shipping
+          </label>
+          <label>
+            <input type="radio" name="ship-nested" value="express" />
+            Express shipping
+          </label>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-caption">
+  <h2 id="demo-caption"><code>table</code> needs <code>caption</code> first</h2>
+  <p>
+    For authors, <code>caption</code> must be the first child of
+    <code>table</code> — anything else is invalid HTML (see the caption element in
+    <a
+      href="https://html.spec.whatwg.org/multipage/tables.html#the-caption-element"
+      target="_blank"
+      rel="noopener noreferrer"
+      > the WHATWG HTML Standard</a
+    >). Angular can keep a
+    <code>caption</code> at the wrong position in the DOM, because Angular's templates are built with DOM APIs
+    and bypass the HTML stream parser. Chrome does not fix that in the Elements
+    panel; Blink’s accessibility code builds a separate tree and adds the
+    caption first via
+    <a
+      href="https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/modules/accessibility/ax_node_object.cc#L5855"
+      target="_blank"
+      rel="noopener noreferrer"
+      ><code>AXNodeObject::AddTableChildren()</code></a
+    >, and still uses it for the table’s accessible name. Treat that as browser
+    recovery, not a reason to ship misplaced captions.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Caption first</h3>
+      <table class="demo-table">
+        <caption>
+          Titles by format
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Format</th>
+            <th scope="col">Titles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Braille</td>
+            <td>128</td>
+          </tr>
+          <tr>
+            <td>Large print</td>
+            <td>214</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo__example">
+      <h3>Caption nested in a <code>div</code></h3>
+      <table class="demo-table">
+        <div class="demo-table__invalid-nest">
+          <caption>
+            Titles by format
+          </caption>
+        </div>
+        <thead>
+          <tr>
+            <th scope="col">Format</th>
+            <th scope="col">Titles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Braille</td>
+            <td>128</td>
+          </tr>
+          <tr>
+            <td>Large print</td>
+            <td>214</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Misplaced caption</h3>
+      <table class="demo-table">
+        <thead>
+          <tr>
+            <th scope="col">Format</th>
+            <th scope="col">Titles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Braille</td>
+            <td>128</td>
+          </tr>
+          <tr>
+            <td>Large print</td>
+            <td>214</td>
+          </tr>
+        </tbody>
+        <caption>
+          Titles by format
+        </caption>
+      </table>
+    </div>
+
+    <div class="demo__example">
+      <h3>Misplaced caption, forced under with CSS</h3>
+      <table class="demo-table demo-table--caption-bottom">
+        <thead>
+          <tr>
+            <th scope="col">Format</th>
+            <th scope="col">Titles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Braille</td>
+            <td>128</td>
+          </tr>
+          <tr>
+            <td>Large print</td>
+            <td>214</td>
+          </tr>
+        </tbody>
+        <caption>
+          Titles by format
+        </caption>
+      </table>
+    </div>
+  </div>
+</section>
+
+<app-info-box group="semanticHtml" />
