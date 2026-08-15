@@ -1,6 +1,6 @@
 <h1 tabindex="-1">Our books</h1>
 
-<form class="books-filters" aria-label="Filter books">
+<form class="books-filters" aria-label="Filter books" (submit)="$event.preventDefault()">
   <label class="books-filters__search" for="book-search">
     Search books
     <input
