@@ -2,7 +2,7 @@
 
 Accessibility is back in, thanks to the Barrierefreiheitsstärkungsgesetz (BFSG)! By 2025 at the latest, we should be able to make our apps accessible.
 
-This repository contains a demo project for a book store, along with a series of exercises that aim to teach web developers how to make their websites more accessible to people with disabilities. The exercises are designed for developers with basic knowledge of Git, Angular, HTML, Typescript and SCSS. Cypress and Jest knowledge is also helpful but not required. If you are interested in a plain JS, HTML and CSS showcase, check out [my other repository](https://github.com/BrowserA11y/a11y-workshop).
+This repository contains a demo project for a book store, along with a series of exercises that aim to teach web developers how to make their websites more accessible to people with disabilities. The exercises are designed for developers with basic knowledge of Git, Angular, HTML, Typescript and SCSS. Cypress and Vitest knowledge is also helpful but not required. If you are interested in a plain JS, HTML and CSS showcase, check out [my other repository](https://github.com/BrowserA11y/a11y-workshop).
 The demo project consists of a simple Angular app that allows users to browse and store books. The application utilizes the [bookmonkey-api package](https://www.npmjs.com/package/bookmonkey-api) to make requests to the backend server and retrieve book information. The website includes various accessibility features, such as alternative text for images and a keyboard-accessible navigation menu. The topics cover accessibility aspects in general web development and in Angular projects.
 
 ## Exercises
@@ -39,7 +39,7 @@ The exercises are designed to be completed in order, as they build upon each oth
 
 ## Running unit tests
 
-To start unit tests, run the following command: `npm run test`. Jest will execute all unit tests in the project.
+To start unit tests, run the following command: `npm run test`. Vitest will execute all unit tests in the project. Accessibility checks use [vitest-axe](https://github.com/chaance/vitest-axe).
 
 ## Running end-to-end tests
 

@@ -73,10 +73,10 @@
           }
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "zoneless": false
+            "setupFiles": ["src/vitest-setup.ts"]
           }
         },
         "lint": {
