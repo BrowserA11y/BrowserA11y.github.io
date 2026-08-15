@@ -127,8 +127,10 @@ export class BooksComponent {
       const matchesWishlist =
         !filters.wishlistOnly || wishlistIsbns.has(book.isbn);
       const bookGenres = book.genres ?? [];
+      const allGenresSelected = selectedGenres.length === this.genres.length;
       const matchesGenre =
         selectedGenres.length === 0 ||
+        allGenresSelected ||
         bookGenres.some((genre) =>
           selectedGenres.includes(genre as CatalogGenre)
         );

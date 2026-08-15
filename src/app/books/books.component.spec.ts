@@ -48,6 +48,17 @@ const sampleBooks = [
     available: true,
     genres: ["Reference", "Technical"],
   },
+  {
+    isbn: "4",
+    cover: "",
+    title: "Untitled Draft",
+    abstract: "No genres assigned.",
+    author: "Anonymous",
+    publisher: "",
+    numPages: 10,
+    price: "$1",
+    available: true,
+  },
 ];
 
 describe("BooksComponent", () => {
@@ -135,6 +146,26 @@ describe("BooksComponent", () => {
     expect(allGenres).toBeChecked();
   });
 
+  it("includes books without genres when all genres are selected", () => {
+    expect(
+      view.getByRole("heading", { name: /untitled draft/i })
+    ).toBeInTheDocument();
+
+    view.getByRole("checkbox", { name: /^fiction$/i }).click();
+    fixture.detectChanges();
+
+    expect(
+      view.queryByRole("heading", { name: /untitled draft/i })
+    ).not.toBeInTheDocument();
+
+    view.getByRole("checkbox", { name: /all genres/i }).click();
+    fixture.detectChanges();
+
+    expect(
+      view.getByRole("heading", { name: /untitled draft/i })
+    ).toBeInTheDocument();
+  });
+
   it("filters to wishlist books only", () => {
     component.onWishlistChange("1", true);
     component.filterForm.wishlistOnly().value.set(true);
@@ -173,7 +204,7 @@ describe("BooksComponent", () => {
     const liveRegion = fixture.nativeElement.querySelector(".books-empty");
 
     expect(liveRegion).toHaveAttribute("aria-live", "polite");
-    expect(liveRegion).toHaveTextContent(/3 books match your filters/i);
+    expect(liveRegion).toHaveTextContent(/4 books match your filters/i);
     expect(liveRegion).toHaveClass("visually-hidden");
 
     component.filterForm.search().value.set("gatsby");
