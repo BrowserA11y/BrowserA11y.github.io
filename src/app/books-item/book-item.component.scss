@@ -41,6 +41,7 @@ article {
   border-color: $color-primary;
   border-width: 0.1rem;
   border-bottom-style: solid;
+  overflow: hidden;
 }
 
 // Style h2 to look like h3
@@ -54,19 +55,25 @@ h2 {
 
 .book__title {
   grid-column: 1;
+  min-width: 0;
   margin: 0;
-  height: 5rem;
   padding: 0.8rem;
+  box-sizing: border-box;
+  /* Always reserve 3 title lines so headers stay equal height */
+  height: calc(1.6rem + 1.3em * 3);
   color: $color-primary-invert;
-  overflow: hidden;
+  font-size: $font-size-xs;
+}
+
+.book__title-clamp {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   line-clamp: 3;
-
-  h2 {
-    margin: 0;
-  }
+  line-height: 1.3;
+  height: calc(1.3em * 3);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .book__header-actions {
