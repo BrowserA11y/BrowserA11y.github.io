@@ -5,7 +5,6 @@ import {
   withXhr
 } from "@angular/common/http";
 import { importProvidersFrom, provideZoneChangeDetection } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
 import { bootstrapApplication, BrowserModule } from "@angular/platform-browser";
 import {
   provideRouter,
@@ -20,7 +19,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideZoneChangeDetection(),
     { provide: TitleStrategy, useClass: CustomTitleStrategy },
-    importProvidersFrom(BrowserModule, ReactiveFormsModule, A11yModule),
+    importProvidersFrom(BrowserModule, A11yModule),
     provideRouter(routes, withComponentInputBinding()),
     { provide: TitleStrategy, useClass: CustomTitleStrategy },
     provideHttpClient(withInterceptorsFromDi()),

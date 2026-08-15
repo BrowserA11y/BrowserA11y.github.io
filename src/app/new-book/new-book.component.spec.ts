@@ -43,7 +43,7 @@ describe("NewBookComponent", () => {
     const submit = view.getByRole("button", { name: /add a new book/i });
     expect(submit).toBeDisabled();
 
-    component.newForm.setValue({
+    component.newForm().value.set({
       isbn: "9780000000000",
       title: "Accessible Angular",
       author: "Ada",
@@ -84,8 +84,8 @@ describe("NewBookComponent", () => {
     expect(title).toHaveAccessibleDescription(/please insert a title/i);
     expect(title).not.toHaveAccessibleErrorMessage();
 
-    component.newForm.controls.isbn.setValue("9780000000000");
-    component.newForm.controls.title.setValue("Accessible Angular");
+    component.newForm.isbn().value.set("9780000000000");
+    component.newForm.title().value.set("Accessible Angular");
     fixture.detectChanges();
 
     expect(isbn).toBeValid();
@@ -98,16 +98,16 @@ describe("NewBookComponent", () => {
     const isbn = view.getByRole("textbox", { name: /isbn/i });
     const submit = view.getByRole("button", { name: /add a new book/i });
 
-    component.newForm.controls.isbn.setValue("978-abc");
-    component.newForm.controls.isbn.markAsTouched();
-    component.newForm.controls.title.setValue("Accessible Angular");
+    component.newForm.isbn().value.set("978-abc");
+    component.newForm.isbn().markAsTouched();
+    component.newForm.title().value.set("Accessible Angular");
     fixture.detectChanges();
 
     expect(isbn).toBeInvalid();
     expect(isbn).toHaveAccessibleErrorMessage(/digits only/i);
     expect(submit).toBeDisabled();
 
-    component.newForm.controls.isbn.setValue("9780000000000");
+    component.newForm.isbn().value.set("9780000000000");
     fixture.detectChanges();
 
     expect(isbn).toBeValid();

@@ -1,13 +1,12 @@
 <h1 tabindex="-1">Our books</h1>
 
-<form class="books-filters" [formGroup]="filterForm" aria-label="Filter books">
+<form class="books-filters" aria-label="Filter books">
   <label class="books-filters__search" for="book-search">
     Search books
     <input
       id="book-search"
-      name="search"
       type="search"
-      formControlName="search"
+      [formField]="filterForm.search"
       aria-describedby="book-search-hint"
     />
   </label>
@@ -16,20 +15,12 @@
   </p>
 
   <label class="books-filters__checkbox">
-    <input
-      name="availableOnly"
-      type="checkbox"
-      formControlName="availableOnly"
-    />
+    <input type="checkbox" [formField]="filterForm.availableOnly" />
     Available only
   </label>
 
   <label class="books-filters__checkbox">
-    <input
-      name="wishlistOnly"
-      type="checkbox"
-      formControlName="wishlistOnly"
-    />
+    <input type="checkbox" [formField]="filterForm.wishlistOnly" />
     On my wishlist
   </label>
 
@@ -39,15 +30,15 @@
       <input
         name="allGenres"
         type="checkbox"
-        [checked]="allGenresChecked"
-        [indeterminate]="allGenresPartial"
+        [checked]="allGenresChecked()"
+        [indeterminate]="allGenresPartial()"
         (change)="onAllGenresChange($event)"
       />
       All genres
     </label>
     @for (genre of genres; track genre) {
     <label class="books-filters__checkbox">
-      <input [name]="genre" type="checkbox" [formControlName]="genre" />
+      <input type="checkbox" [formField]="genreField(genre)" />
       {{ genre }}
     </label>
     }
@@ -55,7 +46,7 @@
 </form>
 
 <div class="books">
-  @for (book of books$ | async; track book.isbn; let i = $index) {
+  @for (book of books(); track book.isbn; let i = $index) {
   <app-book-item
     [id]="i"
     [book]="book"

@@ -1,99 +1,95 @@
 import { FocusMonitor } from "@angular/cdk/a11y";
-import { AsyncPipe } from "@angular/common";
-import { Component, inject, OnInit } from "@angular/core";
-import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
+import { Component, computed, inject, OnInit, signal } from "@angular/core";
+import { form, FormField } from "@angular/forms/signals";
 import { RouterLink } from "@angular/router";
-import {
-  BehaviorSubject,
-  Observable,
-  combineLatest,
-  map,
-  startWith,
-  take,
-} from "rxjs";
+import { take } from "rxjs";
 import { BookItemComponent } from "../books-item/book-item.component";
 import { Book, BooksService } from "../books.service";
 
 export const CATALOG_GENRES = ["Technical", "Reference", "Fiction"] as const;
 
+type CatalogGenre = (typeof CATALOG_GENRES)[number];
+
 @Component({
   selector: "app-books",
   templateUrl: "./books.component.html",
   styleUrls: ["./books.component.scss"],
-  imports: [BookItemComponent, RouterLink, AsyncPipe, ReactiveFormsModule],
+  imports: [BookItemComponent, RouterLink, FormField],
   providers: [],
 })
 export class BooksComponent implements OnInit {
   private readonly bookService = inject(BooksService);
   private readonly focusMonitor = inject(FocusMonitor);
-  private readonly formBuilder = inject(FormBuilder);
 
-  private readonly booksSubject = new BehaviorSubject<Book[]>([]);
-  private readonly wishlistIsbnsSubject = new BehaviorSubject<ReadonlySet<string>>(
-    new Set()
-  );
+  private readonly allBooks = signal<Book[]>([]);
+  private readonly wishlistIsbns = signal<ReadonlySet<string>>(new Set());
 
-  readonly allBooks$: Observable<Book[]> = this.booksSubject.asObservable();
-
-  readonly filterForm = this.formBuilder.nonNullable.group({
-    search: [""],
-    availableOnly: [false],
-    wishlistOnly: [false],
-    Technical: [true],
-    Reference: [true],
-    Fiction: [true],
+  readonly filterModel = signal({
+    search: "",
+    availableOnly: false,
+    wishlistOnly: false,
+    Technical: true,
+    Reference: true,
+    Fiction: true,
   });
 
-  readonly books$: Observable<Book[]> = combineLatest([
-    this.allBooks$,
-    this.filterForm.valueChanges.pipe(startWith(this.filterForm.getRawValue())),
-    this.wishlistIsbnsSubject,
-  ]).pipe(
-    map(([books, filters, wishlistIsbns]) =>
-      this.applyFilters(books, filters, wishlistIsbns)
+  readonly filterForm = form(this.filterModel);
+
+  readonly books = computed(() =>
+    this.applyFilters(
+      this.allBooks(),
+      this.filterModel(),
+      this.wishlistIsbns()
     )
   );
 
   readonly genres = CATALOG_GENRES;
 
-  get allGenresChecked(): boolean {
-    return this.genres.every((genre) => this.filterForm.controls[genre].value);
-  }
+  readonly allGenresChecked = computed(() =>
+    this.genres.every((genre) => this.filterModel()[genre])
+  );
 
-  get allGenresUnchecked(): boolean {
-    return this.genres.every((genre) => !this.filterForm.controls[genre].value);
-  }
+  readonly allGenresUnchecked = computed(() =>
+    this.genres.every((genre) => !this.filterModel()[genre])
+  );
 
-  get allGenresPartial(): boolean {
-    return !this.allGenresChecked && !this.allGenresUnchecked;
-  }
+  readonly allGenresPartial = computed(
+    () => !this.allGenresChecked() && !this.allGenresUnchecked()
+  );
 
   ngOnInit(): void {
     this.bookService
       .getAll()
       .pipe(take(1))
-      .subscribe((books) => this.booksSubject.next(books));
+      .subscribe((books) => this.allBooks.set(books));
+  }
+
+  genreField(genre: CatalogGenre) {
+    return this.filterForm[genre];
   }
 
   isOnWishlist(isbn: string): boolean {
-    return this.wishlistIsbnsSubject.value.has(isbn);
+    return this.wishlistIsbns().has(isbn);
   }
 
   onWishlistChange(isbn: string, onWishlist: boolean) {
-    const next = new Set(this.wishlistIsbnsSubject.value);
+    const next = new Set(this.wishlistIsbns());
     if (onWishlist) {
       next.add(isbn);
     } else {
       next.delete(isbn);
     }
-    this.wishlistIsbnsSubject.next(next);
+    this.wishlistIsbns.set(next);
   }
 
   onAllGenresChange(event: Event) {
     const checked = (event.target as HTMLInputElement).checked;
-    for (const genre of this.genres) {
-      this.filterForm.controls[genre].setValue(checked);
-    }
+    this.filterModel.update((current) => ({
+      ...current,
+      Technical: checked,
+      Reference: checked,
+      Fiction: checked,
+    }));
   }
 
   removeBook(bookToRemove: Book, i: number) {
@@ -101,12 +97,9 @@ export class BooksComponent implements OnInit {
       .removeBook(bookToRemove)
       .pipe(take(1))
       .subscribe(() => {
-        const books = [...this.booksSubject.value];
-        const index = books.findIndex((book) => book.isbn === bookToRemove.isbn);
-        if (index >= 0) {
-          books.splice(index, 1);
-          this.booksSubject.next(books);
-        }
+        this.allBooks.update((books) =>
+          books.filter((book) => book.isbn !== bookToRemove.isbn)
+        );
         this.onWishlistChange(bookToRemove.isbn, false);
         this.focusOnNextBook(i);
       });
@@ -114,17 +107,17 @@ export class BooksComponent implements OnInit {
 
   private applyFilters(
     books: Book[],
-    filters: Partial<{
+    filters: {
       search: string;
       availableOnly: boolean;
       wishlistOnly: boolean;
       Technical: boolean;
       Reference: boolean;
       Fiction: boolean;
-    }>,
+    },
     wishlistIsbns: ReadonlySet<string>
   ): Book[] {
-    const query = (filters.search ?? "").trim().toLowerCase();
+    const query = filters.search.trim().toLowerCase();
     const selectedGenres = this.genres.filter((genre) => filters[genre]);
 
     return books.filter((book) => {
@@ -140,7 +133,7 @@ export class BooksComponent implements OnInit {
       const matchesGenre =
         selectedGenres.length === 0 ||
         bookGenres.some((genre) =>
-          selectedGenres.includes(genre as (typeof CATALOG_GENRES)[number])
+          selectedGenres.includes(genre as CatalogGenre)
         );
       return (
         matchesQuery && matchesAvailability && matchesWishlist && matchesGenre

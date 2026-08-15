@@ -1,7 +1,7 @@
 <h1>New book</h1>
 
-<!-- Angular focus 8: ngSubmit submits on enter -->
-<form [formGroup]="newForm" (ngSubmit)="create()">
+<!-- Angular focus 8: FormRoot submits on enter -->
+<form [formRoot]="newForm">
   <!-- Yes, you can do it (larger clickable area, but just one control allowed): https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label -->
   <label class="form-field" id="isbn-label">
     <!-- Angular focus 9: validation -->
@@ -9,27 +9,24 @@
     <!-- Error association via aria-errormessage (+ persistent hint via aria-describedby) -->
     <span>ISBN (required)</span>
     <input
-      name="isbn"
-      formControlName="isbn"
-      required
+      [formField]="newForm.isbn"
       inputmode="numeric"
-      maxlength="13"
-      [attr.aria-invalid]="isbnInvalid || null"
+      [attr.aria-invalid]="isbnInvalid() || null"
       aria-describedby="isbn-hint"
       [attr.aria-errormessage]="
-        isbnRequiredError || isbnPatternError ? 'isbn-error' : null
+        isbnRequiredError() || isbnPatternError() ? 'isbn-error' : null
       "
     />
     <small id="isbn-hint" class="form-field__hint">
       Maximum length 13 characters, digits only.
     </small>
 
-    @if (isbnRequiredError) {
+    @if (isbnRequiredError()) {
     <small id="isbn-error" class="form-field__error" role="alert">
       Please insert an ISBN.
     </small>
     }
-    @if (isbnPatternError && !isbnRequiredError) {
+    @if (isbnPatternError() && !isbnRequiredError()) {
     <small id="isbn-error" class="form-field__error" role="alert">
       ISBN must contain digits only.
     </small>
@@ -43,36 +40,34 @@
   <!-- Error association via aria-describedby (alternative to aria-errormessage) -->
   <input
     id="title"
-    name="title"
-    formControlName="title"
-    required
-    [attr.aria-invalid]="titleInvalid || null"
-    [attr.aria-describedby]="titleShowsError ? 'title-error' : null"
+    [formField]="newForm.title"
+    [attr.aria-invalid]="titleInvalid() || null"
+    [attr.aria-describedby]="titleShowsError() ? 'title-error' : null"
   />
   <!-- Angular focus 10: *ngIf + dirty
   Resource: https://coryrylan.com/blog/build-accessible-forms-with-angular
   DISCUSSION: Single or all at once?-->
-  @if (titleShowsError) {
+  @if (titleShowsError()) {
   <small id="title-error" class="form-field__error" role="alert">
     Please insert a title.
   </small>
   }
   <label class="form-field">
     <span>Author</span>
-    <input name="author" formControlName="author" />
+    <input [formField]="newForm.author" />
   </label>
   <label class="form-field">
     <span>Cover-URL</span>
-    <input name="cover" formControlName="cover" />
+    <input [formField]="newForm.cover" />
   </label>
   <label class="form-field">
     <span>Abstract</span>
-    <input name="abstract" formControlName="abstract" />
+    <input [formField]="newForm.abstract" />
   </label>
   <!--DICUSSION: To disable or not to disable?
   Alternative: https://medium.com/@svinkle/creating-accessible-forms-with-angular-simply-accessible-c1bc362cf89e
   https://www.thisdot.co/blog/make-it-accessible-dealing-with-form-errors-in-angular-->
   <div class="form__actions">
-    <button type="submit" [disabled]="newForm.invalid">Add a new book</button>
+    <button type="submit" [disabled]="newForm().invalid()">Add a new book</button>
   </div>
 </form>

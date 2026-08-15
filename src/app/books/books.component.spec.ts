@@ -83,7 +83,7 @@ describe("BooksComponent", () => {
   it("filters by search, availability, and form values", () => {
     const search = view.getByRole("searchbox", { name: /search books/i });
 
-    component.filterForm.controls.search.setValue("gatsby");
+    component.filterForm.search().value.set("gatsby");
     fixture.detectChanges();
 
     expect(search).toHaveDisplayValue("gatsby");
@@ -95,8 +95,8 @@ describe("BooksComponent", () => {
     ).not.toBeInTheDocument();
     expect(view.getByRole("form", { name: /filter books/i })).toBeVisible();
 
-    component.filterForm.controls.search.setValue("");
-    component.filterForm.controls.availableOnly.setValue(true);
+    component.filterForm.search().value.set("");
+    component.filterForm.availableOnly().value.set(true);
     fixture.detectChanges();
 
     expect(view.getByRole("checkbox", { name: /available only/i })).toBeChecked();
@@ -125,7 +125,7 @@ describe("BooksComponent", () => {
 
   it("filters to wishlist books only", () => {
     component.onWishlistChange("1", true);
-    component.filterForm.controls.wishlistOnly.setValue(true);
+    component.filterForm.wishlistOnly().value.set(true);
     fixture.detectChanges();
 
     expect(view.getByRole("checkbox", { name: /on my wishlist/i })).toBeChecked();
