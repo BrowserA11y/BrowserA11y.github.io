@@ -1,4 +1,5 @@
-@if (book$ | async; as book) {
+@if (bookResource.hasValue()) {
+  @let book = bookResource.value();
   <div class="book-insights">
     <div>
       <h1>

@@ -1,7 +1,7 @@
-import { AsyncPipe, DecimalPipe } from "@angular/common";
-import { Component, inject } from "@angular/core";
+import { DecimalPipe } from "@angular/common";
+import { Component, computed, inject } from "@angular/core";
+import { rxResource } from "@angular/core/rxjs-interop";
 import { RouterLink } from "@angular/router";
-import { Observable, map } from "rxjs";
 import { Book, BooksService } from "../books.service";
 
 interface BookStats {
@@ -16,17 +16,20 @@ interface BookStats {
   selector: "app-about",
   templateUrl: "./about.component.html",
   styleUrls: ["./about.component.scss"],
-  imports: [RouterLink, AsyncPipe, DecimalPipe],
+  imports: [RouterLink, DecimalPipe],
 })
 export class AboutComponent {
   private readonly bookService = inject(BooksService);
-  readonly bookStats$: Observable<BookStats> = this.getBookStats();
 
-  private getBookStats(): Observable<BookStats> {
-    return this.bookService
-      .getAll()
-      .pipe(map((books) => mapBooksToStats(books)));
-  }
+  readonly booksResource = rxResource({
+    stream: () => this.bookService.getAll(),
+  });
+
+  readonly bookStats = computed(() =>
+    this.booksResource.hasValue()
+      ? mapBooksToStats(this.booksResource.value())
+      : undefined
+  );
 }
 
 const mapBooksToStats = (books: Book[]): BookStats => {

@@ -1,10 +1,14 @@
+import { provideHttpClient } from "@angular/common/http";
+import {
+  HttpTestingController,
+  provideHttpClientTesting,
+} from "@angular/common/http/testing";
+import { ApplicationRef } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { provideRouter } from "@angular/router";
 import { within } from "@testing-library/dom";
-import { MockProvider } from "ng-mocks";
-import { of } from "rxjs";
 import { axe } from "vitest-axe";
-import { BooksService } from "../books.service";
+import { BOOKS_API_BASE } from "../books.service";
 import { BooksComponent } from "./books.component";
 
 const sampleBooks = [
@@ -50,23 +54,31 @@ describe("BooksComponent", () => {
   let component: BooksComponent;
   let fixture: ComponentFixture<BooksComponent>;
   let view: ReturnType<typeof within>;
+  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BooksComponent],
       providers: [
         provideRouter([]),
-        MockProvider(BooksService, {
-          getAll: () => of(sampleBooks),
-          removeBook: () => of({}),
-        }),
+        provideHttpClient(),
+        provideHttpClientTesting(),
       ],
     }).compileComponents();
 
+    httpMock = TestBed.inject(HttpTestingController);
     fixture = TestBed.createComponent(BooksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    httpMock.expectOne(`${BOOKS_API_BASE}/books`).flush(sampleBooks);
+    await TestBed.inject(ApplicationRef).whenStable();
+    fixture.detectChanges();
     view = within(fixture.nativeElement);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 
   it("should create", async () => {

@@ -21,7 +21,7 @@
     hope to create a more inclusive and compassionate society.
   </p>
 </div>
-@if (bookStats$ | async; as bookStats) {
+@if (bookStats(); as bookStats) {
 <table class="about__stats">
   <caption class="visually-hidden">
     Statistics regarding our book collection

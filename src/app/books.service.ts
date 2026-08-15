@@ -15,26 +15,32 @@ export interface Book {
   genres?: string[];
 }
 
+export const BOOKS_API_BASE = "http://localhost:3000";
+
 @Injectable({
   providedIn: "root",
 })
 export class BooksService {
   private readonly http = inject(HttpClient);
-  private readonly endpoint = "http://localhost:3000";
+  readonly booksUrl = `${BOOKS_API_BASE}/books`;
+
+  bookUrl(isbn: string): string {
+    return `${this.booksUrl}/${isbn}`;
+  }
 
   create(book: Partial<Book>): Observable<Book> {
-    return this.http.post<Book>(`${this.endpoint}/books/`, book);
+    return this.http.post<Book>(`${this.booksUrl}/`, book);
   }
 
   getAll(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.endpoint}/books`);
+    return this.http.get<Book[]>(this.booksUrl);
   }
 
   removeBook(book: Book) {
-    return this.http.delete(`${this.endpoint}/books/${book.isbn}`);
+    return this.http.delete(this.bookUrl(book.isbn));
   }
 
   getByIsbn(isbn: string): Observable<Book> {
-    return this.http.get<Book>(`${this.endpoint}/books/${isbn}`);
+    return this.http.get<Book>(this.bookUrl(isbn));
   }
 }

@@ -1,5 +1,6 @@
 import { FocusMonitor } from "@angular/cdk/a11y";
-import { Component, computed, inject, OnInit, signal } from "@angular/core";
+import { httpResource } from "@angular/common/http";
+import { Component, computed, inject, signal } from "@angular/core";
 import { form, FormField } from "@angular/forms/signals";
 import { RouterLink } from "@angular/router";
 import { take } from "rxjs";
@@ -16,11 +17,15 @@ type CatalogGenre = (typeof CATALOG_GENRES)[number];
   styleUrls: ["./books.component.scss"],
   imports: [BookItemComponent, RouterLink, FormField],
 })
-export class BooksComponent implements OnInit {
+export class BooksComponent {
   private readonly bookService = inject(BooksService);
   private readonly focusMonitor = inject(FocusMonitor);
 
-  private readonly allBooks = signal<Book[]>([]);
+  readonly booksResource = httpResource<Book[]>(
+    () => this.bookService.booksUrl,
+    { defaultValue: [] }
+  );
+
   private readonly wishlistIsbns = signal<ReadonlySet<string>>(new Set());
 
   readonly filterModel = signal({
@@ -36,7 +41,7 @@ export class BooksComponent implements OnInit {
 
   readonly books = computed(() =>
     this.applyFilters(
-      this.allBooks(),
+      this.booksResource.value(),
       this.filterModel(),
       this.wishlistIsbns()
     )
@@ -55,13 +60,6 @@ export class BooksComponent implements OnInit {
   readonly allGenresPartial = computed(
     () => !this.allGenresChecked() && !this.allGenresUnchecked()
   );
-
-  ngOnInit(): void {
-    this.bookService
-      .getAll()
-      .pipe(take(1))
-      .subscribe((books) => this.allBooks.set(books));
-  }
 
   genreField(genre: CatalogGenre) {
     return this.filterForm[genre];
@@ -96,7 +94,7 @@ export class BooksComponent implements OnInit {
       .removeBook(bookToRemove)
       .pipe(take(1))
       .subscribe(() => {
-        this.allBooks.update((books) =>
+        this.booksResource.value.update((books) =>
           books.filter((book) => book.isbn !== bookToRemove.isbn)
         );
         this.onWishlistChange(bookToRemove.isbn, false);

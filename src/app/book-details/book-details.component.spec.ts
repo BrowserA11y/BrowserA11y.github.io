@@ -1,8 +1,12 @@
+import { provideHttpClient } from "@angular/common/http";
+import {
+  HttpTestingController,
+  provideHttpClientTesting,
+} from "@angular/common/http/testing";
+import { ApplicationRef } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { within } from "@testing-library/dom";
-import { MockProvider } from "ng-mocks";
-import { of } from "rxjs";
-import { BooksService } from "../books.service";
+import { BOOKS_API_BASE } from "../books.service";
 import { BookDetailComponent } from "./book-details.component";
 
 const sampleBook = {
@@ -20,22 +24,33 @@ describe("BookDetailComponent", () => {
   let component: BookDetailComponent;
   let fixture: ComponentFixture<BookDetailComponent>;
   let view: ReturnType<typeof within>;
+  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BookDetailComponent],
       providers: [
-        MockProvider(BooksService, {
-          getByIsbn: () => of(sampleBook),
-        }),
+        provideHttpClient(),
+        provideHttpClientTesting(),
       ],
     }).compileComponents();
 
+    httpMock = TestBed.inject(HttpTestingController);
     fixture = TestBed.createComponent(BookDetailComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput("isbn", sampleBook.isbn);
     fixture.detectChanges();
+
+    httpMock
+      .expectOne(`${BOOKS_API_BASE}/books/${sampleBook.isbn}`)
+      .flush(sampleBook);
+    await TestBed.inject(ApplicationRef).whenStable();
+    fixture.detectChanges();
     view = within(fixture.nativeElement);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 
   it("should create", () => {
