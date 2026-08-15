@@ -45,16 +45,33 @@
   </fieldset>
 </form>
 
-<div class="books">
-  @for (book of books(); track book.isbn; let i = $index) {
-  <app-book-item
-    [id]="i"
-    [book]="book"
-    [onWishlist]="isOnWishlist(book.isbn)"
-    (wishlistChange)="onWishlistChange(book.isbn, $event)"
-    (bookRemoved)="removeBook(book, i)"
-  >
-  </app-book-item>
+<div
+  class="books-empty"
+  [class.visually-hidden]="books().length > 0"
+  [class.books-empty--visible]="books().length === 0"
+  [attr.aria-live]="books().length === 0 ? 'assertive' : 'polite'"
+  aria-atomic="true"
+>
+  @if (books().length === 0) {
+    No books match your filters. Try adjusting your search or filters.
+  } @else {
+    {{ books().length }}
+    {{ books().length === 1 ? "book matches" : "books match" }} your filters.
   }
 </div>
+
+<ul class="books">
+  @for (book of books(); track book.isbn; let i = $index) {
+  <li>
+    <app-book-item
+      [id]="i"
+      [book]="book"
+      [onWishlist]="isOnWishlist(book.isbn)"
+      (wishlistChange)="onWishlistChange(book.isbn, $event)"
+      (bookRemoved)="removeBook(book, i)"
+    >
+    </app-book-item>
+  </li>
+  }
+</ul>
 <a class="cta-link" routerLink="/about">Learn about us</a>

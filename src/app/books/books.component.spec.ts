@@ -141,4 +141,34 @@ describe("BooksComponent", () => {
       })
     ).toBePressed();
   });
+
+  it("shows an empty state when filters return no results", () => {
+    component.filterForm.search().value.set("zzzz-no-match");
+    fixture.detectChanges();
+
+    const liveRegion = fixture.nativeElement.querySelector(".books-empty");
+    expect(liveRegion).toHaveAttribute("aria-live", "assertive");
+    expect(liveRegion).toHaveTextContent(/no books match your filters/i);
+    expect(liveRegion).not.toHaveClass("visually-hidden");
+    expect(liveRegion).toHaveClass("books-empty--visible");
+    expect(view.queryByRole("list")).toBeEmptyDOMElement();
+    expect(
+      view.queryByRole("heading", { name: /the great gatsby/i })
+    ).not.toBeInTheDocument();
+  });
+
+  it("announces matching book counts politely", () => {
+    const liveRegion = fixture.nativeElement.querySelector(".books-empty");
+
+    expect(liveRegion).toHaveAttribute("aria-live", "polite");
+    expect(liveRegion).toHaveTextContent(/3 books match your filters/i);
+    expect(liveRegion).toHaveClass("visually-hidden");
+
+    component.filterForm.search().value.set("gatsby");
+    fixture.detectChanges();
+
+    expect(liveRegion).toHaveAttribute("aria-live", "polite");
+    expect(liveRegion).toHaveTextContent(/1 book matches your filters/i);
+    expect(liveRegion).toHaveClass("visually-hidden");
+  });
 });
