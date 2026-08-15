@@ -1,5 +1,11 @@
 @use "tokens" as *;
 
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .cdk-keyboard-focused,
 article:hover,
 article:focus {
@@ -17,7 +23,10 @@ article:focus {
 }
 
 article {
-  display: block;
+  display: grid;
+  grid-template-rows: auto auto 1fr 2.5rem auto;
+  flex: 1;
+  min-height: 100%;
   background-color: $color-primary-invert;
   border-color: $color-primary;
   border-width: 0.1rem;
@@ -105,11 +114,12 @@ h2 {
 }
 
 .book__availability {
+  grid-row: 4;
   font-weight: bold;
   color: $color-danger;
-  /* Reserve one line so available/unavailable cards share the same height */
-  min-height: 1.5rem;
+  box-sizing: border-box;
   margin: 0;
+  overflow: hidden;
 }
 
 .book__confirm-dialog {
@@ -140,17 +150,33 @@ h2 {
 }
 
 .book__author {
-  height: 2rem;
+  box-sizing: border-box;
+  height: 2.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .book__abstract {
-  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.book__abstract-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  line-height: 1.4;
+  max-height: calc(1.4em * 4);
   overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
 }
 
 .book__details {
+  grid-row: 5;
   color: $color-secondary;
   font-weight: bold;
   display: block;
-  margin: $spacing-xs 0;
+  margin: 0 0 $spacing-xs;
 }

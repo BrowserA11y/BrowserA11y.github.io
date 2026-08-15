@@ -37,13 +37,12 @@
     </div>
   </div>
   <p class="book__text book__author">Author: {{ book().author }}</p>
-  <p class="book__text book__abstract">{{ book().abstract }}</p>
-  <!-- Always rendered so cards keep equal height whether available or not -->
-  <p class="book__text book__availability">
-    @if (book().available === false) {
-    Currently unavailable
-    }
+  <p class="book__text book__abstract">
+    <span class="book__abstract-clamp">{{ book().abstract }}</span>
   </p>
+  @if (!book().available) {
+  <p class="book__text book__availability">Currently unavailable</p>
+  }
   <a class="book__text book__details" [routerLink]="'/details/' + book().isbn"
     >Read more <span class="visually-hidden">about {{ book().title }}</span></a
   >
