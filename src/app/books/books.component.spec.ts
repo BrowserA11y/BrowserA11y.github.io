@@ -116,7 +116,7 @@ describe("BooksComponent", () => {
     expect(
       view.queryByRole("heading", { name: /you don't know js/i })
     ).not.toBeInTheDocument();
-    expect(view.getByRole("form", { name: /filter books/i })).toBeVisible();
+    expect(view.getByRole("search", { name: /filter books/i })).toBeVisible();
 
     component.filterForm.search().value.set("");
     component.filterForm.availableOnly().value.set(true);
