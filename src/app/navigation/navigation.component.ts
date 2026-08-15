@@ -1,6 +1,11 @@
 import { Component, inject } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { NavigationEnd, Router, RouterLink } from "@angular/router";
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from "@angular/router";
 
 /**https://inclusive-components.design/menus-menu-buttons/ */
 
@@ -8,7 +13,7 @@ import { NavigationEnd, Router, RouterLink } from "@angular/router";
   selector: "app-navigation",
   templateUrl: "./navigation.component.html",
   styleUrls: ["./navigation.component.scss"],
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
 })
 export class NavigationComponent {
   private readonly router = inject(Router);

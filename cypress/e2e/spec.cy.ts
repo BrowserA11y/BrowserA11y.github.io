@@ -37,7 +37,7 @@ const allPages = [
   { url: 'http://localhost:4200/details/9780596529963' },
   {
     url: 'http://localhost:4200/about',
-    exclude: ['.mission_video'],
+    exclude: ['.about__video'],
   },
 ];
 describe('Check for a11y issues', () => {

@@ -40,23 +40,25 @@ describe("NavigationComponent", () => {
     const menuButton = view.getByRole("button", {
       name: /accessible reads quick links/i,
     });
+    const menu = fixture.nativeElement.querySelector(
+      "#menuContent"
+    ) as HTMLElement;
 
-    expect(fixture.nativeElement.querySelector("#menuContent")).toBeNull();
+    expect(menu).toBeTruthy();
+    expect(menu).not.toHaveClass("nav__list--open");
+    expect(menuButton).toHaveAttribute("aria-expanded", "false");
 
     menuButton.click();
     fixture.detectChanges();
 
     expect(menuButton).toHaveAttribute("aria-expanded", "true");
-    const mobileMenu = fixture.nativeElement.querySelector(
-      "#menuContent"
-    ) as HTMLElement;
-    expect(mobileMenu).toBeTruthy();
-    expect(within(mobileMenu).getByRole("link", { name: /^books$/i })).toBeVisible();
+    expect(menu).toHaveClass("nav__list--open");
+    expect(within(menu).getByRole("link", { name: /^books$/i })).toBeVisible();
 
     menuButton.click();
     fixture.detectChanges();
 
     expect(menuButton).toHaveAttribute("aria-expanded", "false");
-    expect(fixture.nativeElement.querySelector("#menuContent")).toBeNull();
+    expect(menu).not.toHaveClass("nav__list--open");
   });
 });

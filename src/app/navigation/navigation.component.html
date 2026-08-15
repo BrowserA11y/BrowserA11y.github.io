@@ -1,45 +1,31 @@
 <!--We need a navigation, not a menu bar - see "Caution" box-->
 <!--https://www.w3.org/WAI/ARIA/apg/patterns/menubar/examples/menubar-navigation/-->
-<nav aria-label="Accessible Reads">
-  <div id="hamburger" class="mobile-menu">
-    <button
-      type="button"
-      id="menubutton"
-      class="hamburger"
-      aria-label="Accessible Reads Quick Links"
-      aria-controls="menuContent"
-      (click)="onButtonClick()"
-      [attr.aria-expanded]="isMenuOpen"
-    >
-      ☰
-    </button>
-    @if (isMenuOpen) {
-    <ul id="menuContent" class="hamburgerContent">
-      @for (menuItem of menuItems; track menuItem) {
-      <li
-        class="menu-item"
-        routerLinkActive="active-link"
-        ariaCurrentWhenActive="page"
-      >
-        <a [routerLink]="menuItem.url">{{ menuItem.title }}</a>
-      </li>
-      }
-    </ul>
-    }
-  </div>
+<nav aria-label="Accessible Reads" class="nav">
+  <button
+    type="button"
+    id="menubutton"
+    class="nav__toggle"
+    aria-label="Accessible Reads Quick Links"
+    aria-controls="menuContent"
+    (click)="onButtonClick()"
+    [attr.aria-expanded]="isMenuOpen"
+  >
+    ☰
+  </button>
 
-  <!--Accessible desktop navigation-->
-  <div class="desktop-navigation">
+  <ul
+    id="menuContent"
+    class="nav__list"
+    [class.nav__list--open]="isMenuOpen"
+  >
     @for (menuItem of menuItems; track menuItem) {
-    <div class="desktop-navigation__links">
-      <div
-        class="navigation-item"
-        routerLinkActive="active-link"
-        ariaCurrentWhenActive="page"
-      >
-        <a [routerLink]="menuItem.url">{{ menuItem.title }}</a>
-      </div>
-    </div>
+    <li
+      class="nav__item"
+      routerLinkActive="nav__item--active"
+      ariaCurrentWhenActive="page"
+    >
+      <a class="nav__link" [routerLink]="menuItem.url">{{ menuItem.title }}</a>
+    </li>
     }
-  </div>
+  </ul>
 </nav>

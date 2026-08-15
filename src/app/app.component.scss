@@ -1,4 +1,4 @@
-@use "../styles.scss";
+@use "tokens" as *;
 
 :host {
   display: flex;
@@ -6,28 +6,29 @@
   flex: 1 auto;
 }
 
-/* Style the header */
 header {
   width: 100%;
-  background-color: styles.$primary-color-invert;
-  padding: styles.$xs-spacing;
+  background-color: $color-primary-invert;
+  padding: $spacing-xs;
   vertical-align: middle;
-
   background-image: url(../assets/background-header.svg); //https://app.heazy.studio
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
-.visible-header {
+.header__content {
   display: grid;
   grid-template-columns: 1fr auto;
 }
 
-.skiplink {
+.skip-link {
   position: absolute;
   left: -100000px;
   top: auto;
   width: 1px;
   height: 1px;
   overflow: hidden;
+
   &:focus {
     position: static;
     width: auto;
@@ -40,63 +41,36 @@ header {
   grid-template-columns: 1fr auto;
   grid-column: 2;
   align-content: center;
-
-  .logo__text {
-    font-size: min(styles.$m-font, 6vw);
-    font-weight: bold;
-  }
 }
 
-header .logo img {
+.logo__text {
+  font-size: min($font-size-m, 6vw);
+  font-weight: bold;
+}
+
+.logo__image {
   grid-column: 1;
-  max-width: styles.$m-spacing;
-  min-width: styles.$s-spacing;
+  max-width: $spacing-m;
+  min-width: $spacing-s;
   align-self: center;
   justify-self: end;
   text-align: right;
-  padding-right: styles.$xs-spacing;
-}
-
-/* tablet breakpoint */
-@media screen and (max-width: styles.$tablet) {
-  main {
-    padding: 10rem styles.$xs-spacing;
-  }
-
-  footer .footer__links {
-    margin-bottom: styles.$xs-spacing;
-  }
-}
-
-.logo {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-column: 2;
-}
-
-header .logo img {
-  grid-column: 1;
-  max-width: styles.$m-spacing;
-  min-width: styles.$s-spacing;
-  align-self: center;
-  justify-self: end;
-  text-align: right;
-  padding-right: styles.$xs-spacing;
-}
-
-.secondary-color {
-  color: styles.$secondary-color;
+  padding-right: $spacing-xs;
 }
 
 main {
   flex: 1 0 auto;
-  padding: styles.$s-spacing styles.$m-spacing;
+  padding: $spacing-xxs $spacing-xs;
+  background-color: $color-primary-invert;
   background-image: url(./../assets/background-main.svg); //https://app.heazy.studio
+  // Avoid tiling: on long pages (e.g. /books) repeated SVG strokes look like stray underlines
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center bottom;
 }
 
-/* Responsive design */
-@media screen and (max-width: styles.$tablet) {
+@media (min-width: $breakpoint-tablet) {
   main {
-    padding: styles.$xxs-spacing styles.$xs-spacing;
+    padding: $spacing-s $spacing-m;
   }
 }

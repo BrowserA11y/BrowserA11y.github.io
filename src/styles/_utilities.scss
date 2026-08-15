@@ -1,0 +1,42 @@
+@use "tokens" as *;
+
+// Shared utility classes (loaded once via styles.scss)
+
+@mixin visually-hidden {
+  position: absolute;
+  left: -100000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.visually-hidden,
+.cdk-visually-hidden {
+  @include visually-hidden;
+}
+
+.text-secondary {
+  color: $color-secondary;
+}
+
+.cta-link {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: $color-secondary;
+  color: $color-primary-invert;
+  display: inline-block;
+}
+
+.icon-button-close {
+  justify-self: end;
+  grid-column: 2;
+  width: 40px;
+  height: 40px;
+  text-indent: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  background: url(../assets/close.svg) center no-repeat;
+  background-size: contain;
+  background-color: $color-primary-invert;
+}

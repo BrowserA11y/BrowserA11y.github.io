@@ -1,98 +1,100 @@
-@use "../../styles.scss";
+@use "tokens" as *;
 
-.desktop-navigation {
-  grid-column: 1;
-  align-self: center;
-  display: inline-block;
+// Mobile-first: one link list. Hidden until the hamburger opens; horizontal from tablet up.
 
-  .desktop-navigation__links {
-    list-style-type: none;
-    padding-inline-start: 0;
-    display: inline-block;
-  }
+.nav {
+  position: relative;
 }
 
-.navigation-item {
-  display: inline-block;
-  padding: styles.$xxs-spacing styles.$xs-spacing;
-
-  &:first-child {
-    padding-left: 0;
-  }
-
-  &[aria-current="page"] {
-    text-decoration: underline 3px;
-    text-underline-offset: styles.$xxs-spacing;
-  }
-}
-
-.navigation-item a {
-  font-size: styles.$xs-font;
-  font-weight: bold;
-  color: styles.$primary-color;
-  text-decoration: none;
-}
-
-// https://angular.io/api/router/RouterLinkActive
-.active-link {
-  text-decoration: underline 3px;
-  text-underline-offset: styles.$xxs-spacing;
-}
-
-.hamburger {
+.nav__toggle {
   font-size: 3em;
   background: none;
   border: none;
   cursor: pointer;
 }
-/* hamburger */
-.hamburgerContent {
+
+.nav__list {
+  display: none;
   margin: 0;
   list-style: none;
   position: absolute;
-  border: styles.$xxs-spacing styles.$secondary-color solid;
+  z-index: 1;
+  border: $spacing-xxs $color-secondary solid;
   border-radius: 5px;
-  background-color: styles.$primary-color-invert;
+  background-color: $color-primary-invert;
   padding-inline-start: 0;
   width: max-content;
 }
 
-.menu-item a {
-  text-decoration: none;
-  padding: 1rem;
+.nav__list--open {
   display: block;
-  color: styles.$primary-color;
-  font-size: styles.$xs-font;
+}
+
+.nav__link {
+  font-size: $font-size-xs;
   font-weight: bold;
+  color: $color-primary;
+  text-decoration: none;
+  display: block;
+  padding: 1rem;
   border-radius: 5px;
   width: max-content;
-
-  a {
-    font-size: styles.$xs-font;
-    font-weight: bold;
-    color: styles.$primary-color;
-    text-decoration: none;
-  }
 }
 
-.menu-item:focus,
-.menu-item:hover {
-  background: styles.$backgrond-light-secondary;
+.nav__item:focus,
+.nav__item:hover {
+  background: $color-background-muted;
 }
 
-@media (min-width: styles.$tablet) {
-  .hamburgerContent,
-  .hamburger {
+.nav__item--active .nav__link,
+.nav__item[aria-current="page"] .nav__link {
+  text-decoration: underline solid $color-primary;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.2em;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .nav__toggle {
     display: none;
   }
-}
 
-/* tablet breakpoint */
-@media screen and (max-width: styles.$tablet) {
-  .hamburger {
+  .nav__list,
+  .nav__list--open {
     display: block;
+    position: static;
+    border: none;
+    background: none;
+    width: auto;
+    padding: 0;
   }
-  .desktop-navigation {
-    display: none;
+
+  .nav__item {
+    display: inline-block;
+    padding: 0 $spacing-xs;
+    background: none;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:focus,
+    &:hover {
+      background: none;
+    }
+  }
+
+  .nav__link {
+    display: inline-block;
+    padding: 0 0 0.2rem;
+    border-radius: 0;
+    border-bottom: 3px solid transparent;
+    text-decoration: none;
+    width: auto;
+  }
+
+  .nav__item--active .nav__link,
+  .nav__item[aria-current="page"] .nav__link {
+    text-decoration: none;
+    border-bottom-color: $color-primary;
   }
 }

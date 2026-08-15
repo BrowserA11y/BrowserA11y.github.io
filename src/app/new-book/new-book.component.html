@@ -16,12 +16,12 @@
       aria-describedby="isbn-hint"
       [attr.aria-errormessage]="isbnShowsError ? 'isbn-error' : null"
     />
-    <small id="isbn-hint" class="form-field-hint">
+    <small id="isbn-hint" class="form-field__hint">
       Maximum length 13 characters, digits only.
     </small>
 
     @if (isbnShowsError) {
-    <small id="isbn-error" class="form-field-error" role="alert">
+    <small id="isbn-error" class="form-field__error" role="alert">
       Please insert an ISBN.
     </small>
     }
@@ -44,7 +44,7 @@
   Resource: https://coryrylan.com/blog/build-accessible-forms-with-angular
   DISCUSSION: Single or all at once?-->
   @if (titleShowsError) {
-  <small id="title-error" class="form-field-error" role="alert">
+  <small id="title-error" class="form-field__error" role="alert">
     Please insert a title.
   </small>
   }
@@ -63,7 +63,7 @@
   <!--DICUSSION: To disable or not to disable?
   Alternative: https://medium.com/@svinkle/creating-accessible-forms-with-angular-simply-accessible-c1bc362cf89e
   https://www.thisdot.co/blog/make-it-accessible-dealing-with-form-errors-in-angular-->
-  <div class="form-actions">
+  <div class="form__actions">
     <button type="submit" [disabled]="newForm.invalid">Add a new book</button>
   </div>
 </form>

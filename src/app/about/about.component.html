@@ -1,4 +1,4 @@
-<div class="mission_text">
+<div class="about__intro">
   <h1>About us</h1>
   <p>
     At Accessible Reads, we believe that everyone should have access to the joy
@@ -22,7 +22,7 @@
   </p>
 </div>
 @if (bookStats$ | async; as bookStats) {
-<table>
+<table class="about__stats">
   <caption class="visually-hidden">
     Statistics regarding our book collection
   </caption>
@@ -50,7 +50,7 @@
   </tbody>
 </table>
 }
-<div class="mission_video">
+<div class="about__video">
   <iframe
     src="https://www.youtube-nocookie.com/embed/PihRANrP9o8?disablekb=1&cc_load_policy=1"
     title="YouTube video from Centre for Equitable Library Access describing what an accessible book is."
@@ -60,4 +60,4 @@
   ></iframe>
 </div>
 
-<a class="mission_books" routerLink="/books">View our books </a>
+<a class="cta-link" routerLink="/books">View our books </a>

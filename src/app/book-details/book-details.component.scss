@@ -1,4 +1,4 @@
-@use "../../styles.scss";
+@use "tokens" as *;
 
 :host {
   display: block;
@@ -12,26 +12,28 @@
   --star-rating-size: min(4rem, 17vw);
 }
 
-@media (min-width: styles.$tablet) {
+.book-insights {
+  line-height: 2rem;
+}
+
+@media (min-width: $breakpoint-tablet) {
   .book-insights {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 2rem;
-    line-height: 2rem;
   }
 }
 
-// Star rating
 fieldset.star-rating {
   border-width: 0;
   max-width: 24rem;
   display: block;
-  background-color: styles.$primary-color-invert;
+  background-color: $color-primary-invert;
 }
 
 legend {
   margin: 0 auto;
-  margin-bottom: styles.$xs-spacing;
+  margin-bottom: $spacing-xs;
 }
 
 .star-rating {
@@ -82,13 +84,14 @@ legend {
 .star-rating input:focus + label {
   background-image: var(--checked-image);
 }
+
 .star-rating input:checked + label:hover,
 .star-rating label:hover {
   background-image: var(--hovered-image);
 }
 
 .star-rating:focus-within {
-  outline: 0.25rem solid styles.$backgrond-light-secondary;
+  outline: 0.25rem solid $color-background-muted;
 }
 
 .star-rating input,

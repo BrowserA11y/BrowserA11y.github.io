@@ -1,4 +1,4 @@
-@use "../../styles.scss";
+@use "tokens" as *;
 
 form {
   margin: 0 auto;
@@ -15,50 +15,50 @@ form {
   }
 }
 
+.form-field__hint {
+  display: block;
+  color: $color-text-muted;
+  margin-top: 0.25rem;
+}
+
+.form-field__error {
+  display: block;
+  color: $color-error;
+  margin-top: 0.25rem;
+}
+
+.form__actions {
+  margin-top: 1rem;
+}
+
 input {
   padding: 12px 20px 12px 6px;
-  border: 1px solid #ccc;
+  border: 1px solid $color-border;
   border-radius: 4px;
   box-sizing: border-box;
   width: 100%;
 
   &.ng-invalid.ng-touched {
-    border: 2px solid red;
+    border: 2px solid $color-error;
   }
-}
-
-.form-field-hint {
-  display: block;
-  color: #3c3c3c;
-  margin-top: 0.25rem;
-}
-
-.form-field-error {
-  display: block;
-  color: #b00020;
-  margin-top: 0.25rem;
-}
-
-.form-actions {
-  margin-top: 1rem;
 }
 
 button[type="submit"] {
-  background-color: styles.$primary-color-invert;
-  color: styles.$primary-color;
-  border: solid 3px styles.$primary-color;
-  padding: styles.$xxs-spacing;
+  background-color: $color-primary-invert;
+  color: $color-primary;
+  border: solid 3px $color-primary;
+  padding: $spacing-xxs;
   width: 100%;
-  height: styles.$m-spacing;
-  font-size: styles.$s-font;
-  margin-top: styles.$xs-spacing;
+  height: $spacing-m;
+  font-size: $font-size-s;
+  margin-top: $spacing-xs;
 
   &:hover {
-    background-color: styles.$background-light;
+    background-color: $color-background-light;
   }
 
   &:disabled {
-    background-color: styles.$primary-color-invert;
-    border: solid 3px styles.$background-light;
+    background-color: $color-primary-invert;
+    border: solid 3px $color-background-light;
   }
 }

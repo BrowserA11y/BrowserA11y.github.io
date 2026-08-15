@@ -1,11 +1,11 @@
-@use "../../styles.scss";
+@use "tokens" as *;
 
 .books-filters {
   display: grid;
-  gap: styles.$xxs-spacing;
-  margin-bottom: styles.$xs-spacing;
-  padding: styles.$xs-spacing;
-  background: styles.$backgrond-light-secondary;
+  gap: $spacing-xxs;
+  margin-bottom: $spacing-xs;
+  padding: $spacing-xs;
+  background: $color-background-muted;
   max-width: 40rem;
 }
 
@@ -17,14 +17,14 @@
 
 .books-filters__search input {
   padding: 0.6rem;
-  border: 1px solid #ccc;
+  border: 1px solid $color-border;
   border-radius: 4px;
 }
 
 .books-filters__hint {
   margin: 0;
-  color: #3c3c3c;
-  font-size: styles.$xs-font;
+  color: $color-text-muted;
+  font-size: $font-size-xs;
 }
 
 .books-filters__checkbox {
@@ -34,8 +34,8 @@
 }
 
 .books-filters__genres {
-  border: 1px solid styles.$secondary-color;
-  padding: styles.$xxs-spacing;
+  border: 1px solid $color-secondary;
+  padding: $spacing-xxs;
   margin: 0;
 }
 
@@ -45,26 +45,5 @@
     auto-fit,
     minmax(18rem, 1fr)
   ); //https://caniuse.com/?search=minmax
-  grid-gap: styles.$xs-spacing;
-}
-
-.book__close {
-  justify-self: end;
-  grid-column: 2;
-  width: 40px;
-  height: 40px;
-  text-indent: 40px;
-  overflow: hidden;
-  cursor: pointer;
-  background: url(../../assets/close.svg) center no-repeat;
-  background-size: contain;
-  background-color: styles.$primary-color-invert;
-}
-
-.about_us {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: styles.$secondary-color;
-  color: styles.$primary-color-invert;
-  display: inline-block;
+  grid-gap: $spacing-xs;
 }
