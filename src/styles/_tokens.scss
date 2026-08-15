@@ -1,6 +1,8 @@
 // Design tokens — Sass variables only (no CSS output).
 // Use from components: @use "tokens" as *;
 
+@use "sass:color";
+
 /* Colors */
 $color-primary: black;
 $color-primary-invert: white;
@@ -12,6 +14,7 @@ $color-border: #ccc;
 $color-text-muted: #3c3c3c;
 $color-error: #b00020;
 $color-danger: #8a1f11;
+$color-backdrop: color.change($color-secondary, $alpha: 0.7);
 
 /* Breakpoints (mobile-first: use min-width) */
 $breakpoint-mobile: 480px;

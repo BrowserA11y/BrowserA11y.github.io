@@ -94,6 +94,10 @@ h2 {
   border-radius: 4px;
   padding: 1rem;
   max-width: 22rem;
+
+  &::backdrop {
+    background-color: var(--color-backdrop);
+  }
 }
 
 .book__confirm-actions {
