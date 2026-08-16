@@ -63,5 +63,23 @@ export class ShowcasesComponent {
       iconPath:
         "M3 5h8v4H3V5zm10 0h8v4h-8V5zM3 11h18v2H3v-2zm0 4h12v4H3v-4zm14 0h4v4h-4v-4z",
     },
+    {
+      title: "Color contrast and use of color",
+      description:
+        "Compare text and non-text contrast thresholds, and patterns that rely on color alone.",
+      link: "/showcases/color-contrast-and-use-of-color",
+      // Half-filled circle / contrast metaphor
+      iconPath:
+        "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2v16a8 8 0 0 0 0-16z",
+    },
+    {
+      title: "High contrast mode",
+      description:
+        "See how forced colors remaps UI, and which SVG fill values survive Windows High Contrast.",
+      link: "/showcases/high-contrast-mode",
+      // Sun / high-contrast brightness
+      iconPath:
+        "M11 1h2v3h-2V1zm0 19h2v3h-2v-3zM1 11h3v2H1v-2zm19 0h3v2h-3v-2zM3.5 4.9l2.1-2.1 2.1 2.1-2.1 2.1-2.1-2.1zm12.8 12.8l2.1-2.1 2.1 2.1-2.1 2.1-2.1-2.1zM3.5 19.1l2.1-2.1 2.1 2.1-2.1 2.1-2.1-2.1zm12.8-12.8l2.1-2.1 2.1 2.1-2.1 2.1-2.1-2.1zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z",
+    },
   ] as const;
 }

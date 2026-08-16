@@ -1,0 +1,361 @@
+<section class="intro">
+  <p>
+    <a class="back-link" routerLink="/showcases">
+      <span class="back-link__arrow" aria-hidden="true">←</span>
+      Back to Showcases
+    </a>
+  </p>
+
+  <h1 tabindex="-1">Color contrast and use of color</h1>
+
+  <p>
+    WCAG asks for enough luminance contrast so text and meaningful UI cues stay
+    readable, and for meaning that does not depend on hue alone. Compare passing
+    and failing pairs below — ratios are against a white page background.
+  </p>
+</section>
+
+<section class="demo" aria-labelledby="demo-normal-text">
+  <h2 id="demo-normal-text">Normal text — 4.5:1</h2>
+  <p>
+    Body-size text needs at least a 4.5:1 contrast ratio against its background
+    (WCAG 1.4.3 Contrast Minimum).
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Passes (7:1)</h3>
+      <p class="contrast-text contrast-text--normal-ok">
+        Shelf hours update every Monday. Check the notice board before you
+        visit.
+      </p>
+      <p class="demo__hint"><code>#595959</code> on white</p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Fails (3:1)</h3>
+      <p class="contrast-text contrast-text--normal-fail">
+        Shelf hours update every Monday. Check the notice board before you
+        visit.
+      </p>
+      <p class="demo__hint">
+        <code>#949494</code> on white — meets 3:1, not the 4.5:1 needed for
+        normal text.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-large-text">
+  <h2 id="demo-large-text">Larger or bold text — 3:1</h2>
+  <p>
+    Larger text (18pt / 24px) or bold text (14pt / 18.5px) only needs 3:1. The
+    samples below use bold 1.25rem type. The passing sample reuses the 3:1
+    gray from the normal-text failure above.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Passes (3:1)</h3>
+      <p class="contrast-text contrast-text--large-ok">Featured collection</p>
+      <p class="demo__hint"><code>#949494</code> on white</p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Fails (1.7:1)</h3>
+      <p class="contrast-text contrast-text--large-fail">Featured collection</p>
+      <p class="demo__hint"><code>#BDBDBD</code> on white</p>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-non-text">
+  <h2 id="demo-non-text">Non-text contrast — 3:1</h2>
+  <p>
+    Visual information needed to identify controls and states must contrast at
+    least 3:1 with adjacent colors (WCAG 1.4.11). Patterns below follow the
+    Understanding doc examples for borders, button fills, and selection.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Input border — passes</h3>
+      <label for="border-ok">Borrower name</label>
+      <input
+        id="border-ok"
+        class="input-border input-border--ok"
+        type="text"
+        name="border-ok"
+        autocomplete="off"
+      />
+      <p class="demo__hint">
+        Border <code>#767676</code> (4.5:1) against white — enough to see the
+        field.
+      </p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Input border — fails</h3>
+      <label for="border-fail">Borrower name</label>
+      <input
+        id="border-fail"
+        class="input-border input-border--fail"
+        type="text"
+        name="border-fail"
+        autocomplete="off"
+      />
+      <p class="demo__hint">
+        Border <code>#D0D0D0</code> (1.5:1) — the field is easy to miss.
+      </p>
+    </div>
+  </div>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Button — passes</h3>
+      <button type="button" class="contrast-button contrast-button--ok">
+        Renew loan
+      </button>
+      <p class="demo__hint">
+        Button fill <code>#114446</code> against white (10:1) — the control is
+        easy to identify.
+      </p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Button — fails</h3>
+      <button type="button" class="contrast-button contrast-button--fail">
+        Renew loan
+      </button>
+      <p class="demo__hint">
+        Button fill <code>#E8F0EE</code> against white (1.2:1) — the control
+        barely stands out from the page.
+      </p>
+    </div>
+  </div>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Selected state — passes</h3>
+      <div
+        class="shipping-group"
+        role="group"
+        aria-label="Shipping speed (sufficient selection cue)"
+      >
+        <button
+          type="button"
+          class="shipping-option shipping-option--ok"
+          [class.shipping-option--selected]="selectedOk() === 'standard'"
+          [attr.aria-pressed]="selectedOk() === 'standard'"
+          (click)="selectedOk.set('standard')"
+        >
+          Standard
+        </button>
+        <button
+          type="button"
+          class="shipping-option shipping-option--ok"
+          [class.shipping-option--selected]="selectedOk() === 'express'"
+          [attr.aria-pressed]="selectedOk() === 'express'"
+          (click)="selectedOk.set('express')"
+        >
+          Express
+        </button>
+      </div>
+      <p class="demo__hint">
+        Selected option uses a light check mark (15:1 on the button), not hue
+        alone.
+      </p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Selected state — fails</h3>
+      <div
+        class="shipping-group"
+        role="group"
+        aria-label="Shipping speed (insufficient selection cue)"
+      >
+        <button
+          type="button"
+          class="shipping-option shipping-option--fail"
+          [class.shipping-option--selected]="selectedFail() === 'standard'"
+          [attr.aria-pressed]="selectedFail() === 'standard'"
+          (click)="selectedFail.set('standard')"
+        >
+          Standard
+        </button>
+        <button
+          type="button"
+          class="shipping-option shipping-option--fail"
+          [class.shipping-option--selected]="selectedFail() === 'express'"
+          [attr.aria-pressed]="selectedFail() === 'express'"
+          (click)="selectedFail.set('express')"
+        >
+          Express
+        </button>
+      </div>
+      <p class="demo__hint">
+        Selected option uses a yellow outline (1.1:1 on white) — visible but
+        insufficient non-text contrast.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-use-of-color">
+  <h2 id="demo-use-of-color">Use of color</h2>
+  <p>
+    Do not convey information with color alone (WCAG 1.4.1). Pair hue with
+    text, shape, pattern, or another non-color cue.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Status dots — passes</h3>
+      <ul class="status-list">
+        <li>
+          <span class="status-dot status-dot--ok" aria-hidden="true"></span>
+          Available
+        </li>
+        <li>
+          <span class="status-dot status-dot--warn" aria-hidden="true"></span>
+          On hold
+        </li>
+        <li>
+          <span class="status-dot status-dot--err" aria-hidden="true"></span>
+          Overdue
+        </li>
+      </ul>
+      <p class="demo__hint">Color plus visible text labels.</p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Status dots — fails</h3>
+      <ul class="status-list status-list--color-only" aria-label="Item status">
+        <li>
+          <span class="status-dot status-dot--ok" title="Available"></span>
+          <span class="visually-hidden">Available</span>
+        </li>
+        <li>
+          <span class="status-dot status-dot--warn" title="On hold"></span>
+          <span class="visually-hidden">On hold</span>
+        </li>
+        <li>
+          <span class="status-dot status-dot--err" title="Overdue"></span>
+          <span class="visually-hidden">Overdue</span>
+        </li>
+      </ul>
+      <p class="demo__hint">
+        Sighted users only get colored dots — meaning is lost without color
+        perception. (Screen readers still hear the hidden labels.)
+      </p>
+    </div>
+  </div>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Palette icon-buttons — passes</h3>
+      <div
+        class="palette"
+        role="group"
+        aria-label="Theme with named swatches"
+      >
+        <button
+          type="button"
+          class="palette-btn palette-btn--named palette-btn--sand"
+          [attr.aria-pressed]="themeOk() === 'sand'"
+          (click)="themeOk.set('sand')"
+        >
+          Sand
+        </button>
+        <button
+          type="button"
+          class="palette-btn palette-btn--named palette-btn--sea"
+          [attr.aria-pressed]="themeOk() === 'sea'"
+          (click)="themeOk.set('sea')"
+        >
+          Sea
+        </button>
+        <button
+          type="button"
+          class="palette-btn palette-btn--named palette-btn--ink"
+          [attr.aria-pressed]="themeOk() === 'ink'"
+          (click)="themeOk.set('ink')"
+        >
+          Ink
+        </button>
+      </div>
+      <p class="demo__hint">
+        Color fills the button with a visible name; pressed state uses outline.
+      </p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Palette icon-buttons — fails</h3>
+      <div class="palette" role="group" aria-label="Theme by color only">
+        <button
+          type="button"
+          class="palette-btn palette-btn--swatch-only palette-btn--sand"
+          aria-label="Sand"
+          [attr.aria-pressed]="themeFail() === 'sand'"
+          (click)="themeFail.set('sand')"
+        ></button>
+        <button
+          type="button"
+          class="palette-btn palette-btn--swatch-only palette-btn--sea"
+          aria-label="Sea"
+          [attr.aria-pressed]="themeFail() === 'sea'"
+          (click)="themeFail.set('sea')"
+        ></button>
+        <button
+          type="button"
+          class="palette-btn palette-btn--swatch-only palette-btn--ink"
+          aria-label="Ink"
+          [attr.aria-pressed]="themeFail() === 'ink'"
+          (click)="themeFail.set('ink')"
+        ></button>
+      </div>
+      <p class="demo__hint">
+        Only colored fills distinguish options for sighted users.
+      </p>
+    </div>
+  </div>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>Links — passes</h3>
+      <p class="link-paragraph">
+        Browse the
+        <a class="link-ok" href="/showcases">catalog showcases</a>
+        for more patterns.
+      </p>
+      <p class="demo__hint">Underline (and color) marks the link.</p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Links — passes (contrast)</h3>
+      <p class="link-paragraph link-paragraph--contrast">
+        Browse the
+        <a class="link-ok-contrast" href="/showcases">catalog showcases</a>
+        for more patterns.
+      </p>
+      <p class="demo__hint">
+        No underline — body text is 21:1 to white; link is 3:1 to white and 7:1
+        to adjacent text.
+      </p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Links — fails</h3>
+      <p class="link-paragraph">
+        Browse the
+        <a class="link-fail" href="/showcases">catalog showcases</a>
+        for more patterns.
+      </p>
+      <p class="demo__hint">
+        No underline — only a hue change from body text identifies the link.
+      </p>
+    </div>
+  </div>
+</section>
+
+<app-info-box group="colorContrastAndUseOfColor" />

@@ -1,0 +1,209 @@
+<section class="intro">
+  <p>
+    <a class="back-link" routerLink="/showcases">
+      <span class="back-link__arrow" aria-hidden="true">←</span>
+      Back to Showcases
+    </a>
+  </p>
+
+  <h1 tabindex="-1">High contrast mode</h1>
+
+  <p>
+    Windows High Contrast (and similar “forced colors” modes) replace many
+    author colors with a limited system palette. Detect that with
+    <code>forced-colors: active</code> or Angular CDK’s
+    <code>cdk.high-contrast()</code> mixin, then restyle with
+    <code>currentColor</code> or CSS system colors — not brand hex values.
+    Emulate in DevTools: Rendering → Emulate CSS media feature
+    <code>forced-colors: active</code>.
+  </p>
+</section>
+
+<section class="demo" aria-labelledby="demo-colored-chrome">
+  <h2 id="demo-colored-chrome">Colored text, links, and a button</h2>
+  <p>
+    Author colors look fine in the default theme. With forced colors on, the
+    browser remaps <code>color</code>, backgrounds, and borders to system
+    colors so contrast stays usable.
+  </p>
+
+  <div class="demo__example demo__example--solo colored-chrome">
+    <p class="colored-chrome__text">
+      Shelf notices use brand teal for emphasis — turn on forced colors and
+      watch this paragraph lose its custom hue.
+    </p>
+    <p class="colored-chrome__links">
+      <a class="colored-chrome__link colored-chrome__link--catalog" href="#"
+        >Catalog</a
+      >
+      <a class="colored-chrome__link colored-chrome__link--hours" href="#"
+        >Opening hours</a
+      >
+      <a class="colored-chrome__link colored-chrome__link--contact" href="#"
+        >Contact</a
+      >
+    </p>
+    <button type="button" class="colored-chrome__button">Reserve a seat</button>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-svg-fill">
+  <h2 id="demo-svg-fill">SVG <code>fill</code> options</h2>
+  <p>
+    <code>fill</code> is forced in high contrast mode. Hardcoded brand colors
+    do not survive. Prefer <code>currentColor</code> (follows the parent’s
+    forced text color) or a system color that matches the control context.
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3><code>fill: #c45c26</code></h3>
+      <span class="icon-row" aria-hidden="true">
+        <svg class="demo-icon icon-fill--brand" viewBox="0 0 24 24" focusable="false">
+          <path
+            d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17.8 5.7 21.4 8 14 2 9.4h7.6L12 2z"
+          />
+        </svg>
+      </span>
+      <p class="demo__hint">
+        Author brand fill — ignored when forced colors are active.
+      </p>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>fill: currentColor</code></h3>
+      <span class="icon-row icon-row--text" aria-hidden="true">
+        <svg
+          class="demo-icon icon-fill--current"
+          viewBox="0 0 24 24"
+          focusable="false"
+        >
+          <path
+            d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17.8 5.7 21.4 8 14 2 9.4h7.6L12 2z"
+          />
+        </svg>
+      </span>
+      <p class="demo__hint">
+        Tracks the element’s <code>color</code> (usually
+        <code>CanvasText</code> once forced).
+      </p>
+    </div>
+
+    <div class="demo__example">
+      <h3>System colors</h3>
+      <ul class="icon-system-list">
+        <li>
+          <svg
+            class="demo-icon icon-fill--canvas-text"
+            viewBox="0 0 24 24"
+            focusable="false"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17.8 5.7 21.4 8 14 2 9.4h7.6L12 2z"
+            />
+          </svg>
+          <code>CanvasText</code>
+        </li>
+        <li>
+          <a class="icon-system-list__link" href="#">
+            <svg
+              class="demo-icon icon-fill--link-text"
+              viewBox="0 0 24 24"
+              focusable="false"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17.8 5.7 21.4 8 14 2 9.4h7.6L12 2z"
+              />
+            </svg>
+            <span>LinkText</span>
+          </a>
+        </li>
+        <li>
+          <button type="button" class="icon-system-list__button">
+            <svg
+              class="demo-icon icon-fill--button-text"
+              viewBox="0 0 24 24"
+              focusable="false"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17.8 5.7 21.4 8 14 2 9.4h7.6L12 2z"
+              />
+            </svg>
+            ButtonText
+          </button>
+        </li>
+      </ul>
+      <p class="demo__hint">
+        Also useful: <code>ButtonFace</code>, <code>ButtonBorder</code>,
+        <code>GrayText</code>, <code>Highlight</code> /
+        <code>HighlightText</code>, <code>VisitedText</code>,
+        <code>ActiveText</code>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-override-ok">
+  <h2 id="demo-override-ok">Override that works</h2>
+  <p>
+    Default brand fill would vanish in forced colors. Inside
+    <code>cdk.high-contrast()</code> (or <code>@media (forced-colors: active)</code>),
+    set <code>fill: currentColor</code> so the icon matches surrounding text.
+  </p>
+
+  <div class="demo__example demo__example--solo">
+    <div class="icon-row icon-row--text">
+      <svg
+        class="demo-icon icon-override--ok"
+        viewBox="0 0 24 24"
+        focusable="false"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17.8 5.7 21.4 8 14 2 9.4h7.6L12 2z"
+        />
+      </svg>
+      <span>Featured collection</span>
+    </div>
+    <p class="demo__hint">
+      SCSS:
+      <code>@include cdk.high-contrast() &#123; fill: currentColor; &#125;</code>
+    </p>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-forced-color-adjust">
+  <h2 id="demo-forced-color-adjust"><code>forced-color-adjust: none</code></h2>
+  <p>
+    Opt out of the UA color remap when you must keep author colors — for
+    example a brand swatch or a chart. You become responsible for contrast.
+    Prefer adapting with system colors or <code>currentColor</code> when you
+    can.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Keep author colors</h3>
+      <button type="button" class="hcm-adjust-none-button">Brand orange</button>
+      <p class="demo__hint">
+        <code>forced-color-adjust: none</code> — dark blue text and orange fill stay
+        as authored even when forced colors are active.
+      </p>
+    </div>
+
+    <div class="demo__example">
+      <h3>CDK outline on a button</h3>
+      <button type="button" class="hcm-outline-button">Borrow</button>
+      <p class="demo__hint">
+        Default <code>box-shadow</code> is forced to <code>none</code>.
+        <code>@include cdk.high-contrast() &#123; outline: solid 1px; &#125;</code>
+        restores a visible edge.
+      </p>
+    </div>
+  </div>
+</section>
+
+<app-info-box group="highContrastMode" />

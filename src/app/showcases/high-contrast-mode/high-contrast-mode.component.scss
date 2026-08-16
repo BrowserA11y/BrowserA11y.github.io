@@ -1,0 +1,128 @@
+@use "tokens" as *;
+@use "@angular/cdk" as cdk;
+@use "../../shared/showcase-page/showcase-page";
+
+.demo__hint {
+  margin: $spacing-xxs 0 0;
+  font-size: $font-size-footer;
+}
+
+.colored-chrome__text {
+  margin: 0 0 $spacing-xxs;
+  color: #0d7377;
+  font-weight: 600;
+}
+
+.colored-chrome__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+  margin: 0 0 $spacing-xxs;
+}
+
+.demo__example .colored-chrome__link {
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+}
+
+.demo__example .colored-chrome__link--catalog {
+  color: #1a5f8a;
+}
+
+.demo__example .colored-chrome__link--hours {
+  color: #8a4b08;
+}
+
+.demo__example .colored-chrome__link--contact {
+  color: #6b2d5c;
+}
+
+.demo__example button.colored-chrome__button {
+  color: #fff;
+  background: #c45c26;
+  border-color: #c45c26;
+}
+
+.icon-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-row--text {
+  color: $color-primary;
+}
+
+.demo-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.icon-fill--brand {
+  fill: #c45c26;
+}
+
+.icon-fill--current {
+  fill: currentColor;
+}
+
+.icon-fill--canvas-text {
+  fill: CanvasText;
+}
+
+.icon-fill--link-text {
+  fill: LinkText;
+}
+
+.icon-fill--button-text {
+  fill: ButtonText;
+}
+
+.icon-system-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.icon-system-list li,
+.icon-system-list__link,
+.icon-system-list__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.demo__example .icon-system-list__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.demo__example button.icon-system-list__button {
+  padding: 0.35rem 0.65rem;
+}
+
+.icon-override--ok {
+  fill: #c45c26;
+
+  @include cdk.high-contrast() {
+    fill: currentColor;
+  }
+}
+
+.demo__example button.hcm-adjust-none-button {
+  color: #003566;
+  background: #ffb703;
+  border-color: #fb8500;
+  forced-color-adjust: none;
+}
+
+.demo__example button.hcm-outline-button {
+  box-shadow: 0 2px 6px rgb(0 0 0 / 35%);
+
+  @include cdk.high-contrast() {
+    // box-shadow is forced to none — outline restores a visible edge.
+    outline: solid 1px;
+  }
+}

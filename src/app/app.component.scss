@@ -69,8 +69,17 @@ main {
   background-position: center bottom;
 }
 
+@media (forced-colors: active) {
+  // URL background-images survive forced-colors; Firefox then paints opaque
+  // text backplates for contrast — those show up as white slabs behind copy.
+  header,
+  main {
+    background-image: none;
+  }
+}
+
 @media (min-width: $breakpoint-tablet) {
   main {
-    padding: $spacing-s $spacing-m;
+    padding: $spacing-s $spacing-l;
   }
 }

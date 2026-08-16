@@ -87,6 +87,22 @@ export const routes: Routes = [
           ).then((m) => m.ReflowResizeAndSpacingComponent),
         title: "Reflow, Resize and Spacing",
       },
+      {
+        path: "color-contrast-and-use-of-color",
+        loadComponent: () =>
+          import(
+            "./app/showcases/color-contrast-and-use-of-color/color-contrast-and-use-of-color.component"
+          ).then((m) => m.ColorContrastAndUseOfColorComponent),
+        title: "Color contrast and use of color",
+      },
+      {
+        path: "high-contrast-mode",
+        loadComponent: () =>
+          import(
+            "./app/showcases/high-contrast-mode/high-contrast-mode.component"
+          ).then((m) => m.HighContrastModeComponent),
+        title: "High contrast mode",
+      },
     ],
   },
 ];

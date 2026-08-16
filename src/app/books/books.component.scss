@@ -78,10 +78,11 @@
 
 .books {
   display: grid;
+  // minmax floor grows with the row so auto-fit never exceeds 4 columns
   grid-template-columns: repeat(
     auto-fit,
-    minmax(18rem, 1fr)
-  ); //https://caniuse.com/?search=minmax
+    minmax(max(18rem, calc((100% - #{$spacing-xs} * 3) / 4)), 1fr)
+  );
   grid-gap: $spacing-xs;
   list-style: none;
   margin: 0;

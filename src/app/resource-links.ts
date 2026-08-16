@@ -160,6 +160,42 @@ export const RESOURCE_LINKS = {
       href: "https://stevenmouret.github.io/web-accessibility-guidelines/accessibility/presentation-of-information/customizing-the-display.html",
     },
   ],
+  colorContrastAndUseOfColor: [
+    {
+      label: "Color contrast (Pimp my Type)",
+      href: "https://pimpmytype.com/color-contrast/",
+    },
+    {
+      label: "Emulate forced colors (DevTools Tips)",
+      href: "https://devtoolstips.org/tips/en/emulate-forced-colors/",
+    },
+    {
+      label: "forced-colors media feature (MDN)",
+      href: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors",
+    },
+    {
+      label: "Understanding SC 1.4.11 Non-text Contrast (W3C)",
+      href: "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast",
+    },
+  ],
+  highContrastMode: [
+    {
+      label: "Turn high contrast mode on or off in Windows",
+      href: "https://support.microsoft.com/en-us/windows/turn-high-contrast-mode-on-or-off-in-windows-909e9d89-a0f9-a3a9-b993-7a6dcee85025#ID0EBD=Windows_11",
+    },
+    {
+      label: "Angular CDK a11y — targeting high-contrast users",
+      href: "https://material.angular.io/cdk/a11y/overview#targeting-high-contrast-users",
+    },
+    {
+      label: "Using media queries for accessibility (MDN)",
+      href: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries_for_accessibility",
+    },
+    {
+      label: "Using media queries to improve accessibility (Grrr)",
+      href: "https://grrr.tech/posts/2021/using-media-queries-to-improve-accessibility/",
+    },
+  ],
 } as const satisfies Record<string, readonly ResourceLink[]>;
 
 export type ResourceLinkGroup = keyof typeof RESOURCE_LINKS;

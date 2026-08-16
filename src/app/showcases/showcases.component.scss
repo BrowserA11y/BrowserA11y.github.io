@@ -12,7 +12,10 @@
   padding: 0;
   display: grid;
   gap: $spacing-xs;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(16rem, calc((100% - #{$spacing-xs} * 2) / 3)), 1fr)
+  );
 }
 
 .showcases__item {
@@ -23,10 +26,4 @@
   width: 2.5rem;
   height: 2.5rem;
   fill: currentColor;
-}
-
-@media (min-width: $breakpoint-tablet) {
-  .showcases__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
