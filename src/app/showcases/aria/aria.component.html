@@ -183,17 +183,13 @@
     <div
       role="button"
       class="demo-nested-host"
-      tabindex="0"
       (click)="activateFakeButton()"
-      (keydown)="onFakeButtonKeydown($event)"
     >
       <span class="demo-nested-host__label">Add to shelf</span>
       <span
         class="demo-nested-host__inner"
         role="button"
-        tabindex="0"
         (click)="$event.stopPropagation(); activateFakeButton()"
-        (keydown)="onFakeButtonKeydown($event)"
       >
         Options
       </span>

@@ -20,14 +20,7 @@ export class AriaComponent {
   selectTab(tab: "overview" | "editions"): void {
     this.selectedTab.set(tab);
   }
-
-  onFakeButtonKeydown(event: KeyboardEvent): void {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      this.activateFakeButton();
-    }
-  }
-
+  
   postLiveUpdate(): void {
     const next = this.liveCount() + 1;
     this.liveCount.set(next);
