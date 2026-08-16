@@ -60,6 +60,24 @@ export const RESOURCE_LINKS = {
       href: "https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/modules/accessibility/ax_node_object.cc#L5855",
     },
   ],
+  aria: [
+    {
+      label: "WAI-ARIA Authoring Practices Guide (APG)",
+      href: "https://www.w3.org/WAI/ARIA/apg/",
+    },
+    {
+      label: "ARIA in HTML (W3C)",
+      href: "https://www.w3.org/TR/html-aria/",
+    },
+    {
+      label: "Using ARIA (W3C Note)",
+      href: "https://www.w3.org/TR/using-aria/",
+    },
+    {
+      label: "ARIA roles (MDN)",
+      href: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles",
+    },
+  ],
 } as const satisfies Record<string, readonly ResourceLink[]>;
 
 export type ResourceLinkGroup = keyof typeof RESOURCE_LINKS;

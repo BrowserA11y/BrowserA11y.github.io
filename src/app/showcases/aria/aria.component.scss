@@ -1,0 +1,240 @@
+@use "tokens" as *;
+@use "sass:color";
+
+.back-link {
+  color: $color-secondary;
+  text-underline-offset: 0.6em;
+}
+
+.back-link__arrow {
+  font-size: 1.1em;
+}
+
+.intro,
+.demo {
+  margin-bottom: $spacing-s;
+  max-width: 52rem;
+}
+
+.intro h1 {
+  margin-top: $spacing-s;
+}
+
+.demo:has(.demo__pair) {
+  max-width: 72rem;
+}
+
+.demo h2 {
+  margin-bottom: $spacing-xxs;
+}
+
+.demo h3 {
+  margin: 0 0 $spacing-xxs;
+  font-size: $font-size-xs;
+}
+
+.demo__pair {
+  display: grid;
+  gap: $spacing-xs;
+  margin-top: $spacing-xs;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .demo__pair {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .demo__pair > .demo__example {
+    grid-column: span 3;
+  }
+
+  .demo__pair--three > .demo__example {
+    grid-column: span 2;
+  }
+}
+
+.demo__example {
+  padding: $spacing-xxs;
+  border: 1px solid $color-border;
+  background: $color-primary-invert;
+}
+
+.demo__example--solo {
+  margin-top: $spacing-xs;
+}
+
+.demo__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xxs;
+  margin-bottom: $spacing-xxs;
+}
+
+.demo__example button,
+.demo__actions button {
+  font: inherit;
+  padding: 0.4rem 0.8rem;
+  color: $color-primary-invert;
+  background: $color-secondary;
+  border: 2px solid $color-secondary;
+  cursor: pointer;
+}
+
+.demo__example button:focus-visible,
+.demo__actions button:focus-visible,
+.demo-fake-button:focus-visible,
+.demo__example a:focus-visible {
+  outline: 3px solid $color-focus-ring;
+  outline-offset: 2px;
+}
+
+.demo__example a {
+  color: $color-secondary;
+  text-underline-offset: 0.2em;
+}
+
+.demo-fake-button {
+  display: inline-block;
+  font: inherit;
+  padding: 0.4rem 0.8rem;
+  color: $color-primary-invert;
+  background: $color-secondary;
+  border: 2px solid $color-secondary;
+  cursor: pointer;
+}
+
+.demo__example .demo-nested-host {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 0.35rem 0.4rem 0.35rem 0.85rem;
+  color: $color-primary-invert;
+  background: $color-secondary;
+  border: 2px solid $color-secondary;
+  cursor: pointer;
+}
+
+.demo__example .demo-nested-host:focus-visible {
+  outline: 3px solid $color-focus-ring;
+  outline-offset: 2px;
+}
+
+.demo-nested-host__label {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.demo__example .demo-nested-host__inner {
+  display: inline-block;
+  font: inherit;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  color: $color-secondary;
+  background: $color-primary-invert;
+  border: 2px solid $color-primary-invert;
+  cursor: pointer;
+}
+
+.demo__example .demo-nested-host__inner:focus-visible {
+  outline: 3px solid $color-focus-ring;
+  outline-offset: 2px;
+}
+
+.demo-icon {
+  display: block;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.demo-icon-with-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.demo-bad-hidden {
+  margin-top: $spacing-xxs;
+  padding: $spacing-xxs;
+  border: 1px dashed $color-border;
+  background: $color-background-muted;
+}
+
+.demo-bad-hidden p {
+  margin: 0 0 $spacing-xxs;
+}
+
+.demo-native-heading {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.demo-fake-list {
+  margin: 1em 0;
+  padding-inline-start: 40px;
+}
+
+.demo-fake-list > * {
+  display: list-item;
+  list-style-type: disc;
+}
+
+.demo-tabs {
+  margin-top: 0.15rem;
+}
+
+.demo-tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid $color-border;
+}
+
+.demo-tabs__tab {
+  position: relative;
+  bottom: -1px;
+  margin: 0;
+  font: inherit;
+  padding: 0.45rem 0.9rem;
+  color: color.change($color-primary, $alpha: 0.45);
+  background: color.change($color-primary, $alpha: 0.06);
+  border: 1px solid color.change($color-primary, $alpha: 0.12);
+  border-bottom-color: transparent;
+  border-radius: 0.35rem 0.35rem 0 0;
+  cursor: pointer;
+}
+
+.demo__example .demo-tabs__tab {
+  color: color.change($color-primary, $alpha: 0.45);
+  background: color.change($color-primary, $alpha: 0.06);
+  border: 1px solid color.change($color-primary, $alpha: 0.12);
+  border-bottom-color: transparent;
+}
+
+.demo-tabs__tab[aria-selected="true"],
+.demo__example .demo-tabs__tab[aria-selected="true"] {
+  color: $color-secondary;
+  background: $color-primary-invert;
+  border-color: $color-border;
+  border-bottom-color: $color-primary-invert;
+  font-weight: 600;
+}
+
+.demo-tabs__tab:focus-visible {
+  outline: 3px solid $color-focus-ring;
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+.demo-tabs__panel {
+  margin: 0;
+  padding: $spacing-xxs $spacing-xs;
+  border: 1px solid $color-border;
+  border-top: none;
+  background: $color-primary-invert;
+}

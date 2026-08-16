@@ -55,6 +55,14 @@ export const routes: Routes = [
           ),
         title: "Semantic HTML",
       },
+      {
+        path: "aria",
+        loadComponent: () =>
+          import("./app/showcases/aria/aria.component").then(
+            (m) => m.AriaComponent
+          ),
+        title: "ARIA",
+      },
     ],
   },
 ];

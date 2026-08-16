@@ -1,0 +1,288 @@
+<section class="intro">
+  <p>
+    <a class="back-link" routerLink="/showcases">
+      <span class="back-link__arrow" aria-hidden="true">←</span>
+      Back to Showcases
+    </a>
+  </p>
+
+  <h1 tabindex="-1">ARIA</h1>
+
+  <p>
+    ARIA can expose roles and states that HTML alone does not — but it does not
+    add behavior, and unknown or conflicting markup is often ignored or harmful.
+    Prefer native elements; use ARIA when you cannot.
+  </p>
+</section>
+
+<section class="demo" aria-labelledby="demo-implicit-roles">
+  <h2 id="demo-implicit-roles">Implicit ARIA roles</h2>
+  <p>
+    Many HTML elements already map to ARIA roles in the accessibility tree. You
+    do not need to add <code>role</code> — the browser supplies it from the
+    element type.
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>Button → <code>button</code></h3>
+      <button type="button">Borrow</button>
+    </div>
+
+    <div class="demo__example">
+      <h3>Link → <code>link</code></h3>
+      <a href="/showcases">Back to showcases</a>
+    </div>
+
+    <div class="demo__example">
+      <h3>Heading → <code>heading</code></h3>
+      <h4 class="demo-native-heading">Featured titles</h4>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-aria-roles">
+  <h2 id="demo-aria-roles">ARIA roles</h2>
+  <p>
+    Explicit roles change how assistive technologies announce an element. Valid
+    roles from the ARIA vocabulary are exposed; invented names are ignored. Roles
+    do not add keyboard support or click handling — wire that yourself when you
+    leave native controls behind.
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3><code>role="button"</code> on a span</h3>
+      <span
+        class="demo-fake-button"
+        role="button"
+        (click)="activateFakeButton()"
+      >
+        Reserve copy
+      </span>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>role="tab"</code> (no HTML equivalent)</h3>
+      <div class="demo-tabs">
+        <div role="tablist" aria-label="Book details" class="demo-tabs__list">
+          <button
+            type="button"
+            role="tab"
+            class="demo-tabs__tab"
+            id="tab-overview"
+            [attr.aria-selected]="selectedTab() === 'overview'"
+            [attr.tabindex]="selectedTab() === 'overview' ? 0 : -1"
+            aria-controls="panel-overview"
+            (click)="selectTab('overview')"
+          >
+            Overview
+          </button>
+          <button
+            type="button"
+            role="tab"
+            class="demo-tabs__tab"
+            id="tab-editions"
+            [attr.aria-selected]="selectedTab() === 'editions'"
+            [attr.tabindex]="selectedTab() === 'editions' ? 0 : -1"
+            aria-controls="panel-editions"
+            (click)="selectTab('editions')"
+          >
+            Editions
+          </button>
+        </div>
+        @if (selectedTab() === "overview") {
+        <div
+          role="tabpanel"
+          class="demo-tabs__panel"
+          id="panel-overview"
+          aria-labelledby="tab-overview"
+        >
+          A short blurb about the title.
+        </div>
+        } @else {
+        <div
+          role="tabpanel"
+          class="demo-tabs__panel"
+          id="panel-editions"
+          aria-labelledby="tab-editions"
+        >
+          Paperback, hardcover, and large-print.
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>role="wizard"</code> (does not exist)</h3>
+      <nav role="wizard" aria-label="Checkout steps">
+        <a href="/showcases">Step 1</a>
+        ·
+        <a href="/showcases">Step 2</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-override-roles">
+  <h2 id="demo-override-roles">ARIA roles overriding HTML implicit roles</h2>
+  <p>
+    An explicit <code>role</code> replaces the element’s implicit ARIA role.
+    That can rematch the wrong control pattern (or strip meaning with
+    <code>presentation</code> / <code>none</code>).
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>Link forced to button</h3>
+      <a href="/showcases" role="button">Open catalog</a>
+    </div>
+
+    <div class="demo__example">
+      <h3>Button forced to heading</h3>
+      <button type="button" role="heading" aria-level="2">
+        Section title?
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3>Heading made presentational</h3>
+      <h2 role="presentation">Shelf highlights</h2>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-nested-roles">
+  <h2 id="demo-nested-roles">Nested roles</h2>
+  <p>
+    Many roles require specific parents or children (for example
+    <code>list</code> / <code>listitem</code>). Invalid nesting is ignored or
+    repaired inconsistently across browsers and screen readers.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Valid list structure</h3>
+      <ul>
+        <li>Large-print novels</li>
+        <li>Braille editions</li>
+      </ul>
+    </div>
+
+    <div class="demo__example">
+      <h3>Broken nesting</h3>
+      <div role="list" class="demo-fake-list">
+        <div>Not a list item</div>
+        <div>Orphaned listitem under mixed children</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo__example demo__example--solo">
+    <h3>Interactive control inside interactive control</h3>
+    <div
+      role="button"
+      class="demo-nested-host"
+      tabindex="0"
+      (click)="activateFakeButton()"
+      (keydown)="onFakeButtonKeydown($event)"
+    >
+      <span class="demo-nested-host__label">Add to shelf</span>
+      <span
+        class="demo-nested-host__inner"
+        role="button"
+        tabindex="0"
+        (click)="$event.stopPropagation(); activateFakeButton()"
+        (keydown)="onFakeButtonKeydown($event)"
+      >
+        Options
+      </span>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-aria-hidden">
+  <h2 id="demo-aria-hidden">aria-hidden</h2>
+  <p>
+    <code>aria-hidden="true"</code> removes a subtree from the accessibility
+    tree. Use it for decorative visuals — never on focusable or meaningful
+    content that keyboard users can still reach.
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>Decorative icon (good)</h3>
+      <button type="button" class="demo-icon-with-label">
+        <svg
+          class="demo-icon"
+          aria-hidden="true"
+          focusable="false"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 2 4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 2.18 6 2.25v4.66c0 3.91-2.55 7.55-6 8.66-3.45-1.11-6-4.75-6-8.66V6.43l6-2.25z"
+          />
+        </svg>
+        Save draft
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>aria-hidden</code> on a focusable control (bad)</h3>
+      <div class="demo-bad-hidden" aria-hidden="true">
+        <p>Visible tip: overdue fees apply after 14 days.</p>
+        <button type="button">Dismiss tip</button>
+      </div>
+    </div>
+
+    <div class="demo__example">
+      <h3>Show / hide panel with <code>&#64;if</code></h3>
+      <div class="demo__actions">
+        <button type="button" (click)="toggleHiddenPanel()">
+          {{ showHiddenPanel() ? "Hide" : "Show" }} tip
+        </button>
+      </div>
+      @if (showHiddenPanel()) {
+      <div class="demo-bad-hidden">
+        <p>Visible tip: overdue fees apply after 14 days.</p>
+        <button type="button">Dismiss tip</button>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-aria-live">
+  <h2 id="demo-aria-live">aria-live</h2>
+  <p>
+    Live regions announce changes without moving focus.
+    <code>aria-live="polite"</code> waits for a pause;
+    <code>assertive</code> interrupts. Prefer built-in roles like
+    <code>status</code> / <code>alert</code> when they fit.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Polite live region</h3>
+      <div class="demo__actions">
+        <button type="button" (click)="postLiveUpdate()">Reserve a book</button>
+        <button type="button" (click)="clearLiveUpdate()">Clear</button>
+      </div>
+      <p aria-live="polite" aria-atomic="true">{{ liveMessage() }}</p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Assertive live region</h3>
+      <div class="demo__actions">
+        <button type="button" (click)="emitError()">Emit error</button>
+        <button type="button" (click)="clearAssertiveMessage()">Clear</button>
+      </div>
+      <p aria-live="assertive" aria-atomic="true">{{ assertiveMessage() }}</p>
+    </div>
+  </div>
+</section>
+
+<app-info-box group="aria" />

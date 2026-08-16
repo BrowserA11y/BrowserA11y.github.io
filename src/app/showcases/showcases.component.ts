@@ -27,5 +27,14 @@ export class ShowcasesComponent {
       iconPath:
         "M4 6l4 6-4 6h2.5L10.5 12 6.5 6H4zm16 0h-2.5L13.5 12l4 6H20l-4-6 4-6zM11 17h2l1-10h-2l-1 10z",
     },
+    {
+      title: "ARIA",
+      description:
+        "Roles, overrides, nesting, aria-hidden, and live regions — and when they help or hurt.",
+      link: "/showcases/aria",
+      // Accessibility tree / layered nodes
+      iconPath:
+        "M3 5h18v2H3V5zm2 4h14v2H5V9zm2 4h10v2H7v-2zm2 4h6v2H9v-2z",
+    },
   ] as const;
 }
