@@ -1,0 +1,369 @@
+<section class="intro">
+  <p>
+    <a class="back-link" routerLink="/showcases">
+      <span class="back-link__arrow" aria-hidden="true">←</span>
+      Back to Showcases
+    </a>
+  </p>
+
+  <h1 tabindex="-1">Live regions</h1>
+
+  <p>
+    Live regions tell assistive technologies about content that changes without
+    a focus move. Prefer semantic roles like <code>status</code>,
+    <code>alert</code>, and <code>&lt;output&gt;</code> when they fit; use
+    <code>aria-live</code> when you need finer control.
+  </p>
+</section>
+
+<section class="demo" aria-labelledby="demo-output">
+  <h2 id="demo-output">Native <code>&lt;output&gt;</code></h2>
+  <p>
+    The <code>output</code> element is an implicit live region
+    (<code>role="status"</code>). Associate it with a label via
+    <code>for</code>/<code>id</code>.
+  </p>
+
+  <div class="demo__example">
+    <div class="demo__actions">
+      <button type="button" (click)="increaseScore()">Add point</button>
+      <button type="button" (click)="resetScore()">Reset</button>
+    </div>
+    <div class="demo-score">
+      <label for="yourScore">Your score</label>
+      <output id="yourScore">{{ score() }}</output>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-timer-atomic">
+  <h2 id="demo-timer-atomic">
+    <code>aria-live</code> and <code>aria-atomic</code>
+  </h2>
+  <p>
+    Without <code>aria-atomic</code>, many screen readers announce only what
+    changed (often just the number). With <code>aria-atomic="true"</code>, the
+    whole region is re-read — e.g. “9 seconds left”. Prefer
+    <code>aria-live</code> here:
+    <code>role="timer"</code> is not supported in Chrome.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Partial updates (default)</h3>
+      <div class="demo__actions">
+        <button type="button" (click)="togglePartialTimer()">
+          {{ partialRunning() ? "Stop" : "Start" }} timer
+        </button>
+      </div>
+      <div aria-live="polite" class="demo-timer">
+        <span>{{ partialSeconds() }}</span> seconds left
+      </div>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>aria-atomic="true"</code></h3>
+      <div class="demo__actions">
+        <button type="button" (click)="toggleAtomicTimer()">
+          {{ atomicRunning() ? "Stop" : "Start" }} timer
+        </button>
+      </div>
+      <div aria-live="polite" aria-atomic="true" class="demo-timer">
+        <span>{{ atomicSeconds() }}</span> seconds left
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-relevant">
+  <h2 id="demo-relevant"><code>aria-relevant</code> additions and removals</h2>
+  <p>
+    The default for <code>aria-relevant</code> is
+    <code>additions text</code>. Setting
+    <code>aria-relevant="additions removals"</code> also announces removals.
+    Use each list’s controls separately to compare.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Default <code>aria-relevant</code></h3>
+      <div class="demo__actions">
+        <button
+          type="button"
+          (click)="addDefaultUser()"
+          [disabled]="defaultUsers().length >= 7"
+        >
+          Add user
+        </button>
+        <button
+          type="button"
+          (click)="removeDefaultUser()"
+          [disabled]="defaultUsers().length === 0"
+        >
+          Remove user
+        </button>
+      </div>
+      <ul
+        class="demo-user-list"
+        aria-live="polite"
+        aria-label="Online users (default relevant)"
+      >
+        @for (user of defaultUsers(); track user) {
+        <li>{{ user }}</li>
+        } @empty {
+        <li class="demo-user-list__empty">No one is online.</li>
+        }
+      </ul>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>additions removals</code></h3>
+      <div class="demo__actions">
+        <button
+          type="button"
+          (click)="addRelevantUser()"
+          [disabled]="relevantUsers().length >= 7"
+        >
+          Add user
+        </button>
+        <button
+          type="button"
+          (click)="removeRelevantUser()"
+          [disabled]="relevantUsers().length === 0"
+        >
+          Remove user
+        </button>
+      </div>
+      <ul
+        class="demo-user-list"
+        aria-live="polite"
+        aria-relevant="additions removals"
+        aria-label="Online users (additions and removals)"
+      >
+        @for (user of relevantUsers(); track user) {
+        <li>{{ user }}</li>
+        } @empty {
+        <li class="demo-user-list__empty">No one is online.</li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-plain-text">
+  <h2 id="demo-plain-text">Plain text only</h2>
+  <p>
+    Live regions announce text content — they do not communicate semantic roles.
+    A heading or button inside a live update is usually read as plain words, not
+    as “heading” or “button”. Keep live messages as plain text; leave real
+    structure and controls in the page outside the live region.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Heading and button inside live region</h3>
+      <div class="demo__actions">
+        <button type="button" (click)="showStructuredLive()">
+          Post structured update
+        </button>
+      </div>
+      <div
+        class="demo-live-plain"
+        aria-live="polite"
+        aria-atomic="true"
+        aria-label="Structured live update"
+      >
+        @if (structuredLiveVisible()) {
+        <h4 class="demo-live-plain__heading">Reservation confirmed</h4>
+        <button type="button">View receipt</button>
+        }
+      </div>
+    </div>
+
+    <div class="demo__example">
+      <h3>Plain text message</h3>
+      <div class="demo__actions">
+        <button type="button" (click)="showPlainLive()">
+          Post plain update
+        </button>
+      </div>
+      <div
+        class="demo-live-plain"
+        aria-live="polite"
+        aria-atomic="true"
+        aria-label="Plain live update"
+      >
+        {{ plainLiveMessage() }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-live-timing">
+  <h2 id="demo-live-timing">Live region must exist before the update</h2>
+  <p>
+    Assistive technologies watch live regions that are already in the render
+    tree. If a disclosed widget inserts a live region that already contains
+    text, the change is often never announced. Keep the live region mounted
+    (even when empty), then update its text after it is present.
+  </p>
+
+  <div class="demo__pair">
+    <div class="demo__example">
+      <h3>Region created with the disclosure</h3>
+      <div class="demo__actions">
+        <button
+          type="button"
+          [attr.aria-expanded]="lateLiveOpen()"
+          (click)="toggleLateLive()"
+        >
+          {{ lateLiveOpen() ? "Hide" : "Show" }} filter results
+        </button>
+      </div>
+      @if (lateLiveOpen()) {
+      <div class="demo-disclosure">
+        <p>Matching titles appear in the list.</p>
+        <div
+          class="demo-live-plain"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          Filter applied: 12 books match.
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="demo__example">
+      <h3>Region present, then text updates</h3>
+      <div class="demo__actions">
+        <button
+          type="button"
+          [attr.aria-expanded]="earlyLiveOpen()"
+          (click)="toggleEarlyLive()"
+        >
+          {{ earlyLiveOpen() ? "Hide" : "Show" }} filter results
+        </button>
+      </div>
+      @if (earlyLiveOpen()) {
+      <div class="demo-disclosure">
+        <p>Matching titles appear in the list.</p>
+        <div
+          class="demo-live-plain"
+          aria-live="polite"
+          aria-atomic="true"
+          aria-label="Filter status"
+        >
+          {{ earlyLiveMessage() }}
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-busy">
+  <h2 id="demo-busy">Skeletons and <code>aria-busy</code></h2>
+  <p>
+    A visual skeleton alone is not an accessible status. Pair loading UI with
+    <code>aria-busy="true"</code> on the container being updated so assistive
+    technologies know content is in flux.
+  </p>
+
+  <div class="demo__example">
+    <div class="demo__actions">
+      <button
+        type="button"
+        (click)="loadWithBusy()"
+        [disabled]="contentBusy()"
+      >
+        Refresh blurb
+      </button>
+    </div>
+    <div [attr.aria-busy]="contentBusy()" class="demo-busy-panel">
+      @if (contentBusy()) {
+      <div class="demo-skeleton" aria-hidden="true">
+        <span class="demo-skeleton__bar"></span>
+        <span class="demo-skeleton__bar demo-skeleton__bar--short"></span>
+      </div>
+      <p class="visually-hidden">Loading</p>
+      } @else {
+      <p class="demo-busy-panel__title">Featured title</p>
+      <svg
+        class="demo-busy-panel__img"
+        viewBox="0 0 24 24"
+        width="64"
+        height="64"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-labelledby="busy-book-title"
+      >
+        <title id="busy-book-title">Book icon</title>
+        <path
+          fill="currentColor"
+          d="M6 4h11a2 2 0 0 1 2 2v14l-7-3-7 3V6a2 2 0 0 1 2-2zm0 2v11.2l5-2.14 5 2.14V6H6z"
+        />
+      </svg>
+      <p>A short blurb about accessible reading habits.</p>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-live-announcer">
+  <h2 id="demo-live-announcer">Angular CDK <code>LiveAnnouncer</code></h2>
+  <p>
+    <code>LiveAnnouncer</code> is an imperative API: call
+    <code>announce()</code> when there is no suitable live region in the DOM —
+    for example after a save that only shows a toast visually.
+  </p>
+
+  <div class="demo__example">
+    <div class="demo__actions">
+      <button type="button" (click)="announceFeedback()">
+        Announce “Successfully saved”
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-defer">
+  <h2 id="demo-defer">
+    <code>&#64;defer</code> inside a polite live region
+  </h2>
+  <p>
+    Wrapping deferred UI in <code>aria-live="polite"</code> with
+    <code>aria-atomic="true"</code> can announce placeholder, loading, and
+    loaded content as the block swaps. Trigger the load, then listen with a
+    screen reader.
+  </p>
+
+  <div class="demo__example">
+    <div class="demo__actions">
+      <button type="button" (click)="loadDeferredBooks()">
+        Load deferred book list
+      </button>
+    </div>
+
+    @if (showDeferredBooks()) {
+    <p aria-atomic="true" aria-live="polite" class="demo-defer">
+      @defer (on timer(1000)) {
+      <span class="demo-defer__ready">Catalog ready:</span>
+      <ul class="demo-defer__list">
+        <li>Inclusive Design Patterns</li>
+        <li>Accessibility for Everyone</li>
+        <li>Form Design Patterns</li>
+      </ul>
+      } @placeholder {
+      <span>List of books will be displayed here</span>
+      } @loading (minimum 1000) {
+      <span>Loading...</span>
+      } @error {
+      <span>Error loading books.</span>
+      }
+    </p>
+    }
+  </div>
+</section>
+
+<app-info-box group="liveRegions" />

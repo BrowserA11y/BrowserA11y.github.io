@@ -78,6 +78,58 @@ export const RESOURCE_LINKS = {
       href: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles",
     },
   ],
+  hidingElements: [
+    {
+      label: "How is CSS pseudo-content treated by screen readers?",
+      href: "https://accessibleweb.com/question-answer/how-is-css-pseudo-content-treated-by-screen-readers/",
+    },
+    {
+      label: "Invisible Content (WebAIM)",
+      href: "https://webaim.org/techniques/css/invisiblecontent/",
+    },
+    {
+      label: "CSS content & accessibility (CodePen)",
+      href: "https://codepen.io/vincent-valentin/full/JjGmxzV",
+    },
+    {
+      label: "Angular CDK a11y visually-hidden",
+      href: "https://github.com/angular/components/blob/main/src/cdk/a11y/_index.scss",
+    },
+  ],
+  liveRegions: [
+    {
+      label: "ARIA live regions (MDN)",
+      href: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions",
+    },
+    {
+      label: "Accessible notifications with ARIA live regions (Sara Soueidan)",
+      href: "https://www.sarasoueidan.com/blog/accessible-notifications-with-aria-live-regions-part-1/",
+    },
+    {
+      label: "ARIA Live-Regionen (tollwerk)",
+      href: "https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen",
+    },
+    {
+      label: "aria-busy (MDN)",
+      href: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-busy",
+    },
+    {
+      label: "Live-Regionen Attribute (barrierefreies-webdesign)",
+      href: "https://www.barrierefreies-webdesign.de/knowhow/live-regions/attribute.html",
+    },
+    {
+      label: "More Accessible Skeletons (Adrian Roselli)",
+      href: "https://adrianroselli.com/2020/11/more-accessible-skeletons.html",
+    },
+    {
+      label: "Angular CDK LiveAnnouncer",
+      href: "https://material.angular.io/cdk/a11y/overview#liveannouncer",
+    },
+    {
+      label: "Creating a more accessible web with Aria Notify (Edge Blog)",
+      href: "https://blogs.windows.com/msedgedev/2025/05/05/creating-a-more-accessible-web-with-aria-notify/",
+    },
+  ],
 } as const satisfies Record<string, readonly ResourceLink[]>;
 
 export type ResourceLinkGroup = keyof typeof RESOURCE_LINKS;

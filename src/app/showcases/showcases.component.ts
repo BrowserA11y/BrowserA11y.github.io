@@ -36,5 +36,23 @@ export class ShowcasesComponent {
       iconPath:
         "M3 5h18v2H3V5zm2 4h14v2H5V9zm2 4h10v2H7v-2zm2 4h6v2H9v-2z",
     },
+    {
+      title: "Hiding elements",
+      description:
+        "Visible vs invisible, and whether assistive technologies still get the content.",
+      link: "/showcases/hiding-elements",
+      // Eye with slash / hide metaphor
+      iconPath:
+        "M12 5c-5 0-9.3 3.1-11 7 1.7 3.9 6 7 11 7s9.3-3.1 11-7c-1.7-3.9-6-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM2.1 3.5l18.4 18.4 1.4-1.4L3.5 2.1 2.1 3.5z",
+    },
+    {
+      title: "Live regions",
+      description:
+        "Announce dynamic updates to assistive technologies without moving focus.",
+      link: "/showcases/live-regions",
+      // Broadcast / signal waves
+      iconPath:
+        "M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-4.9-2a4.9 4.9 0 0 1 9.8 0h2a6.9 6.9 0 0 0-13.8 0h2zm-3.5 0a8.4 8.4 0 0 1 16.8 0h2a10.4 10.4 0 0 0-20.8 0h2z",
+    },
   ] as const;
 }

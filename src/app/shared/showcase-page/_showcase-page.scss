@@ -61,6 +61,14 @@
   background: $color-primary-invert;
 }
 
+// Vertically center only when the example is a single button / actions row
+// (e.g. LiveAnnouncer). Other pair columns stay top-aligned when stretched.
+.demo__example:has(> .demo__actions:only-child),
+.demo__example:has(> button:only-child) {
+  display: flex;
+  align-items: center;
+}
+
 .demo__example--solo {
   margin-top: $spacing-xs;
 }
@@ -70,6 +78,10 @@
   flex-wrap: wrap;
   gap: $spacing-xxs;
   margin-bottom: $spacing-xxs;
+}
+
+.demo__actions:last-child {
+  margin-bottom: 0;
 }
 
 .demo__example label {

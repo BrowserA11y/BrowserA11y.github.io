@@ -63,6 +63,23 @@ export const routes: Routes = [
           ),
         title: "ARIA",
       },
+      {
+        path: "hiding-elements",
+        loadComponent: () =>
+          import(
+            "./app/showcases/hiding-elements/hiding-elements.component"
+          ).then((m) => m.HidingElementsComponent),
+        title: "Hiding elements",
+      },
+      {
+        path: "live-regions",
+        loadComponent: () =>
+          import("./app/showcases/live-regions/live-regions.component").then(
+            (m) => m.LiveRegionsComponent
+          ),
+        title: "Live regions",
+      },
     ],
   },
 ];
+
