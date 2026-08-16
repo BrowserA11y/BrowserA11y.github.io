@@ -1,5 +1,6 @@
 @use "sass:color";
 @use "tokens" as *;
+@use "@angular/cdk" as cdk;
 
 .about__intro {
   margin-bottom: $spacing-s;
@@ -34,6 +35,17 @@
 
   td {
     padding: $spacing-xxs;
+  }
+
+  // Rows are separated by zebra backgrounds, which forced-colors flattens
+  // to Canvas — add real cell borders so the grid stays visible.
+  @include cdk.high-contrast() {
+    border-color: ButtonBorder;
+
+    th,
+    td {
+      border: 1px solid ButtonBorder;
+    }
   }
 }
 
