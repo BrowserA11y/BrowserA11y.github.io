@@ -1,0 +1,147 @@
+@use "tokens" as *;
+@use "../../shared/showcase-page/showcase-page";
+
+.demo-status {
+  margin: 0 0 $spacing-xs;
+  font-size: $font-size-xs;
+}
+
+.demo-playground {
+  --demo-font-scale: 1;
+  font-size: calc(1rem * var(--demo-font-scale));
+}
+
+.demo-playground--spacing {
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  word-spacing: 0.16em;
+
+  p {
+    margin-bottom: 2em;
+  }
+}
+
+.demo-playground__block {
+  margin-bottom: $spacing-s;
+}
+
+.demo-playground__block:last-child {
+  margin-bottom: 0;
+}
+
+.demo-hint {
+  margin: $spacing-xxs 0 0;
+  font-size: 0.95em;
+}
+
+.demo-clip-box,
+.demo-ellipsis {
+  margin: 0;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid $color-border;
+  background: $color-background-muted;
+}
+
+// Fixed rem/px boxes stay put while playground font-size grows — text is clipped.
+.demo-clip-box {
+  height: 2rem;
+  overflow: hidden;
+}
+
+.demo-ellipsis {
+  // Wide enough for this sentence at default size; enlarging font-size
+  // outgrows the fixed rem cap and triggers ellipsis.
+  max-width: 52rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.demo-fixed-card {
+  // Pixel width stays put while playground font-size grows.
+  width: 220px;
+  // Tall enough for the copy + button at default size; larger text spills out.
+  height: 9rem;
+  padding: 0.5rem;
+  border: 1px solid $color-border;
+  background: $color-background-muted;
+  overflow: visible;
+}
+
+.demo-fixed-card p {
+  margin: 0 0 0.5rem;
+}
+
+.demo-nowrap-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.35rem;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0.35rem;
+  border: 1px dashed $color-border;
+  background: $color-background-muted;
+}
+
+.demo-nowrap-bar button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.demo__example--overflow {
+  overflow: visible;
+}
+
+.demo-overlay-stage {
+  position: relative;
+  min-height: 11rem;
+  border: 1px solid $color-border;
+  background: $color-background-muted;
+  overflow: hidden;
+}
+
+.demo-promo-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  color: $color-primary-invert;
+  background: $color-secondary;
+}
+
+.demo-promo-banner__body p {
+  margin: 0;
+}
+
+.demo-promo-banner__body p + p {
+  margin-top: 0.5em;
+}
+
+.demo-promo-banner__dismiss {
+  align-self: flex-start;
+  margin-top: auto;
+  font: inherit;
+  padding: 0.4rem 0.8rem;
+  color: $color-primary-invert;
+  background: transparent;
+  border: 2px solid $color-primary-invert;
+  cursor: pointer;
+}
+
+.demo-promo-banner__dismiss:focus-visible {
+  outline: 3px solid $color-focus-ring;
+  outline-offset: 2px;
+}
+
+.demo-overlay-stage__content {
+  padding: 0.75rem;
+}
+
+@media (max-width: ($breakpoint-tablet - 1px)) {
+  .demo-promo-banner {
+    position: absolute;
+    z-index: 5;
+    inset: 0;
+  }
+}

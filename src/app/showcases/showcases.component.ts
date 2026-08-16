@@ -54,5 +54,14 @@ export class ShowcasesComponent {
       iconPath:
         "M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-4.9-2a4.9 4.9 0 0 1 9.8 0h2a6.9 6.9 0 0 0-13.8 0h2zm-3.5 0a8.4 8.4 0 0 1 16.8 0h2a10.4 10.4 0 0 0-20.8 0h2z",
     },
+    {
+      title: "Reflow, Resize and Spacing",
+      description:
+        "Watch fixed boxes, clipping, and stacked UI break when text grows or spacing changes.",
+      link: "/showcases/reflow-resize-and-spacing",
+      // Expanding columns / reflow
+      iconPath:
+        "M3 5h8v4H3V5zm10 0h8v4h-8V5zM3 11h18v2H3v-2zm0 4h12v4H3v-4zm14 0h4v4h-4v-4z",
+    },
   ] as const;
 }

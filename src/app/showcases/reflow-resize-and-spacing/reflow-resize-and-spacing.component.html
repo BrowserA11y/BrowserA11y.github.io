@@ -1,0 +1,171 @@
+<section class="intro">
+  <p>
+    <a class="back-link" routerLink="/showcases">
+      <span class="back-link__arrow" aria-hidden="true">←</span>
+      Back to Showcases
+    </a>
+  </p>
+
+  <h1 tabindex="-1">Reflow, Resize and Spacing</h1>
+
+  <p>
+    People enlarge text, zoom the page, narrow the viewport, or inject extra
+    letter and line spacing. Layouts that rely on fixed boxes, clipping, or
+    stacked UI often lose content or controls. Use the playground controls,
+    then try browser zoom and a narrow window too.
+  </p>
+</section>
+
+<section class="demo" aria-labelledby="demo-playground">
+  <h2 id="demo-playground">Playground: font size and text spacing</h2>
+  <p>
+    Raise the font scale toward 200% and turn on WCAG-style text spacing. The
+    demos below live inside this playground so failures show up without changing
+    browser settings.
+  </p>
+
+  <div class="demo__actions" role="group" aria-label="Playground adjustments">
+    <button type="button" (click)="decreaseFont()" [disabled]="fontScale() <= 1">
+      Decrease font
+    </button>
+    <button type="button" (click)="increaseFont()" [disabled]="fontScale() >= 2">
+      Increase font
+    </button>
+    <button type="button" (click)="resetFont()">Reset font</button>
+    <button
+      type="button"
+      (click)="toggleSpacing()"
+      [attr.aria-pressed]="spacingOn()"
+    >
+      {{ spacingOn() ? "Spacing on" : "Apply text spacing" }}
+    </button>
+  </div>
+  <p class="demo-status" aria-live="polite">
+    Font scale: {{ fontScale() * 100 }}%
+    @if (spacingOn()) {
+      · Text spacing applied
+    }
+  </p>
+
+  <div
+    class="demo-playground"
+    [class.demo-playground--spacing]="spacingOn()"
+    [style.--demo-font-scale]="fontScale()"
+  >
+    <section class="demo-playground__block" aria-labelledby="demo-clipping">
+      <h2 id="demo-clipping">Clipping and ellipsis</h2>
+      <p>
+        These wrappers always use a fixed size with
+        <code>overflow: hidden</code> or ellipsis. Increase the font scale —
+        the text grows, the box does not, and content disappears.
+      </p>
+
+      <div class="demo__example demo__example--solo">
+        <h3>Fixed height + <code>overflow: hidden</code></h3>
+        <p class="demo-clip-box">
+          Shelf note: Renewals close at dusk. Bring your library card and any
+          overdue titles before the weekend rush.
+        </p>
+      </div>
+
+      <div class="demo__example demo__example--solo">
+        <h3>Ellipsis truncation</h3>
+        <p class="demo-ellipsis">
+          The complete annotated catalog of rare first editions from the
+          coastal branch special collections.
+        </p>
+      </div>
+    </section>
+
+    <section class="demo-playground__block" aria-labelledby="demo-fixed">
+      <h2 id="demo-fixed">Fixed length and width</h2>
+      <p>
+        Pixel widths, non-wrapping toolbars, and rigid columns fight reflow
+        (about 320 CSS px) and text resize. At the default size these may look
+        fine — enlarge the font or narrow the window to see them break.
+      </p>
+
+      <div class="demo__pair">
+        <div class="demo__example demo__example--overflow">
+          <h3>Fixed 220px card</h3>
+          <div class="demo-fixed-card">
+            <p>
+              Membership benefits include extended loans, holds across branches,
+              and early access to author talks.
+            </p>
+            <button type="button">Join waitlist</button>
+          </div>
+        </div>
+
+        <div class="demo__example demo__example--overflow">
+          <h3>No-wrap toolbar</h3>
+          <div class="demo-nowrap-bar" role="toolbar" aria-label="Broken actions">
+            <button type="button">Reserve</button>
+            <button type="button">Renew all</button>
+            <button type="button">Download receipt</button>
+            <button type="button">Share catalog link</button>
+          </div>
+          <p class="demo-hint">
+            Wide enough at the default size. Raise the font or narrow the
+            viewport — the row can no longer fit and scrolls or spills.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-playground__block" aria-labelledby="demo-overlay">
+      <h2 id="demo-overlay">Overlapping banners and z-index</h2>
+      <p>
+        Sticky or absolutely positioned chrome with a high
+        <code>z-index</code> can cover interactive controls when the layout
+        reflows on a small screen or larger text.
+      </p>
+
+      <div class="demo__actions">
+        @if (!bannerVisible()) {
+          <button type="button" (click)="showBanner()">Show promo banner</button>
+        }
+      </div>
+
+      <div class="demo-overlay-stage">
+        @if (bannerVisible()) {
+          <div class="demo-promo-banner" role="region" aria-label="Promo">
+            <div class="demo-promo-banner__body">
+              <p>
+                Summer reading challenge — enroll before Friday for double
+                points on every finished title.
+              </p>
+              <p>
+                Log each book you finish, invite a reading buddy, and unlock
+                branch badges as you go. Prizes include tote bags, early holds,
+                and a seat at the autumn author meetup.
+              </p>
+            </div>
+            <button
+              type="button"
+              class="demo-promo-banner__dismiss"
+              (click)="dismissBanner()"
+            >
+              Dismiss
+            </button>
+          </div>
+        }
+
+        <div class="demo-overlay-stage__content">
+          <p>
+            On a wide layout the banner stays in flow above these actions. Narrow
+            the viewport so the same absolutely positioned banner covers the
+            buttons underneath.
+          </p>
+          <div class="demo__actions">
+            <button type="button">Start challenge</button>
+            <button type="button">View leaderboard</button>
+            <button type="button">Invite a friend</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+<app-info-box group="reflowResizeAndSpacing" />

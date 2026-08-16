@@ -130,6 +130,36 @@ export const RESOURCE_LINKS = {
       href: "https://blogs.windows.com/msedgedev/2025/05/05/creating-a-more-accessible-web-with-aria-notify/",
     },
   ],
+  reflowResizeAndSpacing: [
+    {
+      label: "Designing for User Font-size and Zoom (OddBird)",
+      href: "https://www.oddbird.net/2025/07/22/size-preferences/",
+    },
+    {
+      label: "Stylus user styles (GitHub README)",
+      href: "https://github.com/openstyles/stylus/blob/master/README.md",
+    },
+    {
+      label: "How browsers zoom text (matuzo.at)",
+      href: "https://www.matuzo.at/blog/2023/how-browsers-zoom-text",
+    },
+    {
+      label: "Zooming & Scaling Disabled or Not? (WebAIM list)",
+      href: "https://webaim.org/discussion/mail_thread?thread=11234",
+    },
+    {
+      label: "The Surprising Truth About Pixels and Accessibility",
+      href: "https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/",
+    },
+    {
+      label: "Font size dimensions (Donnie D’Amato)",
+      href: "https://blog.damato.design/posts/font-size-dimensions/",
+    },
+    {
+      label: "Customizing the display (Web Accessibility Guidelines)",
+      href: "https://stevenmouret.github.io/web-accessibility-guidelines/accessibility/presentation-of-information/customizing-the-display.html",
+    },
+  ],
 } as const satisfies Record<string, readonly ResourceLink[]>;
 
 export type ResourceLinkGroup = keyof typeof RESOURCE_LINKS;

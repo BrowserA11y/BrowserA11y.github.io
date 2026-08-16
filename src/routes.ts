@@ -79,6 +79,14 @@ export const routes: Routes = [
           ),
         title: "Live regions",
       },
+      {
+        path: "reflow-resize-and-spacing",
+        loadComponent: () =>
+          import(
+            "./app/showcases/reflow-resize-and-spacing/reflow-resize-and-spacing.component"
+          ).then((m) => m.ReflowResizeAndSpacingComponent),
+        title: "Reflow, Resize and Spacing",
+      },
     ],
   },
 ];
