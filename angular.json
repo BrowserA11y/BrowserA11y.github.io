@@ -27,7 +27,16 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
             },
-            "assets": ["src/favicon.ico", "src/assets"],
+            "baseHref": "/",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "books.json",
+                "input": "fake-backend",
+                "output": "/assets/api"
+              }
+            ],
             "styles": ["src/styles.scss"],
             "scripts": [],
             "browser": "src/main.ts"
