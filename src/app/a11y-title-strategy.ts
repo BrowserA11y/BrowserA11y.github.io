@@ -1,19 +1,30 @@
-import { LiveAnnouncer } from "@angular/cdk/a11y";
 import { inject, Injectable } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { RouterStateSnapshot, TitleStrategy } from "@angular/router";
+import { ResolveFn, RouterStateSnapshot, TitleStrategy } from "@angular/router";
+import { catchError, map, of } from "rxjs";
+import { BooksService } from "./books.service";
+
+/** Resolves the document title from the book for `details/:isbn`. */
+export const bookTitleResolver: ResolveFn<string> = (route) => {
+  const isbn = route.paramMap.get("isbn");
+  if (!isbn) {
+    return "Book Details";
+  }
+
+  return inject(BooksService)
+    .getByIsbn(isbn)
+    .pipe(
+      map((book) => book.title),
+      catchError(() => of("Book Details"))
+    );
+};
 
 @Injectable()
 export class CustomTitleStrategy extends TitleStrategy {
   private readonly title = inject(Title);
-  private readonly liveAnnouncer = inject(LiveAnnouncer);
 
   override updateTitle(routerState: RouterStateSnapshot): void {
     const title = this.buildTitle(routerState);
-    this.liveAnnouncer.announce(title || "");
-    console.log(title);
-    //Angular focus 5: Workaround: https://github.com/angular/angular/issues/46179
-    // cdk-live-announcer-element cdk-visually-hidden
     if (title !== undefined) {
       this.title.setTitle(title);
     } else {

@@ -20,24 +20,6 @@
       ]
     },
     {
-      "id": "9780134655536",
-      "title": "Node.js, MongoDB and Angular Web Development, 2nd Edition",
-      "subtitle": "The definitive guide to using the MEAN stack to build web applications",
-      "isbn": "9780134655536",
-      "abstract": "Node.js is a leading server-side programming environment, MongoDB is the most popular NoSQL database, and Angular is the leading framework for MVC-based front-end development. Together, they provide an easy-to-implement, fully integrated web development stack that allows web programmers to create hi...",
-      "author": "Brad Dayley, Brendan Dayley, Caleb Dayley",
-      "publisher": "Addison-Wesley",
-      "price": "$33.16",
-      "numPages": 640,
-      "cover": "http://localhost:3000/covers/9780134655536.png",
-      "userId": 1,
-      "available": true,
-      "genres": [
-        "Technical",
-        "Reference"
-      ]
-    },
-    {
       "id": "9780596522308",
       "title": "Even Faster Web Sites",
       "subtitle": "Performance Best Practices for Web Developers",

@@ -81,5 +81,14 @@ export class ShowcasesComponent {
       iconPath:
         "M11 1h2v3h-2V1zm0 19h2v3h-2v-3zM1 11h3v2H1v-2zm19 0h3v2h-3v-2zM3.5 4.9l2.1-2.1 2.1 2.1-2.1 2.1-2.1-2.1zm12.8 12.8l2.1-2.1 2.1 2.1-2.1 2.1-2.1-2.1zM3.5 19.1l2.1-2.1 2.1 2.1-2.1 2.1-2.1-2.1zm12.8-12.8l2.1-2.1 2.1 2.1-2.1 2.1-2.1-2.1zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z",
     },
+    {
+      title: "Keyboard navigation",
+      description:
+        "Compare tabbable vs focusable elements, tabindex pitfalls, and clickable divs.",
+      link: "/showcases/keyboard-navigation",
+      // Keyboard outline
+      iconPath:
+        "M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm1 3v2h2V9H5zm4 0v2h2V9H9zm4 0v2h2V9h-2zm4 0v2h2V9h-2zM5 13v2h6v-2H5zm8 0v2h6v-2h-6z",
+    },
   ] as const;
 }

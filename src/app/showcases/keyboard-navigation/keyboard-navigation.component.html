@@ -1,0 +1,256 @@
+<section class="intro">
+  <p>
+    <a class="back-link" routerLink="/showcases">
+      <span class="back-link__arrow" aria-hidden="true">←</span>
+      Back to Showcases
+    </a>
+  </p>
+
+  <h1 tabindex="-1">Keyboard navigation</h1>
+
+  <p>
+    Keyboard users move with Tab / Shift+Tab and activate with Enter or Space.
+    What can receive focus depends on semantics and
+    <code>tabindex</code> — “focusable” and “tabbable” are not the same thing.
+  </p>
+</section>
+
+<section class="demo" aria-labelledby="demo-focusable-kinds">
+  <h2 id="demo-focusable-kinds">Tabbable vs focusable</h2>
+  <p>
+    Plain text is neither in the tab order nor programmatically focusable.
+    <code>tabindex="-1"</code> allows <code>element.focus()</code> (and skip
+    targets) without adding the element to the Tab sequence.
+    <code>tabindex="0"</code> puts a non-interactive element in the natural tab
+    order — use sparingly, and only when it must be keyboard-operable.
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>Neither</h3>
+      <p class="focus-sample">I’m neither tabbable nor focusable</p>
+    </div>
+
+    <div class="demo__example">
+      <h3>Only focusable</h3>
+      <p
+        #onlyFocusable
+        class="focus-sample focus-sample--focusable"
+        tabindex="-1"
+      >
+        I’m only focusable
+      </p>
+      <div class="demo__actions">
+        <button type="button" (click)="focusOnlyFocusable()">
+          Focus this paragraph
+        </button>
+      </div>
+    </div>
+
+    <div class="demo__example">
+      <h3>Tabbable and focusable</h3>
+      <p class="focus-sample focus-sample--focusable" tabindex="0">
+        I’m both tabbable and focusable
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-tabindex-values">
+  <h2 id="demo-tabindex-values">Positive <code>tabindex</code> reorders focus</h2>
+  <p>
+    Positive values put those elements first in the page’s Tab sequence, sorted
+    by number — before anything with <code>0</code> or no
+    <code>tabindex</code>. That almost always fights the visual order. Prefer
+    source order (and CSS for layout) instead of
+    <code>tabindex="1"</code>+.
+  </p>
+
+  <ol class="tabindex-list" aria-label="Demo tab order with positive values">
+    <li>
+      <a href="/showcases" tabindex="3">Link with tabindex=&quot;3&quot;</a>
+    </li>
+    <li>
+      <button type="button" tabindex="1">Button with tabindex=&quot;1&quot;</button>
+    </li>
+    <li>
+      <a href="/showcases" tabindex="2">Link with tabindex=&quot;2&quot;</a>
+    </li>
+    <li>
+      <button type="button">Native button (no tabindex)</button>
+    </li>
+  </ol>
+</section>
+
+<section class="demo" aria-labelledby="demo-click-targets">
+  <h2 id="demo-click-targets">Click handlers need a real control</h2>
+  <p>
+    A <code>div</code> with only a click handler is mouse-friendly and
+    keyboard-hostile: it is not focusable, and Enter / Space do nothing. Native
+    <code>button</code> and links with <code>href</code> already participate in
+    the tab order and expose the right activation keys.
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3>Div + click only</h3>
+      <div class="fake-control fake-control--broken" (click)="onClick()">
+        Looks clickable
+      </div>
+    </div>
+
+    <div class="demo__example">
+      <h3>Native button</h3>
+      <button type="button" (click)="onClick()">Real button</button>
+    </div>
+
+    <div class="demo__example">
+      <h3>Link with href</h3>
+      <a
+        href="/showcases"
+        (click)="$event.preventDefault(); onClick()"
+      >
+        Real link
+      </a>
+    </div>
+  </div>
+
+  <div class="demo__example demo__example--solo">
+    <h3>Optional: role=button still needs keys</h3>
+    <div
+      class="fake-control"
+      role="button"
+      tabindex="0"
+      (click)="onClick()"
+    >
+      Div as button (ARIA + keys)
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-outlines">
+  <h2 id="demo-outlines">Focus outlines</h2>
+  <p>
+    Tab through these buttons. Removing the outline
+    (<code>0</code>, <code>none</code>, or <code>transparent</code>) hides
+    keyboard focus unless you replace it. Prefer a visible custom outline —
+    optionally with offset, a second ring, or
+    <code>currentColor</code> so it tracks the control’s text color.
+  </p>
+
+  <div class="outline-grid">
+    <div class="demo__example">
+      <h3><code>outline: 0</code></h3>
+      <button type="button" class="outline-demo outline-demo--zero">
+        Focus me
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>outline: none</code></h3>
+      <button type="button" class="outline-demo outline-demo--none">
+        Focus me
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>outline: transparent</code></h3>
+      <button type="button" class="outline-demo outline-demo--transparent">
+        Focus me
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3>Defined outline</h3>
+      <button type="button" class="outline-demo outline-demo--defined">
+        Focus me
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3>Double outline</h3>
+      <div class="outline-bg-pair">
+        <div class="outline-bg outline-bg--light">
+          <button type="button" class="outline-demo outline-demo--double">
+            On light
+          </button>
+        </div>
+        <div class="outline-bg outline-bg--dark">
+          <button type="button" class="outline-demo outline-demo--double">
+            On dark
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>box-shadow</code></h3>
+      <button type="button" class="outline-demo outline-demo--shadow">
+        Focus me
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>outline-offset</code></h3>
+      <button type="button" class="outline-demo outline-demo--offset">
+        Focus me
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>currentColor</code></h3>
+      <div class="demo__actions">
+        <button type="button" class="outline-demo outline-demo--current">
+          Outside
+        </button>
+        <button type="button" class="outline-demo outline-demo--current-inset">
+          Inside
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" aria-labelledby="demo-focus-pseudos">
+  <h2 id="demo-focus-pseudos">
+    <code>:focus</code>, <code>:focus-visible</code>, and
+    <code>:focus-within</code>
+  </h2>
+  <p>
+    <code>:focus</code> styles appear for mouse and keyboard.
+    <code>:focus-visible</code> targets keyboard (and other non-pointer)
+    focus. <code>:focus-within</code> styles an ancestor while a descendant
+    has focus — useful for cards and field groups.
+  </p>
+
+  <div class="demo__pair demo__pair--three">
+    <div class="demo__example">
+      <h3><code>:focus</code></h3>
+      <button type="button" class="pseudo-demo pseudo-demo--focus">
+        Click or Tab
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>:focus-visible</code></h3>
+      <button type="button" class="pseudo-demo pseudo-demo--focus-visible">
+        Click or Tab
+      </button>
+    </div>
+
+    <div class="demo__example">
+      <h3><code>:focus-within</code></h3>
+      <div class="focus-within-card">
+        <label for="focus-within-input">Search shelf</label>
+        <input
+          id="focus-within-input"
+          type="search"
+          name="shelf-search"
+          autocomplete="off"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-info-box group="keyboardNavigation" />

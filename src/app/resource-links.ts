@@ -196,6 +196,80 @@ export const RESOURCE_LINKS = {
       href: "https://grrr.tech/posts/2021/using-media-queries-to-improve-accessibility/",
     },
   ],
+  keyboardNavigation: [
+    {
+      label: "Keyboard compatibility (W3C WAI perspective video)",
+      href: "https://www.w3.org/WAI/perspective-videos/keyboard/",
+    },
+    {
+      label: "Keyboard Accessibility (WebAIM)",
+      href: "https://webaim.org/techniques/keyboard/",
+    },
+    {
+      label: "A Complete Guide to Links and Buttons (CSS-Tricks)",
+      href: "https://css-tricks.com/a-complete-guide-to-links-and-buttons/#comment-1754410",
+    },
+    {
+      label: "A Guide To Keyboard Accessibility: HTML And CSS (Smashing Magazine)",
+      href: "https://www.smashingmagazine.com/2022/11/guide-keyboard-accessibility-html-css-part1/",
+    },
+    {
+      label: "Two different kinds of “focusable” UI elements (Eric Eggert)",
+      href: "https://yatil.net/blog/focusable-ui-elements",
+    },
+    {
+      label: "How to Turn a Div Into an Accessible Button (Better Programming)",
+      href: "https://betterprogramming.pub/how-to-turn-a-div-into-an-accessible-button-in-react-fbf236283d6d",
+    },
+    {
+      label: "Getting started with accessibility in Angular (Raccoons)",
+      href: "https://www.raccoons.be/what-we-think/articles/getting-started-with-accessibility-in-angular",
+    },
+    {
+      label: "Angular CDK a11y — InteractivityChecker",
+      href: "https://material.angular.io/cdk/a11y/overview#interactivitychecker",
+    },
+    {
+      label: "Focus outline styles comparison (ally.js)",
+      href: "https://allyjs.io/tests/focus-outline-styles/index.html#style=focus",
+    },
+    {
+      label: "Border vs outline (thisthat.dev)",
+      href: "https://thisthat.dev/border-vs-outline/",
+    },
+    {
+      label: "Don’t remove outline (outlinenone.com)",
+      href: "https://www.outlinenone.com",
+    },
+    {
+      label: ":focus-visible (MDN)",
+      href: "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:focus-visible",
+    },
+    {
+      label: "The difference between :focus and :focus-visible (Paweł Grzybek)",
+      href: "https://pawelgrzybek.com/the-difference-between-css-focus-and-focus-visible-pseudo-class/",
+    },
+    {
+      label: "Beautiful focus outlines (Medienbäcker)",
+      href: "https://medienbaecker.com/articles/focus-outlines",
+    },
+    {
+      label: "The optimal outline size (Smashing Magazine)",
+      href: "https://www.smashingmagazine.com/2022/11/guide-keyboard-accessibility-html-css-part1/#the-optimal-outline-size",
+    },
+    {
+      label: "A guide to designing accessible, WCAG-compliant focus indicators (Sara Soueidan)",
+      href: "https://www.sarasoueidan.com/blog/focus-indicators/",
+    },
+    {
+      label: "Taking a shot at the double focus ring problem (Piccalilli)",
+      href: "https://piccalil.li/blog/taking-a-shot-at-the-double-focus-ring-problem-using-modern-css/",
+    },
+    {
+      label: "Which HTML elements can receive focus? (Stack Overflow)",
+      href: "https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focus",
+    },
+  ],
 } as const satisfies Record<string, readonly ResourceLink[]>;
 
 export type ResourceLinkGroup = keyof typeof RESOURCE_LINKS;

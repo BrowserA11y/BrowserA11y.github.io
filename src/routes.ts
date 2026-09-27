@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { bookTitleResolver } from "./app/a11y-title-strategy";
 
 export const routes: Routes = [
   { path: "", redirectTo: "books", pathMatch: "full" },
@@ -6,7 +7,7 @@ export const routes: Routes = [
     path: "books",
     loadComponent: () =>
       import("./app/books/books.component").then((m) => m.BooksComponent),
-    title: "Books", //Angular focus 1 1: router titles
+    title: "Books",
   },
   {
     path: "new-book",
@@ -20,7 +21,7 @@ export const routes: Routes = [
       import("./app/book-details/book-details.component").then(
         (m) => m.BookDetailComponent
       ),
-    title: "Book Details",
+    title: bookTitleResolver,
   },
   {
     path: "about",
@@ -103,7 +104,16 @@ export const routes: Routes = [
           ).then((m) => m.HighContrastModeComponent),
         title: "High contrast mode",
       },
+      {
+        path: "keyboard-navigation",
+        loadComponent: () =>
+          import(
+            "./app/showcases/keyboard-navigation/keyboard-navigation.component"
+          ).then((m) => m.KeyboardNavigationComponent),
+        title: "Keyboard navigation",
+      },
     ],
   },
 ];
+
 
